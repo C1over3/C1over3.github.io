@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="有限状态机 状态的表示常用编码方法有二进制码、格雷码（Gray code）、独热码（one-hot code） 二进制码 即用二进制计数    优点：属于压缩状态编码，状态机所需的状态向量位数较少；    缺点：1、译码复杂；2、相邻状态变换时，会有多位发生改变，电噪声大、转换速度较慢、易出错；（实际电路中多位改变很难做到完全同时发生）； 格雷码 在一组数的编码中，任意两个相邻的代码只有一位二进制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习FPGA（二）">
+<meta property="og:url" content="http://example.com/2022/04/14/FPGA-2/index.html">
+<meta property="og:site_name" content="Clover的blog">
+<meta property="og:description" content="有限状态机 状态的表示常用编码方法有二进制码、格雷码（Gray code）、独热码（one-hot code） 二进制码 即用二进制计数    优点：属于压缩状态编码，状态机所需的状态向量位数较少；    缺点：1、译码复杂；2、相邻状态变换时，会有多位发生改变，电噪声大、转换速度较慢、易出错；（实际电路中多位改变很难做到完全同时发生）； 格雷码 在一组数的编码中，任意两个相邻的代码只有一位二进制">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-14T01:38:13.000Z">
+<meta property="article:modified_time" content="2022-04-14T09:41:03.998Z">
+<meta property="article:author" content="Clover">
+<meta property="article:tag" content="FPGA, Verilog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/04/14/FPGA-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学习FPGA（二） | Clover的blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Clover的blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/FPGA-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          学习FPGA（二）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-14 09:38:13 / 修改时间：17:41:03" itemprop="dateCreated datePublished" datetime="2022-04-14T09:38:13+08:00">2022-04-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h2><hr>
+<p>状态的表示常用编码方法有二进制码、格雷码（Gray code）、独热码（one-hot code）</p>
+<h1 id="二进制码"><a href="#二进制码" class="headerlink" title="二进制码"></a>二进制码</h1><hr>
+<p>即用二进制计数<br>    优点：属于压缩状态编码，状态机所需的状态向量位数较少；<br>    缺点：1、译码复杂；2、相邻状态变换时，会有多位发生改变，电噪声大、转换速度较慢、易出错；（实际电路中多位改变很难做到完全同时发生）；</p>
+<h1 id="格雷码"><a href="#格雷码" class="headerlink" title="格雷码"></a>格雷码</h1><hr>
+<p>在一组数的编码中，任意两个相邻的代码只有一位二进制数不同，且最大数与最小数之间也仅有一位数不同<br>构造方法：<br>1位格雷码有两个码字<br>(n+1)位格雷码中的前2n个码字等于n位格雷码的码字，按顺序书写，加前缀0<br>(n+1)位格雷码中的后2n个码字等于n位格雷码的码字，按逆序书写，加前缀1<br>n+1位格雷码的集合 &#x3D; n位格雷码集合(顺序)加前缀0 + n位格雷码集合(逆序)加前缀1<br>如：二进制码：000-001-010-011-100-101-110-111 相应的格雷码：000-001-011-010-110-111-101<br>    优点：1、属于压缩状态编码，状态机所需的状态向量位数较少；2、相邻状态变换时，仅有一位发生改变，电噪声小、转换速度较快；<br>    缺点：1、译码复杂；2、是一种变权码，每一位码没有固定的大小，难以直接比较大小和算术运算；</p>
+<h1 id="独热码"><a href="#独热码" class="headerlink" title="独热码"></a>独热码</h1><hr>
+<p>有多少个状态就有多少个比特，其中有且只有一个比特为1，其余为0<br>用独热码表示三个状态可以写为：001，010，100<br>    优点：译码简单；<br>    缺点：速度较慢，占用触发器资源较多，面积较大；</p>
+<hr>
+<p>设置状态时，常用localparam或者parameter。其中parameter可用作在顶层模块中例化底层模块时传递参数的接口；而localparam的作用域仅仅限于当前module，不能作为参数传递的接口。</p>
+<p>状态机分为一段时状态机、两段式状态机、三段式状态机，</p>
+<h2 id="编写一个检测”Hello”序列的状态机"><a href="#编写一个检测”Hello”序列的状态机" class="headerlink" title="编写一个检测”Hello”序列的状态机"></a>编写一个检测”Hello”序列的状态机</h2><p>作者第一次写出的代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">module state_machine (Clk, Rst_n, data, led); //Hello状态机</span><br><span class="line">	input Clk;	//基准时钟信号50M</span><br><span class="line">	input Rst_n;	//输入异步复位信号</span><br><span class="line">	</span><br><span class="line">	input [7:0] data;	//输入数据</span><br><span class="line">	</span><br><span class="line">	output reg led; //当前状态输入</span><br><span class="line">	</span><br><span class="line">	//set state</span><br><span class="line">	reg [2:0] state, next;</span><br><span class="line">	localparam</span><br><span class="line">		CHECK_H = &#x27;d0, </span><br><span class="line">		CHECK_e = &#x27;d1, </span><br><span class="line">		CHECK_la = &#x27;d2, </span><br><span class="line">		CHECK_lb = &#x27;d3, </span><br><span class="line">		CHECK_o = &#x27;d4;</span><br><span class="line">	//state transition (combinational logic)</span><br><span class="line">	always@(*) begin</span><br><span class="line">		case(state)</span><br><span class="line">			CHECK_H:	begin</span><br><span class="line">				if(data == &quot;H&quot;) </span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else </span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_e:	begin</span><br><span class="line">				if(data == &quot;e&quot;) </span><br><span class="line">					next = CHECK_la;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_la:	begin</span><br><span class="line">				if(data == &quot;l&quot;) </span><br><span class="line">					next = CHECK_lb;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_lb:	begin</span><br><span class="line">				if(data == &quot;l&quot;) </span><br><span class="line">					next = CHECK_o;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_o:	begin</span><br><span class="line">				if(data == &quot;o&quot;) </span><br><span class="line">					next = CHECK_H;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			default: next = CHECK_H;//默认状态下reset</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">	//state flip-flops (sequential logic)</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) state &lt;= CHECK_H;</span><br><span class="line">		else state &lt;= next;</span><br><span class="line">	end</span><br><span class="line">	//output</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) led &lt;= 1&#x27;b1;	//通常led低电平有效，高电平无效</span><br><span class="line">		else case(state)</span><br><span class="line">			CHECK_o: led &lt;= 1&#x27;b0;</span><br><span class="line">			default: led &lt;= 1&#x27;b1;</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">endmodule </span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FPGA-Verilog/" rel="tag"># FPGA, Verilog</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/13/FPGA-1/" rel="prev" title="学习FPGA（一）">
+      <i class="fa fa-chevron-left"></i> 学习FPGA（一）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/15/FPGA-3/" rel="next" title="学习FPGA（三）">
+      学习FPGA（三） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">有限状态机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%A0%81"><span class="nav-number"></span> <span class="nav-text">二进制码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%BC%E9%9B%B7%E7%A0%81"><span class="nav-number"></span> <span class="nav-text">格雷码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8B%AC%E7%83%AD%E7%A0%81"><span class="nav-number"></span> <span class="nav-text">独热码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8B%E2%80%9DHello%E2%80%9D%E5%BA%8F%E5%88%97%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">编写一个检测”Hello”序列的状态机</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Clover</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Clover</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

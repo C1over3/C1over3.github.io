@@ -20,28 +20,33 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Clover的blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="按键消抖 主模块 三段式状态机代码如下 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习FPGA（三）">
+<meta property="og:url" content="http://example.com/2022/04/15/FPGA-3/index.html">
 <meta property="og:site_name" content="Clover的blog">
+<meta property="og:description" content="按键消抖 主模块 三段式状态机代码如下 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-15T07:39:43.000Z">
+<meta property="article:modified_time" content="2022-04-15T08:56:42.066Z">
 <meta property="article:author" content="Clover">
+<meta property="article:tag" content="FPGA, Verilog">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/04/15/FPGA-3/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Clover的blog</title>
+  <title>学习FPGA（三） | Clover的blog</title>
   
 
 
@@ -139,67 +144,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/17/FPGA-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/17/FPGA-4/" class="post-title-link" itemprop="url">学习FPGA（四）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-17 10:57:24 / 修改时间：10:57:09" itemprop="dateCreated datePublished" datetime="2022-04-17T10:57:24+08:00">2022-04-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -215,10 +163,9 @@
       <meta itemprop="name" content="Clover的blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/15/FPGA-3/" class="post-title-link" itemprop="url">学习FPGA（三）</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          学习FPGA（三）
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -242,7 +189,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="按键消抖"><a href="#按键消抖" class="headerlink" title="按键消抖"></a>按键消抖</h2><hr>
+        <h2 id="按键消抖"><a href="#按键消抖" class="headerlink" title="按键消抖"></a>按键消抖</h2><hr>
 <h1 id="主模块"><a href="#主模块" class="headerlink" title="主模块"></a>主模块</h1><hr>
 <p>三段式状态机代码如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">//目的：设计一个按键消抖，滤波时间为20ms</span><br><span class="line">//晶振为50M，即一个时间周期为20ns</span><br><span class="line">//需要滤波1_000_000个时间周期</span><br><span class="line">`define filter_time 20&#x27;d1_000_000</span><br><span class="line">module key_filter(Clk, Rst_n, Key_in, Key_flag, Key_state);</span><br><span class="line">	input Clk;	//时钟输入</span><br><span class="line">	input Rst_n;	//复位输入</span><br><span class="line">	input Key_in;	//按键输入，按下时为0，断开时为1</span><br><span class="line">	</span><br><span class="line">	output reg Key_flag;	//按键输入变化后出现稳定状态时，显示为1（保持一个时钟周期），其余时候为0</span><br><span class="line">	output reg Key_state;	//按键状态，按下时显示为1， 断开时为0</span><br><span class="line">	</span><br><span class="line">	//set state(one-hot code)</span><br><span class="line">	localparam </span><br><span class="line">		IDLE		= 4&#x27;b0001, </span><br><span class="line">		FILTER0	= 4&#x27;b0010, </span><br><span class="line">		DOWN		= 4&#x27;b0100,</span><br><span class="line">		FILTER1	= 4&#x27;b1000;</span><br><span class="line">	reg [3:0] state, next;</span><br><span class="line">	</span><br><span class="line">	//edge check</span><br><span class="line">	reg Key_tmp0, Key_tmp1;</span><br><span class="line">	wire Key_posedge, Key_negedge;</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) begin</span><br><span class="line">			Key_tmp0 &lt;= 1&#x27;b0;</span><br><span class="line">			Key_tmp1 &lt;= 1&#x27;b0;</span><br><span class="line">		end</span><br><span class="line">		else begin</span><br><span class="line">			Key_tmp0 &lt;= Key_in;		//当Key_tmp0 = 1 且 Key_tmp1 = 0时即为一个上升沿</span><br><span class="line">			Key_tmp1 &lt;= Key_tmp0;	//当Key_tmp0 = 0 且 Key_tmp1 = 1时即为一个下降沿</span><br><span class="line">		end</span><br><span class="line">	end</span><br><span class="line">	assign Key_posedge = ~Key_tmp1 &amp; Key_tmp0;</span><br><span class="line">	assign Key_negedge = Key_tmp1 &amp; ~Key_tmp0;</span><br><span class="line">	//filter counter</span><br><span class="line">	reg [19:0] cnt;</span><br><span class="line">	reg cnt_full;	//计数器计满信号</span><br><span class="line">	reg en_cnt;		//计数器使能信号</span><br><span class="line">	</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) begin</span><br><span class="line">			cnt &lt;= &#x27;d0;</span><br><span class="line">			cnt_full &lt;= 1&#x27;b0;</span><br><span class="line">		end</span><br><span class="line">		else if(en_cnt) begin</span><br><span class="line">			if(cnt == (`filter_time - 1)) begin</span><br><span class="line">				cnt &lt;= &#x27;d0;</span><br><span class="line">				cnt_full &lt;= 1&#x27;b1;</span><br><span class="line">			end</span><br><span class="line">			else begin</span><br><span class="line">				cnt &lt;= cnt + 1&#x27;b1;</span><br><span class="line">				cnt_full &lt;= 1&#x27;b0;</span><br><span class="line">			end</span><br><span class="line">		end</span><br><span class="line">		else begin</span><br><span class="line">			cnt &lt;= &#x27;d0;</span><br><span class="line">			cnt_full &lt;= 1&#x27;b0;</span><br><span class="line">		end</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//state transition(combinational)</span><br><span class="line">	always@(*) begin</span><br><span class="line">		case(state)</span><br><span class="line">			IDLE: begin</span><br><span class="line">				if(Key_negedge)</span><br><span class="line">					next = FILTER0;</span><br><span class="line">				else </span><br><span class="line">					next = IDLE;</span><br><span class="line">			end</span><br><span class="line">			FILTER0: begin</span><br><span class="line">				if(cnt_full)</span><br><span class="line">					next = DOWN;</span><br><span class="line">				else if(Key_posedge)</span><br><span class="line">					next = IDLE;</span><br><span class="line">				else</span><br><span class="line">					next = FILTER0;</span><br><span class="line">			end</span><br><span class="line">			DOWN: begin</span><br><span class="line">				if(Key_posedge)</span><br><span class="line">					next = FILTER1;</span><br><span class="line">				else </span><br><span class="line">					next = DOWN;</span><br><span class="line">			end</span><br><span class="line">			FILTER1: begin </span><br><span class="line">				if(cnt_full) </span><br><span class="line">					next = IDLE;</span><br><span class="line">				else if(Key_negedge)</span><br><span class="line">					next = DOWN;</span><br><span class="line">				else </span><br><span class="line">					next = FILTER1;</span><br><span class="line">			end</span><br><span class="line">			default: next = IDLE;</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//state flip-flops(sequential)</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) state &lt;= IDLE;</span><br><span class="line">		else state &lt;= next;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//output</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n)</span><br><span class="line">			Key_state &lt;= 1&#x27;b0;</span><br><span class="line">		else case(next)</span><br><span class="line">			IDLE: begin </span><br><span class="line">				en_cnt &lt;= 1&#x27;b0;		//IDLE状态下计数器不计数</span><br><span class="line">				Key_state &lt;= 1&#x27;b0;	//此时Key未被按下</span><br><span class="line">				Key_flag &lt;= 1&#x27;b0;</span><br><span class="line">			end</span><br><span class="line">			FILTER0: begin</span><br><span class="line">				en_cnt &lt;= 1&#x27;b1;		//FILTER0状态下计数器开始计数	</span><br><span class="line">				Key_state &lt;= 1&#x27;b0;	//此时Key仍处于未被按下状态</span><br><span class="line">				Key_flag &lt;= 1&#x27;b0;</span><br><span class="line">			end</span><br><span class="line">			DOWN: begin</span><br><span class="line">				en_cnt &lt;= 1&#x27;b0;		//DOWN状态下计数器不计数	</span><br><span class="line">				Key_state &lt;= 1&#x27;b1;	//此时Key已被按下</span><br><span class="line">				Key_flag &lt;= cnt_full;//探测到Key被按下</span><br><span class="line">			end</span><br><span class="line">			FILTER1: begin</span><br><span class="line">				en_cnt &lt;= 1&#x27;b1;		//FILTER0状态下计数器开始计数	</span><br><span class="line">				Key_state &lt;= 1&#x27;b1;	//此时Key仍处于被按下状态</span><br><span class="line">				Key_flag &lt;= 1&#x27;b0;</span><br><span class="line">			end</span><br><span class="line">			default: begin</span><br><span class="line">				en_cnt &lt;= 1&#x27;b0;</span><br><span class="line">				Key_state &lt;= 1&#x27;b0;</span><br><span class="line">				Key_flag &lt;= 1&#x27;b0;</span><br><span class="line">			end</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//assign Key_flag = Key_negedge;	//组合逻辑输出方式来输出Key_flag</span><br><span class="line">endmodule </span><br></pre></td></tr></table></figure>
@@ -260,368 +207,36 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">`timescale 1 ns/1 ps</span><br><span class="line">module key_module(key);</span><br><span class="line">	output reg key;</span><br><span class="line">	reg [15:0] myrand;</span><br><span class="line">	</span><br><span class="line">	initial begin</span><br><span class="line">		key = 1&#x27;b1;</span><br><span class="line">		press_key;</span><br><span class="line">		#10000;</span><br><span class="line">		press_key;</span><br><span class="line">		#10000;</span><br><span class="line">		press_key;</span><br><span class="line">		$stop;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	task press_key;</span><br><span class="line">		begin</span><br><span class="line">			repeat(50) begin</span><br><span class="line">				myrand = &#123;$random&#125;%65536;</span><br><span class="line">				#myrand key = ~key;</span><br><span class="line">			end</span><br><span class="line">			key = 0;</span><br><span class="line">			#50_000_000;</span><br><span class="line"></span><br><span class="line">			repeat(50) begin</span><br><span class="line">				myrand = &#123;$random&#125;%65536;</span><br><span class="line">				#myrand key = ~key;</span><br><span class="line">			end</span><br><span class="line">			key = 1;</span><br><span class="line">			#50_000_000;</span><br><span class="line">		end</span><br><span class="line">	endtask</span><br><span class="line">endmodule </span><br></pre></td></tr></table></figure>
 <p>使用时需将该文件添加到test bench中<br>test bench主文件为</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">`timescale 1 ns/ 1 ns</span><br><span class="line">`define clk_period 20</span><br><span class="line">module key_filter_vlg_tst();</span><br><span class="line">	// test vector input registers</span><br><span class="line">	reg Clk;</span><br><span class="line">	wire Key_in;</span><br><span class="line">	reg Rst_n;</span><br><span class="line">	// wires</span><br><span class="line">	wire Key_flag;</span><br><span class="line">	wire Key_state;</span><br><span class="line">									</span><br><span class="line">	key_filter i1 (</span><br><span class="line">	// port map - connection between master ports and signals/registers</span><br><span class="line">		.Clk(Clk),</span><br><span class="line">		.Key_flag(Key_flag),</span><br><span class="line">		.Key_in(Key_in),</span><br><span class="line">		.Key_state(Key_state),</span><br><span class="line">		.Rst_n(Rst_n)</span><br><span class="line">	);</span><br><span class="line">	</span><br><span class="line">	initial begin</span><br><span class="line">		Clk = 1&#x27;b1;</span><br><span class="line">		forever #(`clk_period/2) Clk = ~Clk;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	initial begin</span><br><span class="line">		Rst_n = 1&#x27;b0;</span><br><span class="line">		#(`clk_period*10) Rst_n = 1&#x27;b1;</span><br><span class="line">		#(`clk_period*10 + 1) ;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	key_module u1(.key(Key_in));</span><br><span class="line">	</span><br><span class="line">endmodule </span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/FPGA-Verilog/" rel="tag"># FPGA, Verilog</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/FPGA-2/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/14/FPGA-2/" class="post-title-link" itemprop="url">学习FPGA（二）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-14 09:38:13 / 修改时间：17:41:03" itemprop="dateCreated datePublished" datetime="2022-04-14T09:38:13+08:00">2022-04-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h2><hr>
-<p>状态的表示常用编码方法有二进制码、格雷码（Gray code）、独热码（one-hot code）</p>
-<h1 id="二进制码"><a href="#二进制码" class="headerlink" title="二进制码"></a>二进制码</h1><hr>
-<p>即用二进制计数<br>    优点：属于压缩状态编码，状态机所需的状态向量位数较少；<br>    缺点：1、译码复杂；2、相邻状态变换时，会有多位发生改变，电噪声大、转换速度较慢、易出错；（实际电路中多位改变很难做到完全同时发生）；</p>
-<h1 id="格雷码"><a href="#格雷码" class="headerlink" title="格雷码"></a>格雷码</h1><hr>
-<p>在一组数的编码中，任意两个相邻的代码只有一位二进制数不同，且最大数与最小数之间也仅有一位数不同<br>构造方法：<br>1位格雷码有两个码字<br>(n+1)位格雷码中的前2n个码字等于n位格雷码的码字，按顺序书写，加前缀0<br>(n+1)位格雷码中的后2n个码字等于n位格雷码的码字，按逆序书写，加前缀1<br>n+1位格雷码的集合 &#x3D; n位格雷码集合(顺序)加前缀0 + n位格雷码集合(逆序)加前缀1<br>如：二进制码：000-001-010-011-100-101-110-111 相应的格雷码：000-001-011-010-110-111-101<br>    优点：1、属于压缩状态编码，状态机所需的状态向量位数较少；2、相邻状态变换时，仅有一位发生改变，电噪声小、转换速度较快；<br>    缺点：1、译码复杂；2、是一种变权码，每一位码没有固定的大小，难以直接比较大小和算术运算；</p>
-<h1 id="独热码"><a href="#独热码" class="headerlink" title="独热码"></a>独热码</h1><hr>
-<p>有多少个状态就有多少个比特，其中有且只有一个比特为1，其余为0<br>用独热码表示三个状态可以写为：001，010，100<br>    优点：译码简单；<br>    缺点：速度较慢，占用触发器资源较多，面积较大；</p>
-<hr>
-<p>设置状态时，常用localparam或者parameter。其中parameter可用作在顶层模块中例化底层模块时传递参数的接口；而localparam的作用域仅仅限于当前module，不能作为参数传递的接口。</p>
-<p>状态机分为一段时状态机、两段式状态机、三段式状态机，</p>
-<h2 id="编写一个检测”Hello”序列的状态机"><a href="#编写一个检测”Hello”序列的状态机" class="headerlink" title="编写一个检测”Hello”序列的状态机"></a>编写一个检测”Hello”序列的状态机</h2><p>作者第一次写出的代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">module state_machine (Clk, Rst_n, data, led); //Hello状态机</span><br><span class="line">	input Clk;	//基准时钟信号50M</span><br><span class="line">	input Rst_n;	//输入异步复位信号</span><br><span class="line">	</span><br><span class="line">	input [7:0] data;	//输入数据</span><br><span class="line">	</span><br><span class="line">	output reg led; //当前状态输入</span><br><span class="line">	</span><br><span class="line">	//set state</span><br><span class="line">	reg [2:0] state, next;</span><br><span class="line">	localparam</span><br><span class="line">		CHECK_H = &#x27;d0, </span><br><span class="line">		CHECK_e = &#x27;d1, </span><br><span class="line">		CHECK_la = &#x27;d2, </span><br><span class="line">		CHECK_lb = &#x27;d3, </span><br><span class="line">		CHECK_o = &#x27;d4;</span><br><span class="line">	//state transition (combinational logic)</span><br><span class="line">	always@(*) begin</span><br><span class="line">		case(state)</span><br><span class="line">			CHECK_H:	begin</span><br><span class="line">				if(data == &quot;H&quot;) </span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else </span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_e:	begin</span><br><span class="line">				if(data == &quot;e&quot;) </span><br><span class="line">					next = CHECK_la;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_la:	begin</span><br><span class="line">				if(data == &quot;l&quot;) </span><br><span class="line">					next = CHECK_lb;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_lb:	begin</span><br><span class="line">				if(data == &quot;l&quot;) </span><br><span class="line">					next = CHECK_o;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			CHECK_o:	begin</span><br><span class="line">				if(data == &quot;o&quot;) </span><br><span class="line">					next = CHECK_H;</span><br><span class="line">				else if(data == &quot;H&quot;)</span><br><span class="line">					next = CHECK_e;</span><br><span class="line">				else</span><br><span class="line">					next = CHECK_H;</span><br><span class="line">			end</span><br><span class="line">			default: next = CHECK_H;//默认状态下reset</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">	//state flip-flops (sequential logic)</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) state &lt;= CHECK_H;</span><br><span class="line">		else state &lt;= next;</span><br><span class="line">	end</span><br><span class="line">	//output</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) led &lt;= 1&#x27;b1;	//通常led低电平有效，高电平无效</span><br><span class="line">		else case(state)</span><br><span class="line">			CHECK_o: led &lt;= 1&#x27;b0;</span><br><span class="line">			default: led &lt;= 1&#x27;b1;</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">endmodule </span><br></pre></td></tr></table></figure>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/14/FPGA-2/" rel="prev" title="学习FPGA（二）">
+      <i class="fa fa-chevron-left"></i> 学习FPGA（二）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/17/FPGA-4/" rel="next" title="学习FPGA（四）">
+      学习FPGA（四） <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/FPGA-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/FPGA-1/" class="post-title-link" itemprop="url">学习FPGA（一）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-13 16:50:46 / 修改时间：18:27:18" itemprop="dateCreated datePublished" datetime="2022-04-13T16:50:46+08:00">2022-04-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。</p>
-<h2 id="BCD计数器设计与验证"><a href="#BCD计数器设计与验证" class="headerlink" title="BCD计数器设计与验证"></a>BCD计数器设计与验证</h2><hr>
-<p>目的是通过将三个BCD计数器级联来实现1000的计数<br>单个BCD计数器的Verilog代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">module bcd_counter(Clk, Cin, Rst_n, Cout, Q);</span><br><span class="line">	input Clk;//时间基准信号</span><br><span class="line">	input Cin;//计数器进位输入</span><br><span class="line">	input Rst_n;//计数器复位输入</span><br><span class="line">	output reg Cout;//计数器进位输出</span><br><span class="line">	output reg [3:0] Q;//计数器计数输出</span><br><span class="line">	</span><br><span class="line">	//产生输出进位信号</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(Rst_n==1&#x27;b0) Cout = 1&#x27;b0;</span><br><span class="line">		else if(Q==4&#x27;d9 &amp;&amp; Cin==1&#x27;b1) Cout = 1&#x27;b1;	//此处的进位设置并不合理，级联后会发生错误</span><br><span class="line">		else Cout = 1&#x27;b0;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//执行计数过程</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(Rst_n==1&#x27;b0) Q &lt;= 4&#x27;b0;</span><br><span class="line">		else if(Cin==1&#x27;b1) begin</span><br><span class="line">			if(Q==4&#x27;d9)Q &lt;= 4&#x27;b0;</span><br><span class="line">			else Q &lt;= Q + 1&#x27;b1;</span><br><span class="line">		end</span><br><span class="line">		else Q &lt;= Q;</span><br><span class="line">	end</span><br><span class="line"></span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
-
-<p>使用modelsim分析时，<br>先从sim中把子模块的输入输出信号全部添加到波形窗口中<br>然后在波形窗口中选中所有信号（Ctrl+a）<br>再按下快捷键Ctrl+g，完成按模块分组</p>
-<p>将”&#x2F;&#x2F;产生输出进位信号”部分修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">always@(*) begin</span><br><span class="line">	if(Rst_n==1&#x27;b0) Cout = 1&#x27;b0;</span><br><span class="line">	else if(Q==4&#x27;d9 &amp;&amp; Cin==1&#x27;b1) Cout = 1&#x27;b1;</span><br><span class="line">	else Cout = 1&#x27;b0;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>此即行为级建模实现的组合逻辑，但仿真的结果出现了奇怪的毛刺，这是rtl级仿真不该出现的</p>
-<p>于是再将其改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assign Cout = (Q==4&#x27;d9 &amp;&amp; Cin==1&#x27;b1);</span><br></pre></td></tr></table></figure>
-<p>此即数据流建模实现的组合逻辑。需要注意的是，此时应当将Cout的类型变更为wire型，否则会发生编译错误。</p>
-<p>他们占用的逻辑资源也出现了不同</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/How-to-build-a-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/How-to-build-a-blog/" class="post-title-link" itemprop="url">如何搭建自己的博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-13 15:30:55 / 修改时间：22:39:09" itemprop="dateCreated datePublished" datetime="2022-04-13T15:30:55+08:00">2022-04-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="准备部分"><a href="#准备部分" class="headerlink" title="准备部分"></a>准备部分</h2><hr>
-<p>今天作者恰好学习了如何搭建博客，于是想先写一篇笔记，便于自己查看。作者在搭建博客时，全程在windows10系统上进行，使用的框架为hexo框架</p>
-<h1 id="1、安装Git"><a href="#1、安装Git" class="headerlink" title="1、安装Git"></a>1、安装Git</h1><p>从<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git</a>的官网直接下载，记得在下载前注册一个github账号，下载过程中会要求你登录。</p>
-<h1 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/My-first-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/My-first-blog/" class="post-title-link" itemprop="url">My first blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-13 12:27:06" itemprop="dateCreated datePublished" datetime="2022-04-13T12:27:06+08:00">2022-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-15 17:51:39" itemprop="dateModified" datetime="2022-04-15T17:51:39+08:00">2022-04-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="【转载】如何解决无法访问Github"><a href="#【转载】如何解决无法访问Github" class="headerlink" title="【转载】如何解决无法访问Github"></a>【转载】如何解决无法访问Github</h2><p>在 C:\Windows\System32\drivers\etc\hosts 文件中末尾添加两行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">140.82.113.4 github.com</span><br><span class="line">140.82.113.4 www.github.com</span><br></pre></td></tr></table></figure>
-<p>其中ip地址可在 <a target="_blank" rel="noopener" href="https://github.com.ipaddress.com/www.github.com">https://github.com.ipaddress.com/www.github.com</a> 中查询</p>
-<p>若完成上述操作后仍无法访问，可以再添加两行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">69.171.224.40 github.global.ssl.fastly.net</span><br><span class="line">185.199.111.153 assets-cdn.github.com</span><br></pre></td></tr></table></figure>
-<p>其中ip地址可以在 <a target="_blank" rel="noopener" href="http://tool.chinaz.com/dns">http://tool.chinaz.com/dns</a> 中输入网址查询，选取TTL值较低的ip地址即可</p>
-<p>在修改hosts文件时，通常先将其复制到其他路径得到一个副本，将副本修改保存后替换原文件。（建议修改前备份一个hosts文件）</p>
-<hr>
-<p>转载自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanch01/p/GitHub-access.html">https://www.cnblogs.com/yanch01/p/GitHub-access.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover的blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-13 12:19:46 / 修改时间：22:39:11" itemprop="dateCreated datePublished" datetime="2022-04-13T12:19:46+08:00">2022-04-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -674,6 +289,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96"><span class="nav-number">1.</span> <span class="nav-text">按键消抖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%A8%A1%E5%9D%97"><span class="nav-number"></span> <span class="nav-text">主模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Testbench"><span class="nav-number"></span> <span class="nav-text">Testbench</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number"></span> <span class="nav-text">仿真模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">随机数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task"><span class="nav-number">2.</span> <span class="nav-text">task</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E6%A8%A1%E5%9E%8B-1"><span class="nav-number">3.</span> <span class="nav-text">仿真模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
