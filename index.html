@@ -145,6 +145,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/cpp-note-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover的blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/18/cpp-note-1/" class="post-title-link" itemprop="url">C++笔记（一）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-18 12:07:01 / 修改时间：15:50:50" itemprop="dateCreated datePublished" datetime="2022-04-18T12:07:01+08:00">2022-04-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="不同初始化方式的区别"><a href="#不同初始化方式的区别" class="headerlink" title="不同初始化方式的区别"></a>不同初始化方式的区别</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	long double ld = 3.1415926536;</span><br><span class="line">	int a&#123; ld &#125;, b = &#123; ld &#125;;  //错误：会提示error C2397: 从“long double”转换到“int”需要收缩转换</span><br><span class="line">	int c(ld), d = ld;//能够完成编译，且确实丢失了部分值，c和d输出均为3</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; &quot;\t&quot; &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; c &lt;&lt; &quot;\t&quot; &lt;&lt; d &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于局部变量来说，初始化很重要；<br>在编写某个类的时候，尽量申明未被显式初始化时生成一个合适的默认值。</p>
+<h1 id="声明和定义"><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h1><p>C++支持分离式编译(separate compilation)<br>声明(declaration)：使得某个名字为程序所知，即这个变量已经在别处定义了，我现在拿来用。<br>定义(definition)：创建与名字关联的实体。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extern int i;	//声明i而非定义i，但如果显式初始化后则会抵消了extern的作用</span><br><span class="line">int j;	//定义j</span><br><span class="line">extern double pi = 3.1416;	//定义pi，且初始化为3.1416</span><br></pre></td></tr></table></figure>
+<p>在函数内部，如果试图初始化一个由extern关键字标记的变量，将引发错误。<br>ps: C++是一种静态类型（statically typed）语言，其含义是在编译阶段执行类型检查（type checking）。如果编译器发现数据类型不支持要执行的运算，则会报错且不会生成任何可执行的程序。程序越复杂，静态类型检查越有助于发现问题。这要求我们在使用某个变量之前必须声明其类型。</p>
+<h1 id="标识符-identifier"><a href="#标识符-identifier" class="headerlink" title="标识符(identifier)"></a>标识符(identifier)</h1><p>变量命名规范：<br>1、标识符要体现实际含义；<br>2、变量名一般用小写字母，如index；<br>3、用户自定义的类名一般以大写字母开头，如Sales_item；<br>4、如果标识符由多个单词组成，则单词间要有明显区分，如student_loan或studentLoan；</p>
+<p>建议：当第一次使用变量时再定义它，即随用随定义<br>好处：<br>1、有助于找到变量的定义；<br>2、可以赋予一个合理的初始值；<br>3、防止在程序一开始初始化一堆未用到的变量，从而拖慢运行速度；</p>
+<h1 id="作用域-scope"><a href="#作用域-scope" class="headerlink" title="作用域(scope)"></a>作用域(scope)</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int i = 420, sum = 0;</span><br><span class="line">int main() &#123;</span><br><span class="line">	for (int i = 0; i != 10; i++)	//for()中的i作用域仅在()之中</span><br><span class="line">		sum += i;</span><br><span class="line">	cout &lt;&lt; i &lt;&lt; &quot;\t&quot; &lt;&lt; sum &lt;&lt; endl;	//得到的输出为420	45</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int i = 420, sum = 0;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int i = 100;	//覆盖了全局变量i</span><br><span class="line">	for (int i = 0; i != 10; i++)	//for()中的i作用域仅在()之中</span><br><span class="line">		sum += i;</span><br><span class="line">	cout &lt;&lt; ::i &lt;&lt; &quot;\t&quot; &lt;&lt; i &lt;&lt; &quot;\t&quot; &lt;&lt; sum &lt;&lt; endl;	//得到的输出为420 100 45</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="引用-reference"><a href="#引用-reference" class="headerlink" title="引用(reference)"></a>引用(reference)</h1><p>引用并非对象，而是为一个已经存在的对象所起的别名，不需要独立的内存空间；<br>引用初始化后，无法再令该引用重新绑定到另一个对象，因此引用必须初始化；<br>因为引用并非一个对象，所以不能定义引用的引用；<br>引用的类型必须与引用绑定的对象严格匹配。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int ival = 1024;</span><br><span class="line">	int &amp;refVal0 = ival;	//正确</span><br><span class="line">	int &amp;refVal1 = refVal;	//正确：实际上是以与引用绑定的对象再定义了另一个引用</span><br><span class="line">	int &amp;refVal2;	//错误：没有初始化引用</span><br><span class="line">	int &amp;refVal3 = &amp;refVal1;	//错误：不能定义引用的引用</span><br><span class="line">	double dval = 3.14;</span><br><span class="line">	int &amp;refVal4 = dval;	//错误：类型不匹配</span><br><span class="line">	refVal = 0;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="指针-pointer"><a href="#指针-pointer" class="headerlink" title="指针(pointer)"></a>指针(pointer)</h1><p>指针本身就是一个对象，需要独立的内存空间;<br>指针初始化后，可以通过赋值来改变指针的值或指针指向的对象；<br>因为指针是一个对象，所以可以定义指针的指针；<br>引用的类型必须与指向的对象严格匹配。</p>
+<p>指针的值（即地址）属于下列4中状态之一：<br>1、指向一个对象<br>2、指向紧邻对象所占空间的下一个位置<br>3、空指针，没有指向任何对象<br>4、无效指针，上述情况之外的其他值<br>建议：<br>1、初始化所有指针；<br>2、尽量定义了对象之后再定义指向它的指针；<br>3、如果实在不清楚指针应该指向何处，就先初始化为nullptr或者0；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int ival1 = 0, ival2 = 1;</span><br><span class="line">int *pi = &amp;ival1;</span><br><span class="line">pi = &amp;ival2;	//pi的值被改变，现在pi指向了ival，或者说pi的值变成了存放ival的地址</span><br><span class="line">*pi = 0;	//ival的值被改变，指针pi并没有改变</span><br></pre></td></tr></table></figure>
+<p>赋值改变的永远是&#x3D;左侧的对象！！！</p>
+<p>void* 指针是一种特殊的指针类型，可以存放任意对象的地址。它可以用于和其他指针比较、作为函数的输入输出、赋值给另一个void* 指针。但是，不能对它所指向的对象进行操作，因为我们并不知道这个对象到底是什么类型。<br>概括来讲，void* 的视角来看，内存空间仅仅只是内存空间，没办法访问内存空间中所存的对象。</p>
+<p><em>练习2.18</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int ival1 = 1, ival2 = 1, ival3 = 4;</span><br><span class="line">	int* p1 = &amp;ival1, * p2 = &amp;ival2;</span><br><span class="line">	//改变指针的值</span><br><span class="line">	cout &lt;&lt; p1 &lt;&lt; &quot;\t&quot; &lt;&lt; ival1 &lt;&lt; &quot;\t&quot; &lt;&lt; ival3 &lt;&lt; endl;</span><br><span class="line">	p1 = &amp;ival3;</span><br><span class="line">	cout &lt;&lt; p1 &lt;&lt; &quot;\t&quot; &lt;&lt; ival1 &lt;&lt; &quot;\t&quot; &lt;&lt; ival3 &lt;&lt; endl;</span><br><span class="line">	//改变指针指向对象的值</span><br><span class="line">	cout &lt;&lt; p2 &lt;&lt; &quot;\t&quot; &lt;&lt; *p2 &lt;&lt; &quot;\t&quot; &lt;&lt; ival2 &lt;&lt; endl;</span><br><span class="line">	*p2 = 100;</span><br><span class="line">	cout &lt;&lt; p2 &lt;&lt; &quot;\t&quot; &lt;&lt; *p2 &lt;&lt; &quot;\t&quot; &lt;&lt; ival2 &lt;&lt; endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>练习2.23</em><br>设给定指针为p</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int ival = 0;</span><br><span class="line">if(p) ival = 1;</span><br><span class="line">else ival = 2;	//这个if...else...可以判断出p是否有一个合法的值（即合法地址）</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/17/FPGA-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -168,10 +248,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-17 10:57:24 / 修改时间：10:57:09" itemprop="dateCreated datePublished" datetime="2022-04-17T10:57:24+08:00">2022-04-17</time>
+              <time title="创建时间：2022-04-17 10:57:24" itemprop="dateCreated datePublished" datetime="2022-04-17T10:57:24+08:00">2022-04-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 23:02:08" itemprop="dateModified" datetime="2022-04-18T23:02:08+08:00">2022-04-18</time>
+              </span>
 
           
 
@@ -184,7 +270,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="实现FPGA驱动数码管动态显示"><a href="#实现FPGA驱动数码管动态显示" class="headerlink" title="实现FPGA驱动数码管动态显示"></a>实现FPGA驱动数码管动态显示</h2><hr>
+<p>知识点：<br>1、数码管动态扫描实现。<br>2、In system sources and probes editor (ISSP)调试工具的使用。</p>
+<h1 id="工程代码"><a href="#工程代码" class="headerlink" title="工程代码"></a>工程代码</h1><hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">//实现FPGA驱动数码管动态显示</span><br><span class="line">module digital_display(Clk, Rst_n, En, disp_data, sel, seg);</span><br><span class="line">	input Clk;					//50M，一个周期为20ns</span><br><span class="line">	input Rst_n;</span><br><span class="line">	input En;</span><br><span class="line">	</span><br><span class="line">	input [31:0] disp_data;	//输入要求显示的内容</span><br><span class="line">	</span><br><span class="line">	output reg [7:0] sel;			//数码管位选（当前要显示的数码管）</span><br><span class="line">	output reg [6:0] seg;			//数码管段选（当前要显示的内容）</span><br><span class="line">	</span><br><span class="line">	//divider module</span><br><span class="line">	reg [14:0] divider_cnt;	//产生1ms的时钟，每0.5ms时钟信号需要翻转一次，0.5ms/20ns=25_000=16&#x27;b0110_0001_1010_1000，故需要15位计数器</span><br><span class="line">	reg Clk_1K;</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) </span><br><span class="line">			divider_cnt &lt;= 15&#x27;d0;</span><br><span class="line">		else if(~En) </span><br><span class="line">			divider_cnt &lt;= 15&#x27;d0;</span><br><span class="line">		else if(divider_cnt== 15&#x27;d24_999) </span><br><span class="line">			divider_cnt &lt;= 15&#x27;d0;</span><br><span class="line">		else </span><br><span class="line">			divider_cnt &lt;= divider_cnt + 1&#x27;b1;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(~Rst_n) </span><br><span class="line">			Clk_1K &lt;= 1&#x27;b0;</span><br><span class="line">		else if(~En) </span><br><span class="line">			Clk_1K &lt;= 1&#x27;b0;</span><br><span class="line">		else if(divider_cnt== 15&#x27;d24_999) </span><br><span class="line">			Clk_1K &lt;= ~Clk_1K;</span><br><span class="line">		else </span><br><span class="line">			Clk_1K &lt;= Clk_1K;</span><br><span class="line">	end</span><br><span class="line">	//shift8 module</span><br><span class="line">	reg [7:0] sel_r;</span><br><span class="line">	always@(posedge Clk_1K or negedge Rst_n) begin	//注意，分频器的输出信号作为D触发器的时钟信号，在大型设计中是不被允许的，此处设计为数码管驱动模块，影响不大，允许存在这样的毛刺</span><br><span class="line">		if(~Rst_n)</span><br><span class="line">			sel_r &lt;= 8&#x27;b0000_0001;</span><br><span class="line">		else if(sel_r == 8&#x27;b1000_0000)</span><br><span class="line">			sel_r &lt;= 8&#x27;b0000_0001;</span><br><span class="line">		else </span><br><span class="line">			sel_r &lt;= &#123;sel_r[6:0],1&#x27;b0&#125;;	//此句也可改为	sel_r &lt;= sel_r &lt;&lt; 1;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//MUX8 (combitional)</span><br><span class="line">	reg [3:0] data_tmp;</span><br><span class="line">	always@(*) begin</span><br><span class="line">		case(sel_r)</span><br><span class="line">			8&#x27;b0000_0001: data_tmp = disp_data[3:0];</span><br><span class="line">			8&#x27;b0000_0010: data_tmp = disp_data[7:4];</span><br><span class="line">			8&#x27;b0000_0100: data_tmp = disp_data[11:8];</span><br><span class="line">			8&#x27;b0000_1000: data_tmp = disp_data[15:12];</span><br><span class="line">			</span><br><span class="line">			8&#x27;b0001_0000: data_tmp = disp_data[19:16];</span><br><span class="line">			8&#x27;b0010_0000: data_tmp = disp_data[23:20];</span><br><span class="line">			8&#x27;b0100_0000: data_tmp = disp_data[27:24];</span><br><span class="line">			8&#x27;b1000_0000: data_tmp = disp_data[31:28];</span><br><span class="line">			</span><br><span class="line">			default: data_tmp = 4&#x27;b0000;</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//MUX2 (combitional)</span><br><span class="line">	always@(*) begin</span><br><span class="line">		if(~En)</span><br><span class="line">			sel = 8&#x27;b0000_0000;</span><br><span class="line">		else </span><br><span class="line">			sel = sel_r;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//LUT (combitional)</span><br><span class="line">	//注意：数码管灯段在输入为0时亮起，输入为1时熄灭；</span><br><span class="line">	//h段为最高位，a段为最低位；</span><br><span class="line">	always@(*) begin</span><br><span class="line">		case(data_tmp)</span><br><span class="line">			4&#x27;b0000: seg = 7&#x27;b100_0000;	//0</span><br><span class="line">			4&#x27;b0001: seg = 7&#x27;b111_1001;	//1</span><br><span class="line">			4&#x27;b0010: seg = 7&#x27;b010_0100;	//2</span><br><span class="line">			4&#x27;b0011: seg = 7&#x27;b011_0000;	//3</span><br><span class="line">			</span><br><span class="line">			4&#x27;b0100: seg = 7&#x27;b001_1001;	//4</span><br><span class="line">			4&#x27;b0101: seg = 7&#x27;b001_0010;	//5</span><br><span class="line">			4&#x27;b0110: seg = 7&#x27;b000_0010;	//6</span><br><span class="line">			4&#x27;b0111: seg = 7&#x27;b111_1000;	//7</span><br><span class="line">			</span><br><span class="line">			4&#x27;b1000: seg = 7&#x27;b000_0000;	//8</span><br><span class="line">			4&#x27;b1001: seg = 7&#x27;b001_0000;	//9</span><br><span class="line">			4&#x27;b1010: seg = 7&#x27;b000_1000;	//a</span><br><span class="line">			4&#x27;b1011: seg = 7&#x27;b000_0011;	//b</span><br><span class="line">			</span><br><span class="line">			4&#x27;b1100: seg = 7&#x27;b100_0110;	//c</span><br><span class="line">			4&#x27;b1101: seg = 7&#x27;b010_0001;	//d</span><br><span class="line">			4&#x27;b1110: seg = 7&#x27;b000_0110;	//e</span><br><span class="line">			4&#x27;b1111: seg = 7&#x27;b000_1110;	//f</span><br><span class="line">			</span><br><span class="line">			default: seg = 7&#x27;b111_1111;	//全灭</span><br><span class="line">		endcase</span><br><span class="line">	end</span><br><span class="line">endmodule </span><br></pre></td></tr></table></figure>
+<h1 id="TestBench"><a href="#TestBench" class="headerlink" title="TestBench"></a>TestBench</h1><hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">`timescale 1 ns/ 1 ps</span><br><span class="line">`define clk_period 20</span><br><span class="line">module digital_display_vlg_tst();</span><br><span class="line"></span><br><span class="line">	reg Clk;</span><br><span class="line">	reg En;</span><br><span class="line">	reg Rst_n;</span><br><span class="line">	reg [31:0] disp_data;</span><br><span class="line"></span><br><span class="line">	wire [6:0]  seg;</span><br><span class="line">	wire [7:0]  sel;</span><br><span class="line"></span><br><span class="line">	digital_display u1 (</span><br><span class="line">		.Clk(Clk),</span><br><span class="line">		.En(En),</span><br><span class="line">		.Rst_n(Rst_n),</span><br><span class="line">		.disp_data(disp_data),</span><br><span class="line">		.seg(seg),</span><br><span class="line">		.sel(sel)</span><br><span class="line">	);</span><br><span class="line">	initial begin</span><br><span class="line">		Clk = 1&#x27;b1;</span><br><span class="line">		forever #(`clk_period/2) Clk = ~Clk;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	initial begin</span><br><span class="line">		Rst_n = 1&#x27;b0;</span><br><span class="line">		En = 1&#x27;b1;</span><br><span class="line">		disp_data = 32&#x27;h12345678;</span><br><span class="line">		#(`clk_period*20);</span><br><span class="line">		Rst_n = 1&#x27;b1;</span><br><span class="line">		#(`clk_period*20);</span><br><span class="line">		#20_000_000;</span><br><span class="line">		disp_data = 32&#x27;h87654321;</span><br><span class="line">		#20_000_000;</span><br><span class="line">		disp_data = 32&#x27;h89abcdef;</span><br><span class="line">		#20_000_000;</span><br><span class="line">		$stop;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+
+<h1 id="ISSP"><a href="#ISSP" class="headerlink" title="ISSP"></a>ISSP</h1><hr>
+
       
     </div>
 
@@ -687,12 +781,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
