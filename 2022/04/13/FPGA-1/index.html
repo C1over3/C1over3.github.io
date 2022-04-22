@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。 BCD计数器设计与验证 目的是通过将三个BCD计数器级联来实现1000的计数单个BCD计数器的Verilog代码如下： 12345678910111213141516171819202122232425module bcd_counter(Clk, Cin, Rst_n, Cout, Q);	in">
+  <meta name="description" content="刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。 BCD计数器设计与验证目的是通过将三个BCD计数器级联来实现1000的计数单个BCD计数器的Verilog代码如下： 12345678910111213141516171819202122232425module bcd_counter(Clk, Cin, Rst_n, Cout, Q);	inp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习FPGA（一）">
 <meta property="og:url" content="http://example.com/2022/04/13/FPGA-1/index.html">
 <meta property="og:site_name" content="Clover的blog">
-<meta property="og:description" content="刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。 BCD计数器设计与验证 目的是通过将三个BCD计数器级联来实现1000的计数单个BCD计数器的Verilog代码如下： 12345678910111213141516171819202122232425module bcd_counter(Clk, Cin, Rst_n, Cout, Q);	in">
+<meta property="og:description" content="刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。 BCD计数器设计与验证目的是通过将三个BCD计数器级联来实现1000的计数单个BCD计数器的Verilog代码如下： 12345678910111213141516171819202122232425module bcd_counter(Clk, Cin, Rst_n, Cout, Q);	inp">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-13T08:50:46.000Z">
-<meta property="article:modified_time" content="2022-04-13T10:27:18.823Z">
+<meta property="article:modified_time" content="2022-04-22T10:23:11.149Z">
 <meta property="article:author" content="Clover">
 <meta property="article:tag" content="FPGA, Verilog">
 <meta name="twitter:card" content="summary">
@@ -173,10 +173,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-13 16:50:46 / 修改时间：18:27:18" itemprop="dateCreated datePublished" datetime="2022-04-13T16:50:46+08:00">2022-04-13</time>
+              <time title="创建时间：2022-04-13 16:50:46" itemprop="dateCreated datePublished" datetime="2022-04-13T16:50:46+08:00">2022-04-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 18:23:11" itemprop="dateModified" datetime="2022-04-22T18:23:11+08:00">2022-04-22</time>
+              </span>
 
           
 
@@ -190,16 +196,15 @@
 
       
         <p>刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。</p>
-<h2 id="BCD计数器设计与验证"><a href="#BCD计数器设计与验证" class="headerlink" title="BCD计数器设计与验证"></a>BCD计数器设计与验证</h2><hr>
-<p>目的是通过将三个BCD计数器级联来实现1000的计数<br>单个BCD计数器的Verilog代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">module bcd_counter(Clk, Cin, Rst_n, Cout, Q);</span><br><span class="line">	input Clk;//时间基准信号</span><br><span class="line">	input Cin;//计数器进位输入</span><br><span class="line">	input Rst_n;//计数器复位输入</span><br><span class="line">	output reg Cout;//计数器进位输出</span><br><span class="line">	output reg [3:0] Q;//计数器计数输出</span><br><span class="line">	</span><br><span class="line">	//产生输出进位信号</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(Rst_n==1&#x27;b0) Cout = 1&#x27;b0;</span><br><span class="line">		else if(Q==4&#x27;d9 &amp;&amp; Cin==1&#x27;b1) Cout = 1&#x27;b1;	//此处的进位设置并不合理，级联后会发生错误</span><br><span class="line">		else Cout = 1&#x27;b0;</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">	//执行计数过程</span><br><span class="line">	always@(posedge Clk or negedge Rst_n) begin</span><br><span class="line">		if(Rst_n==1&#x27;b0) Q &lt;= 4&#x27;b0;</span><br><span class="line">		else if(Cin==1&#x27;b1) begin</span><br><span class="line">			if(Q==4&#x27;d9)Q &lt;= 4&#x27;b0;</span><br><span class="line">			else Q &lt;= Q + 1&#x27;b1;</span><br><span class="line">		end</span><br><span class="line">		else Q &lt;= Q;</span><br><span class="line">	end</span><br><span class="line"></span><br><span class="line">endmodule</span><br></pre></td></tr></table></figure>
+<h2 id="BCD计数器设计与验证"><a href="#BCD计数器设计与验证" class="headerlink" title="BCD计数器设计与验证"></a>BCD计数器设计与验证</h2><p>目的是通过将三个BCD计数器级联来实现1000的计数<br>单个BCD计数器的Verilog代码如下：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> bcd_counter(Clk, Cin, Rst_n, Cout, Q);</span><br><span class="line">	<span class="keyword">input</span> Clk;<span class="comment">//时间基准信号</span></span><br><span class="line">	<span class="keyword">input</span> Cin;<span class="comment">//计数器进位输入</span></span><br><span class="line">	<span class="keyword">input</span> Rst_n;<span class="comment">//计数器复位输入</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> Cout;<span class="comment">//计数器进位输出</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] Q;<span class="comment">//计数器计数输出</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//产生输出进位信号</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>) Cout = <span class="number">1&#x27;b1</span>;	<span class="comment">//此处的进位设置并不合理，级联后会发生错误</span></span><br><span class="line">		<span class="keyword">else</span> Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//执行计数过程</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Q &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Cin==<span class="number">1&#x27;b1</span>) <span class="keyword">begin</span></span><br><span class="line">			<span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span>)Q &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">else</span> Q &lt;= Q + <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> Q &lt;= Q;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 
 <p>使用modelsim分析时，<br>先从sim中把子模块的输入输出信号全部添加到波形窗口中<br>然后在波形窗口中选中所有信号（Ctrl+a）<br>再按下快捷键Ctrl+g，完成按模块分组</p>
 <p>将”&#x2F;&#x2F;产生输出进位信号”部分修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">always@(*) begin</span><br><span class="line">	if(Rst_n==1&#x27;b0) Cout = 1&#x27;b0;</span><br><span class="line">	else if(Q==4&#x27;d9 &amp;&amp; Cin==1&#x27;b1) Cout = 1&#x27;b1;</span><br><span class="line">	else Cout = 1&#x27;b0;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>) Cout = <span class="number">1&#x27;b1</span>;</span><br><span class="line">	<span class="keyword">else</span> Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>此即行为级建模实现的组合逻辑，但仿真的结果出现了奇怪的毛刺，这是rtl级仿真不该出现的</p>
 <p>于是再将其改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assign Cout = (Q==4&#x27;d9 &amp;&amp; Cin==1&#x27;b1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> Cout = (Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>);</span><br></pre></td></tr></table></figure>
 <p>此即数据流建模实现的组合逻辑。需要注意的是，此时应当将Cout的类型变更为wire型，否则会发生编译错误。</p>
 <p>他们占用的逻辑资源也出现了不同</p>
 
@@ -299,7 +304,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
