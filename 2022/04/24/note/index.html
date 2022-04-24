@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="常用TestBench 1234567891011121314151617181920&#96;timescale 1 ns&#x2F;1 ns&#96;define clk_period 20module test();    &#x2F;&#x2F;reg input ports    reg clk;    reg rst_n;    &#x2F;&#x2F;wire output ports        initial begin        clk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="note">
+<meta property="og:url" content="http://example.com/2022/04/24/note/index.html">
+<meta property="og:site_name" content="Clover&#39;s blog">
+<meta property="og:description" content="常用TestBench 1234567891011121314151617181920&#96;timescale 1 ns&#x2F;1 ns&#96;define clk_period 20module test();    &#x2F;&#x2F;reg input ports    reg clk;    reg rst_n;    &#x2F;&#x2F;wire output ports        initial begin        clk">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-24T08:20:24.000Z">
+<meta property="article:modified_time" content="2022-04-24T14:01:41.953Z">
+<meta property="article:author" content="Clover">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/04/24/note/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>note | Clover's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Clover's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">什么，您是哪里来的闯入者？</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="这个少年还在迷茫...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          note
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-24 16:20:24 / 修改时间：22:01:41" itemprop="dateCreated datePublished" datetime="2022-04-24T16:20:24+08:00">2022-04-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>常用TestBench</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1 ns/1 ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> test();</span><br><span class="line">    <span class="comment">//reg input ports</span></span><br><span class="line">    <span class="keyword">reg</span> clk;</span><br><span class="line">    <span class="keyword">reg</span> rst_n;</span><br><span class="line">    <span class="comment">//wire output ports</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">forever</span> <span class="variable">#(clk_period/2)</span> clk = ~clk;</span><br><span class="line">        <span class="keyword">repeat</span>(<span class="number">100</span>) <span class="variable">#(clk_period/2)</span> clk = ~clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        #<span class="variable">#(clk_period*2)</span> rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="VL9-使用子模块实现三输入数的大小比较"><a href="#VL9-使用子模块实现三输入数的大小比较" class="headerlink" title="VL9 使用子模块实现三输入数的大小比较"></a><strong>VL9</strong> <strong>使用子模块实现三输入数的大小比较</strong></h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ns</span></span><br><span class="line"><span class="keyword">module</span> main_mod(</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rst_n,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]a,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]b,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]c,</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>]d</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>] mid;</span><br><span class="line">    compare C_a_b(</span><br><span class="line">        <span class="variable">.clk</span>(clk), </span><br><span class="line">        <span class="variable">.rst_n</span>(rst_n), </span><br><span class="line">        <span class="variable">.a</span>(a), </span><br><span class="line">        <span class="variable">.b</span>(b), </span><br><span class="line">        <span class="variable">.c</span>(mid)</span><br><span class="line">    );</span><br><span class="line">    compare C_mid_c(</span><br><span class="line">        <span class="variable">.clk</span>(clk), </span><br><span class="line">        <span class="variable">.rst_n</span>(rst_n), </span><br><span class="line">        <span class="variable">.a</span>(mid), </span><br><span class="line">        <span class="variable">.b</span>(c), </span><br><span class="line">        <span class="variable">.c</span>(d)</span><br><span class="line">    );</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> compare(clk, rst_n, a, b, c);</span><br><span class="line">    <span class="keyword">input</span> clk;</span><br><span class="line">    <span class="keyword">input</span> rst_n;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] c;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(~rst_n) </span><br><span class="line">            c &lt;= <span class="number">8&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a &lt; b)</span><br><span class="line">            c &lt;= a;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            c &lt;= b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>testbench</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 2</span></span><br><span class="line"><span class="keyword">module</span> test();</span><br><span class="line">	<span class="keyword">reg</span> <span class="keyword">signed</span> [<span class="number">7</span>:<span class="number">0</span>] a,b,c;</span><br><span class="line">	<span class="keyword">reg</span> clk,rst_n;</span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>]d;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="built_in">$dumpfile</span>(<span class="string">&quot;out.vcd&quot;</span>);</span><br><span class="line">    <span class="built_in">$dumpvars</span>(<span class="number">0</span>, testbench);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">main_mod dut(</span><br><span class="line">	<span class="variable">.clk</span>(clk),</span><br><span class="line">	<span class="variable">.rst_n</span>(rst_n),</span><br><span class="line">	<span class="variable">.a</span>(a),</span><br><span class="line">	<span class="variable">.b</span>(b),</span><br><span class="line">	<span class="variable">.c</span>(c),</span><br><span class="line">	<span class="variable">.d</span>(d)</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">repeat</span>(<span class="number">100</span>) <span class="variable">#(`clk_period/2)</span> clk = ~clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        a = <span class="number">8&#x27;h11</span>;</span><br><span class="line">        b = <span class="number">8&#x27;h22</span>;</span><br><span class="line">        c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*2)</span> rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h16</span>; b = <span class="number">8&#x27;h07</span>; c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h09</span>; b = <span class="number">8&#x27;h22</span>; c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h11</span>; b = <span class="number">8&#x27;h11</span>; c = <span class="number">8&#x27;h55</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;hab</span>; b = <span class="number">8&#x27;h36</span>; c = <span class="number">8&#x27;h90</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h09</span>; b = <span class="number">8&#x27;h27</span>; c = <span class="number">8&#x27;h30</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> <span class="built_in">$stop</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/23/cpp-note-4/" rel="prev" title="C++笔记（四）——自定义数据结构">
+      <i class="fa fa-chevron-left"></i> C++笔记（四）——自定义数据结构
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#VL9-%E4%BD%BF%E7%94%A8%E5%AD%90%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0%E4%B8%89%E8%BE%93%E5%85%A5%E6%95%B0%E7%9A%84%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83"><span class="nav-number">1.</span> <span class="nav-text">VL9 使用子模块实现三输入数的大小比较</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Clover</p>
+  <div class="site-description" itemprop="description">这个少年还在迷茫...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Clover</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

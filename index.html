@@ -163,6 +163,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="这个少年还在迷茫...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/24/note/" class="post-title-link" itemprop="url">note</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-24 16:20:24 / 修改时间：22:01:41" itemprop="dateCreated datePublished" datetime="2022-04-24T16:20:24+08:00">2022-04-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>常用TestBench</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1 ns/1 ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> test();</span><br><span class="line">    <span class="comment">//reg input ports</span></span><br><span class="line">    <span class="keyword">reg</span> clk;</span><br><span class="line">    <span class="keyword">reg</span> rst_n;</span><br><span class="line">    <span class="comment">//wire output ports</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">forever</span> <span class="variable">#(clk_period/2)</span> clk = ~clk;</span><br><span class="line">        <span class="keyword">repeat</span>(<span class="number">100</span>) <span class="variable">#(clk_period/2)</span> clk = ~clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        #<span class="variable">#(clk_period*2)</span> rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="VL9-使用子模块实现三输入数的大小比较"><a href="#VL9-使用子模块实现三输入数的大小比较" class="headerlink" title="VL9 使用子模块实现三输入数的大小比较"></a><strong>VL9</strong> <strong>使用子模块实现三输入数的大小比较</strong></h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ns</span></span><br><span class="line"><span class="keyword">module</span> main_mod(</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rst_n,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]a,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]b,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]c,</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>]d</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>] mid;</span><br><span class="line">    compare C_a_b(</span><br><span class="line">        <span class="variable">.clk</span>(clk), </span><br><span class="line">        <span class="variable">.rst_n</span>(rst_n), </span><br><span class="line">        <span class="variable">.a</span>(a), </span><br><span class="line">        <span class="variable">.b</span>(b), </span><br><span class="line">        <span class="variable">.c</span>(mid)</span><br><span class="line">    );</span><br><span class="line">    compare C_mid_c(</span><br><span class="line">        <span class="variable">.clk</span>(clk), </span><br><span class="line">        <span class="variable">.rst_n</span>(rst_n), </span><br><span class="line">        <span class="variable">.a</span>(mid), </span><br><span class="line">        <span class="variable">.b</span>(c), </span><br><span class="line">        <span class="variable">.c</span>(d)</span><br><span class="line">    );</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> compare(clk, rst_n, a, b, c);</span><br><span class="line">    <span class="keyword">input</span> clk;</span><br><span class="line">    <span class="keyword">input</span> rst_n;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] c;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(~rst_n) </span><br><span class="line">            c &lt;= <span class="number">8&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a &lt; b)</span><br><span class="line">            c &lt;= a;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            c &lt;= b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>testbench</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 2</span></span><br><span class="line"><span class="keyword">module</span> test();</span><br><span class="line">	<span class="keyword">reg</span> <span class="keyword">signed</span> [<span class="number">7</span>:<span class="number">0</span>] a,b,c;</span><br><span class="line">	<span class="keyword">reg</span> clk,rst_n;</span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>]d;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="built_in">$dumpfile</span>(<span class="string">&quot;out.vcd&quot;</span>);</span><br><span class="line">    <span class="built_in">$dumpvars</span>(<span class="number">0</span>, testbench);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">main_mod dut(</span><br><span class="line">	<span class="variable">.clk</span>(clk),</span><br><span class="line">	<span class="variable">.rst_n</span>(rst_n),</span><br><span class="line">	<span class="variable">.a</span>(a),</span><br><span class="line">	<span class="variable">.b</span>(b),</span><br><span class="line">	<span class="variable">.c</span>(c),</span><br><span class="line">	<span class="variable">.d</span>(d)</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">repeat</span>(<span class="number">100</span>) <span class="variable">#(`clk_period/2)</span> clk = ~clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        a = <span class="number">8&#x27;h11</span>;</span><br><span class="line">        b = <span class="number">8&#x27;h22</span>;</span><br><span class="line">        c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*2)</span> rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h16</span>; b = <span class="number">8&#x27;h07</span>; c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h09</span>; b = <span class="number">8&#x27;h22</span>; c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h11</span>; b = <span class="number">8&#x27;h11</span>; c = <span class="number">8&#x27;h55</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;hab</span>; b = <span class="number">8&#x27;h36</span>; c = <span class="number">8&#x27;h90</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h09</span>; b = <span class="number">8&#x27;h27</span>; c = <span class="number">8&#x27;h30</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> <span class="built_in">$stop</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp-note-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -836,78 +902,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Clover">
-      <meta itemprop="description" content="这个少年还在迷茫...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-13 12:19:46 / 修改时间：22:39:11" itemprop="dateCreated datePublished" datetime="2022-04-13T12:19:46+08:00">2022-04-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/13/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -972,7 +971,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
