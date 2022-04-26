@@ -2533,7 +2533,7 @@ ul.breadcrumb li:last-child {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #6abbff;
+  background: #468217;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2559,4 +2559,7 @@ ul.breadcrumb li:last-child {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.post-body p {
+  text-indent: 2em;
 }
