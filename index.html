@@ -86,7 +86,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,91 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/cpp-note-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="这个少年还在迷茫...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/27/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——字符串、向量和数组</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-27 23:01:00 / 修改时间：23:36:02" itemprop="dateCreated datePublished" datetime="2022-04-27T23:01:00+08:00">2022-04-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="字符串、向量和数组"><a href="#字符串、向量和数组" class="headerlink" title="字符串、向量和数组"></a>字符串、向量和数组</h1><p>命名空间的using声明：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> namespaece std;			<span class="comment">//using声明，获取std中的所有名字</span></span><br><span class="line"><span class="keyword">using</span> std::cin;					<span class="comment">//using声明，当我们使用名字cin时，从std中获取它</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义和初始化string对象"><a href="#定义和初始化string对象" class="headerlink" title="定义和初始化string对象"></a>定义和初始化string对象</h3><p>几个初始化方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string s1;						<span class="comment">//默认初始化，s1是一个空串</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;					<span class="comment">//直接初始化(direct initialization)，s2是s1的副本</span></span><br><span class="line">string s2 = s1;					<span class="comment">//拷贝初始化(copy initialization)，s2是s1的副本</span></span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;value&quot;</span>)</span></span>;				<span class="comment">//直接初始化，s3是字面值&quot;value&quot;的副本，除了字面值最后的那个空字符外</span></span><br><span class="line">string s3 = <span class="string">&quot;value&quot;</span>;			<span class="comment">//拷贝初始化，s3是字面值&quot;value&quot;的副本</span></span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(n, <span class="string">&#x27;c&#x27;</span>)</span></span>;				<span class="comment">//直接初始化，s4是由连续n个字符c组成的串</span></span><br><span class="line">string s5 = <span class="built_in">string</span>(<span class="number">10</span>,<span class="string">&#x27;c&#x27;</span>)		<span class="comment">//拷贝初始化，创建了一个临时对象用于拷贝，s5内容是cccccccccc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="string对象上的操作"><a href="#string对象上的操作" class="headerlink" title="string对象上的操作"></a>string对象上的操作</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/27/cpp-note-5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -237,7 +322,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-27 12:43:59" itemprop="dateModified" datetime="2022-04-27T12:43:59+08:00">2022-04-27</time>
+      <time title="修改时间：2022-04-28 14:12:48" itemprop="dateModified" datetime="2022-04-28T14:12:48+08:00">2022-04-28</time>
     </span>
 
   
@@ -412,7 +497,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-26 23:55:48" itemprop="dateModified" datetime="2022-04-26T23:55:48+08:00">2022-04-26</time>
+      <time title="修改时间：2022-04-27 23:00:25" itemprop="dateModified" datetime="2022-04-27T23:00:25+08:00">2022-04-27</time>
     </span>
 
   
@@ -976,98 +1061,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/04/14/FPGA-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/13/FPGA-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Clover">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="这个少年还在迷茫...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/13/FPGA-1/" class="post-title-link" itemprop="url">学习FPGA（一）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-13 16:50:46" itemprop="dateCreated datePublished" datetime="2022-04-13T16:50:46+08:00">2022-04-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-22 19:37:40" itemprop="dateModified" datetime="2022-04-22T19:37:40+08:00">2022-04-22</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。</p>
-<h2 id="BCD计数器设计与验证"><a href="#BCD计数器设计与验证" class="headerlink" title="BCD计数器设计与验证"></a>BCD计数器设计与验证</h2><p>目的是通过将三个BCD计数器级联来实现1000的计数<br>单个BCD计数器的Verilog代码如下：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> bcd_counter(Clk, Cin, Rst_n, Cout, Q);</span><br><span class="line">	<span class="keyword">input</span> Clk;<span class="comment">//时间基准信号</span></span><br><span class="line">	<span class="keyword">input</span> Cin;<span class="comment">//计数器进位输入</span></span><br><span class="line">	<span class="keyword">input</span> Rst_n;<span class="comment">//计数器复位输入</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> Cout;<span class="comment">//计数器进位输出</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] Q;<span class="comment">//计数器计数输出</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//产生输出进位信号</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>) Cout = <span class="number">1&#x27;b1</span>;	<span class="comment">//此处的进位设置并不合理，级联后会发生错误</span></span><br><span class="line">		<span class="keyword">else</span> Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//执行计数过程</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Q &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Cin==<span class="number">1&#x27;b1</span>) <span class="keyword">begin</span></span><br><span class="line">			<span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span>)Q &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">else</span> Q &lt;= Q + <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> Q &lt;= Q;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
-
-<p>使用modelsim分析时，先从sim中把子模块的输入输出信号全部添加到波形窗口中然后在波形窗口中选中所有信号（Ctrl+a），再按下快捷键Ctrl+g，完成按模块分组</p>
-<p>将”&#x2F;&#x2F;产生输出进位信号”部分修改为：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>) Cout = <span class="number">1&#x27;b1</span>;</span><br><span class="line">	<span class="keyword">else</span> Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>此即行为级建模实现的组合逻辑，但仿真的结果出现了奇怪的毛刺，这是rtl级仿真不该出现的</p>
-<p>于是再将其改为：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> Cout = (Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>);</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/13/FPGA-1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
