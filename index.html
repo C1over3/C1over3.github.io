@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/cpp-note-5/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/29/nowcoder/nowcoder2-verilog17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -219,7 +219,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/27/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——字符串、向量和数组</a>
+          <a href="/2022/04/29/nowcoder/nowcoder2-verilog17/" class="post-title-link" itemprop="url">牛客网Verilog刷题笔记2</a>
         </h2>
 
         <div class="post-meta-container">
@@ -229,15 +229,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2022-04-27 23:01:00" itemprop="dateCreated datePublished" datetime="2022-04-27T23:01:00+08:00">2022-04-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-29 11:22:27" itemprop="dateModified" datetime="2022-04-29T11:22:27+08:00">2022-04-29</time>
+      <time title="创建时间：2022-04-29 15:07:21 / 修改时间：15:08:07" itemprop="dateCreated datePublished" datetime="2022-04-29T15:07:21+08:00">2022-04-29</time>
     </span>
 
   
@@ -250,18 +244,85 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="字符串、向量和数组"><a href="#字符串、向量和数组" class="headerlink" title="字符串、向量和数组"></a>字符串、向量和数组</h1><p>命名空间的using声明：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> namespaece std;				<span class="comment">//using声明，获取std中的所有名字</span></span><br><span class="line"><span class="keyword">using</span> std::cin;						<span class="comment">//using声明，当我们使用名字cin时，从std中获取它</span></span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
 
-<h2 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span>					<span class="comment">//一定要包含string头文件</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></figure>
+    
+    
+    
 
-<h3 id="定义和初始化string对象"><a href="#定义和初始化string对象" class="headerlink" title="定义和初始化string对象"></a>定义和初始化string对象</h3><p>几个初始化方式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string s1;							<span class="comment">//默认初始化，s1是一个空串</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;						<span class="comment">//直接初始化(direct initialization)，s2是s1的副本</span></span><br><span class="line">string s2 = s1;						<span class="comment">//拷贝初始化(copy initialization)，s2是s1的副本</span></span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;value&quot;</span>)</span></span>;					<span class="comment">//直接初始化，s3是字面值&quot;value&quot;的副本，除了字面值最后的那个空字符外</span></span><br><span class="line">string s3 = <span class="string">&quot;value&quot;</span>;				<span class="comment">//拷贝初始化，s3是字面值&quot;value&quot;的副本</span></span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(n, <span class="string">&#x27;c&#x27;</span>)</span></span>;					<span class="comment">//直接初始化，s4是由连续n个字符c组成的串</span></span><br><span class="line">string s5 = <span class="built_in">string</span>(<span class="number">10</span>,<span class="string">&#x27;c&#x27;</span>)			<span class="comment">//拷贝初始化，创建了一个临时对象用于拷贝，s5内容是cccccccccc</span></span><br></pre></td></tr></table></figure>
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
 
-<h3 id="string对象上的操作"><a href="#string对象上的操作" class="headerlink" title="string对象上的操作"></a>string对象上的操作</h3><p>读入数量未知的string对象：</p>
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/29/cpp/cpp-note-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/29/cpp/cpp-note-6/" class="post-title-link" itemprop="url">C++笔记（六）——标准库类型vector</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-29 14:31:39 / 修改时间：15:06:23" itemprop="dateCreated datePublished" datetime="2022-04-29T14:31:39+08:00">2022-04-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="标准库类型vector"><a href="#标准库类型vector" class="headerlink" title="标准库类型vector"></a>标准库类型vector</h2><p>vector表示对象的集合，其中所有的对象类型都相同。集合中每个对象都有一个与之对应的索引，索引用于访问对象。因为vector“容纳着”其他对象，所以它也被称为**容器(container)**。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span>					<span class="comment">//一定要包含vector头文件</span></span></span><br><span class="line"><span class="keyword">using</span> std::vector;</span><br></pre></td></tr></table></figure>
+
+<p>C++语音既有类模板(class template)，也有函数模板，其中<code>vector</code>是一个类模板。模板本身不是类或函数，可以将模板看做编译器生成类或函数编写的一份说明。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vector是模板而非类型，由vector生成的类型必须包含vector中元素的类型</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; ivec;					<span class="comment">//ivec保存int类型对象</span></span><br><span class="line">vector&lt;Sales_item&gt; Sales_vec;		<span class="comment">//保存Sales_item类型对象</span></span><br><span class="line">vector&lt;vector&lt;string&gt;&gt; file;		<span class="comment">//该向量的元素是vector对象，该语句为C++11的定义形式</span></span><br><span class="line">vector&lt;vector&lt;string&gt; &gt; file;		<span class="comment">//老式定义形式，多一个空格，即vector&lt;vector&lt;string&gt;(空格)&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定义和初始化vector对象"><a href="#定义和初始化vector对象" class="headerlink" title="定义和初始化vector对象"></a>定义和初始化vector对象</h3>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/27/cpp-note-5/#more" rel="contents">
+              <a class="btn" href="/2022/04/29/cpp/cpp-note-6/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -310,7 +371,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/27/cpp/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——字符串、向量和数组</a>
+          <a href="/2022/04/27/cpp/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——标准库类型string</a>
         </h2>
 
         <div class="post-meta-container">
@@ -328,7 +389,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-29 00:03:03" itemprop="dateModified" datetime="2022-04-29T00:03:03+08:00">2022-04-29</time>
+      <time title="修改时间：2022-04-29 14:29:08" itemprop="dateModified" datetime="2022-04-29T14:29:08+08:00">2022-04-29</time>
     </span>
 
   
@@ -342,12 +403,12 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="字符串、向量和数组"><a href="#字符串、向量和数组" class="headerlink" title="字符串、向量和数组"></a>字符串、向量和数组</h1><p>命名空间的using声明：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> namespaece std;			<span class="comment">//using声明，获取std中的所有名字</span></span><br><span class="line"><span class="keyword">using</span> std::cin;					<span class="comment">//using声明，当我们使用名字cin时，从std中获取它</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> namespaece std;				<span class="comment">//using声明，获取std中的所有名字</span></span><br><span class="line"><span class="keyword">using</span> std::cin;						<span class="comment">//using声明，当我们使用名字cin时，从std中获取它</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span>				<span class="comment">//一定要包含string头文件</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></figure>
+<h2 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span>					<span class="comment">//一定要包含string头文件</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></figure>
 
 <h3 id="定义和初始化string对象"><a href="#定义和初始化string对象" class="headerlink" title="定义和初始化string对象"></a>定义和初始化string对象</h3><p>几个初始化方式：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string s1;						<span class="comment">//默认初始化，s1是一个空串</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;					<span class="comment">//直接初始化(direct initialization)，s2是s1的副本</span></span><br><span class="line">string s2 = s1;					<span class="comment">//拷贝初始化(copy initialization)，s2是s1的副本</span></span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;value&quot;</span>)</span></span>;				<span class="comment">//直接初始化，s3是字面值&quot;value&quot;的副本，除了字面值最后的那个空字符外</span></span><br><span class="line">string s3 = <span class="string">&quot;value&quot;</span>;			<span class="comment">//拷贝初始化，s3是字面值&quot;value&quot;的副本</span></span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(n, <span class="string">&#x27;c&#x27;</span>)</span></span>;				<span class="comment">//直接初始化，s4是由连续n个字符c组成的串</span></span><br><span class="line">string s5 = <span class="built_in">string</span>(<span class="number">10</span>,<span class="string">&#x27;c&#x27;</span>)		<span class="comment">//拷贝初始化，创建了一个临时对象用于拷贝，s5内容是cccccccccc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string s1;							<span class="comment">//默认初始化，s1是一个空串</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;						<span class="comment">//直接初始化(direct initialization)，s2是s1的副本</span></span><br><span class="line">string s2 = s1;						<span class="comment">//拷贝初始化(copy initialization)，s2是s1的副本</span></span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;value&quot;</span>)</span></span>;					<span class="comment">//直接初始化，s3是字面值&quot;value&quot;的副本，除了字面值最后的那个空字符外</span></span><br><span class="line">string s3 = <span class="string">&quot;value&quot;</span>;				<span class="comment">//拷贝初始化，s3是字面值&quot;value&quot;的副本</span></span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(n, <span class="string">&#x27;c&#x27;</span>)</span></span>;					<span class="comment">//直接初始化，s4是由连续n个字符c组成的串</span></span><br><span class="line">string s5 = <span class="built_in">string</span>(<span class="number">10</span>,<span class="string">&#x27;c&#x27;</span>)			<span class="comment">//拷贝初始化，创建了一个临时对象用于拷贝，s5内容是cccccccccc</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="string对象上的操作"><a href="#string对象上的操作" class="headerlink" title="string对象上的操作"></a>string对象上的操作</h3><p>读入数量未知的string对象：</p>
           <!--noindex-->
@@ -383,7 +444,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/nowcoder/nowcoder-verilog24/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/26/nowcoder/nowcoder1-verilog24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -401,7 +462,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/26/nowcoder/nowcoder-verilog24/" class="post-title-link" itemprop="url">牛客网Verilog刷题笔记</a>
+          <a href="/2022/04/26/nowcoder/nowcoder1-verilog24/" class="post-title-link" itemprop="url">牛客网Verilog刷题笔记1</a>
         </h2>
 
         <div class="post-meta-container">
@@ -419,7 +480,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-29 00:05:14" itemprop="dateModified" datetime="2022-04-29T00:05:14+08:00">2022-04-29</time>
+      <time title="修改时间：2022-04-29 15:08:46" itemprop="dateModified" datetime="2022-04-29T15:08:46+08:00">2022-04-29</time>
     </span>
 
   
@@ -458,7 +519,7 @@
 </details>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/26/nowcoder/nowcoder-verilog24/#more" rel="contents">
+              <a class="btn" href="/2022/04/26/nowcoder/nowcoder1-verilog24/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -999,93 +1060,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/04/17/FPGA/FPGA-4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/FPGA/FPGA-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Clover">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/15/FPGA/FPGA-3/" class="post-title-link" itemprop="url">学习FPGA（三）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-15 15:39:43" itemprop="dateCreated datePublished" datetime="2022-04-15T15:39:43+08:00">2022-04-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-27 14:03:39" itemprop="dateModified" datetime="2022-04-27T14:03:39+08:00">2022-04-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="按键消抖"><a href="#按键消抖" class="headerlink" title="按键消抖"></a>按键消抖</h1><h2 id="主模块"><a href="#主模块" class="headerlink" title="主模块"></a>主模块</h2><p>三段式状态机代码如下</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//目的：设计一个按键消抖，滤波时间为20ms</span></span><br><span class="line"><span class="comment">//晶振为50M，即一个时间周期为20ns</span></span><br><span class="line"><span class="comment">//需要滤波1_000_000个时间周期</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> filter_time 20&#x27;d1_000_000</span></span><br><span class="line"><span class="keyword">module</span> key_filter(Clk, Rst_n, Key_in, Key_flag, Key_state);</span><br><span class="line">	<span class="keyword">input</span> Clk;	<span class="comment">//时钟输入</span></span><br><span class="line">	<span class="keyword">input</span> Rst_n;	<span class="comment">//复位输入</span></span><br><span class="line">	<span class="keyword">input</span> Key_in;	<span class="comment">//按键输入，按下时为0，断开时为1</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> Key_flag;	<span class="comment">//按键输入变化后出现稳定状态时，显示为1（保持一个时钟周期），其余时候为0</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> Key_state;	<span class="comment">//按键状态，按下时显示为0， 断开时为1</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//set state(one-hot code)</span></span><br><span class="line">	<span class="keyword">localparam</span> </span><br><span class="line">		IDLE		= <span class="number">4&#x27;b0001</span>, </span><br><span class="line">		FILTER0	= <span class="number">4&#x27;b0010</span>, </span><br><span class="line">		DOWN		= <span class="number">4&#x27;b0100</span>,</span><br><span class="line">		FILTER1	= <span class="number">4&#x27;b1000</span>;</span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] state, next;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//edge check</span></span><br><span class="line">	<span class="keyword">reg</span> Key_tmp0, Key_tmp1;</span><br><span class="line">	<span class="keyword">wire</span> Key_posedge, Key_negedge;</span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n) <span class="keyword">begin</span></span><br><span class="line">			Key_tmp0 &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">			Key_tmp1 &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">			Key_tmp0 &lt;= Key_in;		<span class="comment">//当Key_tmp0 = 1 且 Key_tmp1 = 0时即为一个上升沿</span></span><br><span class="line">			Key_tmp1 &lt;= Key_tmp0;	<span class="comment">//当Key_tmp0 = 0 且 Key_tmp1 = 1时即为一个下降沿</span></span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">assign</span> Key_posedge = ~Key_tmp1 &amp; Key_tmp0;</span><br><span class="line">	<span class="keyword">assign</span> Key_negedge = Key_tmp1 &amp; ~Key_tmp0;</span><br><span class="line">	<span class="comment">//filter counter</span></span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">19</span>:<span class="number">0</span>] cnt;</span><br><span class="line">	<span class="keyword">reg</span> cnt_full;	<span class="comment">//计数器计满信号</span></span><br><span class="line">	<span class="keyword">reg</span> en_cnt;		<span class="comment">//计数器使能信号</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n) <span class="keyword">begin</span></span><br><span class="line">			cnt &lt;= <span class="number">&#x27;d0</span>;</span><br><span class="line">			cnt_full &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(en_cnt) <span class="keyword">begin</span></span><br><span class="line">			<span class="keyword">if</span>(cnt == (`filter_time - <span class="number">1</span>)) <span class="keyword">begin</span></span><br><span class="line">				cnt &lt;= <span class="number">&#x27;d0</span>;</span><br><span class="line">				cnt_full &lt;= <span class="number">1&#x27;b1</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">				cnt &lt;= cnt + <span class="number">1&#x27;b1</span>;</span><br><span class="line">				cnt_full &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">			cnt &lt;= <span class="number">&#x27;d0</span>;</span><br><span class="line">			cnt_full &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//state transition(combinational)</span></span><br><span class="line">	<span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">case</span>(state)</span><br><span class="line">			IDLE: <span class="keyword">begin</span></span><br><span class="line">				<span class="keyword">if</span>(Key_negedge)</span><br><span class="line">					next = FILTER0;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					next = IDLE;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			FILTER0: <span class="keyword">begin</span></span><br><span class="line">				<span class="keyword">if</span>(cnt_full)</span><br><span class="line">					next = DOWN;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(Key_posedge)</span><br><span class="line">					next = IDLE;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					next = FILTER0;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			DOWN: <span class="keyword">begin</span></span><br><span class="line">				<span class="keyword">if</span>(Key_posedge)</span><br><span class="line">					next = FILTER1;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					next = DOWN;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			FILTER1: <span class="keyword">begin</span> </span><br><span class="line">				<span class="keyword">if</span>(cnt_full) </span><br><span class="line">					next = IDLE;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(Key_negedge)</span><br><span class="line">					next = DOWN;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					next = FILTER1;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="keyword">default</span>: next = IDLE;</span><br><span class="line">		<span class="keyword">endcase</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//state flip-flops(sequential)</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n) state &lt;= IDLE;</span><br><span class="line">		<span class="keyword">else</span> state &lt;= next;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//output</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n)</span><br><span class="line">			Key_state &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">case</span>(next)</span><br><span class="line">			IDLE: <span class="keyword">begin</span> </span><br><span class="line">				en_cnt &lt;= <span class="number">1&#x27;b0</span>;		<span class="comment">//IDLE状态下计数器不计数</span></span><br><span class="line">				Key_state &lt;= <span class="number">1&#x27;b1</span>;	<span class="comment">//此时Key未被按下</span></span><br><span class="line">				Key_flag &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			FILTER0: <span class="keyword">begin</span></span><br><span class="line">				en_cnt &lt;= <span class="number">1&#x27;b1</span>;		<span class="comment">//FILTER0状态下计数器开始计数	</span></span><br><span class="line">				Key_state &lt;= <span class="number">1&#x27;b1</span>;	<span class="comment">//此时Key仍处于未被按下状态</span></span><br><span class="line">				Key_flag &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			DOWN: <span class="keyword">begin</span></span><br><span class="line">				en_cnt &lt;= <span class="number">1&#x27;b0</span>;		<span class="comment">//DOWN状态下计数器不计数	</span></span><br><span class="line">				Key_state &lt;= <span class="number">1&#x27;b0</span>;	<span class="comment">//此时Key已被按下</span></span><br><span class="line">				Key_flag &lt;= cnt_full;<span class="comment">//探测到Key被按下</span></span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			FILTER1: <span class="keyword">begin</span></span><br><span class="line">				en_cnt &lt;= <span class="number">1&#x27;b1</span>;		<span class="comment">//FILTER0状态下计数器开始计数	</span></span><br><span class="line">				Key_state &lt;= <span class="number">1&#x27;b0</span>;	<span class="comment">//此时Key仍处于被按下状态</span></span><br><span class="line">				Key_flag &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">			<span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">				en_cnt &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">				Key_state &lt;= <span class="number">1&#x27;b1</span>;</span><br><span class="line">				Key_flag &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">endcase</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//assign Key_flag = Key_negedge;	//组合逻辑输出方式来输出Key_flag</span></span><br><span class="line"><span class="keyword">endmodule</span> </span><br></pre></td></tr></table></figure>
-<h2 id="Testbench"><a href="#Testbench" class="headerlink" title="Testbench"></a>Testbench</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1 ns/ 1 ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 20</span></span><br><span class="line"><span class="keyword">module</span> key_filter_vlg_tst();</span><br><span class="line">	<span class="comment">// test vector input registers</span></span><br><span class="line">	<span class="keyword">reg</span> Clk;</span><br><span class="line">	<span class="keyword">reg</span> Key_in;</span><br><span class="line">	<span class="keyword">reg</span> Rst_n;</span><br><span class="line">	<span class="comment">// wires</span></span><br><span class="line">	<span class="keyword">wire</span> Key_flag;</span><br><span class="line">	<span class="keyword">wire</span> Key_state;</span><br><span class="line">									</span><br><span class="line">	key_filter i1 (</span><br><span class="line">	<span class="comment">// port map - connection between master ports and signals/registers</span></span><br><span class="line">		<span class="variable">.Clk</span>(Clk),</span><br><span class="line">		<span class="variable">.Key_flag</span>(Key_flag),</span><br><span class="line">		<span class="variable">.Key_in</span>(Key_in),</span><br><span class="line">		<span class="variable">.Key_state</span>(Key_state),</span><br><span class="line">		<span class="variable">.Rst_n</span>(Rst_n)</span><br><span class="line">	);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		Clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">forever</span> <span class="variable">#(`clk_period/2)</span> Clk = ~Clk;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		Rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="variable">#(`clk_period*10)</span> Rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="variable">#(`clk_period*10 + 1)</span>;</span><br><span class="line">		<span class="comment">//按下一次</span></span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">10000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">5_400_000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2600</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1300</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">200</span>;</span><br><span class="line">		</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">20_000_100</span>;</span><br><span class="line">		#<span class="number">10000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1400</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2600</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1300</span>;</span><br><span class="line">		</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">20_000_100</span>;</span><br><span class="line">		#<span class="number">10_000_000</span>;</span><br><span class="line">		<span class="comment">//second time</span></span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1400</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2600</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1300</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">200</span>;</span><br><span class="line">		</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">20_000_100</span>;</span><br><span class="line">		#<span class="number">10000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1400</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2600</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1300</span>;</span><br><span class="line">		</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">20_000_100</span>;</span><br><span class="line">		#<span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//third time</span></span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1400</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2600</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1300</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">200</span>;</span><br><span class="line">		</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">20_000_100</span>;</span><br><span class="line">		#<span class="number">10000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2000</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1400</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">2600</span>;</span><br><span class="line">		Key_in = <span class="number">1&#x27;b0</span>;#<span class="number">1300</span>;</span><br><span class="line">		</span><br><span class="line">		Key_in = <span class="number">1&#x27;b1</span>;#<span class="number">20_000_100</span>;</span><br><span class="line">		#<span class="number">10000</span>;</span><br><span class="line">		<span class="built_in">$stop</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span> </span><br></pre></td></tr></table></figure>
-<h1 id="仿真模型"><a href="#仿真模型" class="headerlink" title="仿真模型"></a>仿真模型</h1><h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><p>{$random}默认是32位的随机数，根据自己的需要来取余计算，例如：需要0 ~ 65535的随机数，则可：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span>	[<span class="number">15</span>:<span class="number">0</span>] myrand;</span><br><span class="line"><span class="keyword">initial</span> myrand = &#123;<span class="built_in">$random</span>&#125;%<span class="number">65536</span>;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/15/FPGA/FPGA-3/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
