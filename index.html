@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,97 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/cpp-note-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/27/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——字符串、向量和数组</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-27 23:01:00" itemprop="dateCreated datePublished" datetime="2022-04-27T23:01:00+08:00">2022-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-29 11:22:27" itemprop="dateModified" datetime="2022-04-29T11:22:27+08:00">2022-04-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="字符串、向量和数组"><a href="#字符串、向量和数组" class="headerlink" title="字符串、向量和数组"></a>字符串、向量和数组</h1><p>命名空间的using声明：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> namespaece std;				<span class="comment">//using声明，获取std中的所有名字</span></span><br><span class="line"><span class="keyword">using</span> std::cin;						<span class="comment">//using声明，当我们使用名字cin时，从std中获取它</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span>					<span class="comment">//一定要包含string头文件</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义和初始化string对象"><a href="#定义和初始化string对象" class="headerlink" title="定义和初始化string对象"></a>定义和初始化string对象</h3><p>几个初始化方式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string s1;							<span class="comment">//默认初始化，s1是一个空串</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;						<span class="comment">//直接初始化(direct initialization)，s2是s1的副本</span></span><br><span class="line">string s2 = s1;						<span class="comment">//拷贝初始化(copy initialization)，s2是s1的副本</span></span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;value&quot;</span>)</span></span>;					<span class="comment">//直接初始化，s3是字面值&quot;value&quot;的副本，除了字面值最后的那个空字符外</span></span><br><span class="line">string s3 = <span class="string">&quot;value&quot;</span>;				<span class="comment">//拷贝初始化，s3是字面值&quot;value&quot;的副本</span></span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(n, <span class="string">&#x27;c&#x27;</span>)</span></span>;					<span class="comment">//直接初始化，s4是由连续n个字符c组成的串</span></span><br><span class="line">string s5 = <span class="built_in">string</span>(<span class="number">10</span>,<span class="string">&#x27;c&#x27;</span>)			<span class="comment">//拷贝初始化，创建了一个临时对象用于拷贝，s5内容是cccccccccc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="string对象上的操作"><a href="#string对象上的操作" class="headerlink" title="string对象上的操作"></a>string对象上的操作</h3><p>读入数量未知的string对象：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/27/cpp-note-5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -995,94 +1086,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/04/15/FPGA/FPGA-3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/FPGA/FPGA-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Clover">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/14/FPGA/FPGA-2/" class="post-title-link" itemprop="url">学习FPGA（二）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-04-14 09:38:13" itemprop="dateCreated datePublished" datetime="2022-04-14T09:38:13+08:00">2022-04-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-22 19:29:44" itemprop="dateModified" datetime="2022-04-22T19:29:44+08:00">2022-04-22</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h1><p>状态的表示常用编码方法有二进制码、格雷码（Gray code）、独热码（one-hot code）。</p>
-<h2 id="二进制码"><a href="#二进制码" class="headerlink" title="二进制码"></a>二进制码</h2><p>即用二进制计数</p>
-<p>优点：属于压缩状态编码，状态机所需的状态向量位数较少；</p>
-<p>缺点：1、译码复杂；2、相邻状态变换时，会有多位发生改变，电噪声大、转换速度较慢、易出错；（实际电路中多位改变很难做到完全同时发生）；</p>
-<h2 id="格雷码（Gray-code）"><a href="#格雷码（Gray-code）" class="headerlink" title="格雷码（Gray code）"></a>格雷码（Gray code）</h2><p>在一组数的编码中，任意两个相邻的代码只有一位二进制数不同，且最大数与最小数之间也仅有一位数不同<br>构造方法：<br>1位格雷码有两个码字<br>(n+1)位格雷码中的前2n个码字等于n位格雷码的码字，按顺序书写，加前缀0<br>(n+1)位格雷码中的后2n个码字等于n位格雷码的码字，按逆序书写，加前缀1<br>n+1位格雷码的集合 &#x3D; n位格雷码集合(顺序)加前缀0 + n位格雷码集合(逆序)加前缀1<br>如：二进制码：000-001-010-011-100-101-110-111 相应的格雷码：000-001-011-010-110-111-101<br>    优点：1、属于压缩状态编码，状态机所需的状态向量位数较少；2、相邻状态变换时，仅有一位发生改变，电噪声小、转换速度较快；<br>    缺点：1、译码复杂；2、是一种变权码，每一位码没有固定的大小，难以直接比较大小和算术运算；</p>
-<h2 id="独热码（one-hot-code）"><a href="#独热码（one-hot-code）" class="headerlink" title="独热码（one-hot code）"></a>独热码（one-hot code）</h2><p>有多少个状态就有多少个比特，其中有且只有一个比特为1，其余为0<br>用独热码表示三个状态可以写为：001，010，100</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/14/FPGA/FPGA-2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

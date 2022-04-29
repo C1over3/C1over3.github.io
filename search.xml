@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++笔记（五）——字符串、向量和数组</title>
+    <url>/2022/04/27/cpp-note-5/</url>
+    <content><![CDATA[<h1 id="字符串、向量和数组"><a href="#字符串、向量和数组" class="headerlink" title="字符串、向量和数组"></a>字符串、向量和数组</h1><p>命名空间的using声明：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> namespaece std;				<span class="comment">//using声明，获取std中的所有名字</span></span><br><span class="line"><span class="keyword">using</span> std::cin;						<span class="comment">//using声明，当我们使用名字cin时，从std中获取它</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="标准库类型string"><a href="#标准库类型string" class="headerlink" title="标准库类型string"></a>标准库类型string</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span>					<span class="comment">//一定要包含string头文件</span></span></span><br><span class="line"><span class="keyword">using</span> std::string;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义和初始化string对象"><a href="#定义和初始化string对象" class="headerlink" title="定义和初始化string对象"></a>定义和初始化string对象</h3><p>几个初始化方式：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">string s1;							<span class="comment">//默认初始化，s1是一个空串</span></span><br><span class="line"><span class="function">string <span class="title">s2</span><span class="params">(s1)</span></span>;						<span class="comment">//直接初始化(direct initialization)，s2是s1的副本</span></span><br><span class="line">string s2 = s1;						<span class="comment">//拷贝初始化(copy initialization)，s2是s1的副本</span></span><br><span class="line"><span class="function">string <span class="title">s3</span><span class="params">(<span class="string">&quot;value&quot;</span>)</span></span>;					<span class="comment">//直接初始化，s3是字面值&quot;value&quot;的副本，除了字面值最后的那个空字符外</span></span><br><span class="line">string s3 = <span class="string">&quot;value&quot;</span>;				<span class="comment">//拷贝初始化，s3是字面值&quot;value&quot;的副本</span></span><br><span class="line"><span class="function">string <span class="title">s4</span><span class="params">(n, <span class="string">&#x27;c&#x27;</span>)</span></span>;					<span class="comment">//直接初始化，s4是由连续n个字符c组成的串</span></span><br><span class="line">string s5 = <span class="built_in">string</span>(<span class="number">10</span>,<span class="string">&#x27;c&#x27;</span>)			<span class="comment">//拷贝初始化，创建了一个临时对象用于拷贝，s5内容是cccccccccc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="string对象上的操作"><a href="#string对象上的操作" class="headerlink" title="string对象上的操作"></a>string对象上的操作</h3><p>读入数量未知的string对象：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string word;</span><br><span class="line">    <span class="keyword">while</span>(cin &gt;&gt; word)				<span class="comment">//反复读取，直到输入文件结束标记</span></span><br><span class="line">        cout &lt;&lt; word &lt;&lt; endl;		<span class="comment">//逐个输出单词，每个单词之间有一个换行符</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读取整行：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">getline</span>(cin, line))		<span class="comment">//如果输入换行符，会直接结束读取，并返回结果（结果为空string）</span></span><br><span class="line">        cout &lt;&lt; line &lt;&lt; endl;		<span class="comment">//触发getline的换行符被丢弃掉了，所以手动加上换行符</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>empty根据string是否为空返回一个布尔值，可以用来筛除空string：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	string line;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">getline</span>(cin,line))</span><br><span class="line">		<span class="keyword">if</span>(!line.<span class="built_in">empty</span>())			<span class="comment">//只有当line是非空string时，才会执行输出</span></span><br><span class="line">			cout &lt;&lt; line &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>size返回一个size_type类型的值，表示string对象的大小，它是一个无符号的值：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> len = line.<span class="built_in">size</span>();				<span class="comment">//len的类型是string::size_type</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>切记，表达式中混用带符号数和无符号数时，带符号数会自动转换成无符号数，负值会转换成（负值+无符号数的模）</strong>（int是有符号数）</p>
+<p>字面值和string对象相加：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//必须确保+两侧的对象至少有一个是string</span></span><br><span class="line">string s1 = <span class="string">&quot;hello&quot;</span>, s2 = <span class="string">&quot;world&quot;</span>;</span><br><span class="line">string s3 = s1 + <span class="string">&quot;, &quot;</span> + s2 + <span class="string">&#x27;\n&#x27;</span>;	<span class="comment">//正确</span></span><br><span class="line">string s4 = <span class="string">&quot;hello&quot;</span> + <span class="string">&quot;, &quot;</span> + s2;	<span class="comment">//错误：不能把字面值直接相加</span></span><br><span class="line">string s4 = (<span class="string">&quot;hello&quot;</span> + <span class="string">&quot;, &quot;</span>) + s2;	<span class="comment">//按照加法运算符的工作机理，上一条语句与这条语句等价</span></span><br><span class="line">string s5 = s1 + <span class="string">&quot;, &quot;</span> + <span class="string">&quot;world&quot;</span>;	<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++问题笔记</title>
     <url>/2022/04/24/cpp-note/</url>
     <content><![CDATA[<h3 id="启用括号包围"><a href="#启用括号包围" class="headerlink" title="启用括号包围"></a>启用括号包围</h3><p>在visual studio中，工具—&gt;选项—&gt;高级，可以启用括号包围，</p>
