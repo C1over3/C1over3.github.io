@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/cpp-note-5/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/27/cpp/cpp-note-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -219,7 +219,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/27/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——字符串、向量和数组</a>
+          <a href="/2022/04/27/cpp/cpp-note-5/" class="post-title-link" itemprop="url">C++笔记（五）——字符串、向量和数组</a>
         </h2>
 
         <div class="post-meta-container">
@@ -261,7 +261,7 @@
 <h3 id="string对象上的操作"><a href="#string对象上的操作" class="headerlink" title="string对象上的操作"></a>string对象上的操作</h3><p>读入数量未知的string对象：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/27/cpp-note-5/#more" rel="contents">
+              <a class="btn" href="/2022/04/27/cpp/cpp-note-5/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -398,7 +398,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/note/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/cpp-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -416,7 +416,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/24/note/" class="post-title-link" itemprop="url">note</a>
+          <a href="/2022/04/24/cpp-note/" class="post-title-link" itemprop="url">C++问题笔记</a>
         </h2>
 
         <div class="post-meta-container">
@@ -426,9 +426,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-04-24 16:20:24 / 修改时间：22:01:41" itemprop="dateCreated datePublished" datetime="2022-04-24T16:20:24+08:00">2022-04-24</time>
+      <time title="创建时间：2022-04-24 16:20:24" itemprop="dateCreated datePublished" datetime="2022-04-24T16:20:24+08:00">2022-04-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-29 10:30:39" itemprop="dateModified" datetime="2022-04-29T10:30:39+08:00">2022-04-29</time>
     </span>
 
   
@@ -441,18 +447,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>常用TestBench</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1 ns/1 ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> test();</span><br><span class="line">    <span class="comment">//reg input ports</span></span><br><span class="line">    <span class="keyword">reg</span> clk;</span><br><span class="line">    <span class="keyword">reg</span> rst_n;</span><br><span class="line">    <span class="comment">//wire output ports</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">forever</span> <span class="variable">#(clk_period/2)</span> clk = ~clk;</span><br><span class="line">        <span class="keyword">repeat</span>(<span class="number">100</span>) <span class="variable">#(clk_period/2)</span> clk = ~clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        #<span class="variable">#(clk_period*2)</span> rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="VL9-使用子模块实现三输入数的大小比较"><a href="#VL9-使用子模块实现三输入数的大小比较" class="headerlink" title="VL9 使用子模块实现三输入数的大小比较"></a><strong>VL9</strong> <strong>使用子模块实现三输入数的大小比较</strong></h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ns</span></span><br><span class="line"><span class="keyword">module</span> main_mod(</span><br><span class="line">	<span class="keyword">input</span> clk,</span><br><span class="line">	<span class="keyword">input</span> rst_n,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]a,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]b,</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>]c,</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>]d</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>] mid;</span><br><span class="line">    compare C_a_b(</span><br><span class="line">        <span class="variable">.clk</span>(clk), </span><br><span class="line">        <span class="variable">.rst_n</span>(rst_n), </span><br><span class="line">        <span class="variable">.a</span>(a), </span><br><span class="line">        <span class="variable">.b</span>(b), </span><br><span class="line">        <span class="variable">.c</span>(mid)</span><br><span class="line">    );</span><br><span class="line">    compare C_mid_c(</span><br><span class="line">        <span class="variable">.clk</span>(clk), </span><br><span class="line">        <span class="variable">.rst_n</span>(rst_n), </span><br><span class="line">        <span class="variable">.a</span>(mid), </span><br><span class="line">        <span class="variable">.b</span>(c), </span><br><span class="line">        <span class="variable">.c</span>(d)</span><br><span class="line">    );</span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> compare(clk, rst_n, a, b, c);</span><br><span class="line">    <span class="keyword">input</span> clk;</span><br><span class="line">    <span class="keyword">input</span> rst_n;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] b;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] c;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst_n) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(~rst_n) </span><br><span class="line">            c &lt;= <span class="number">8&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a &lt; b)</span><br><span class="line">            c &lt;= a;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            c &lt;= b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
-
-<p>testbench</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ns</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 2</span></span><br><span class="line"><span class="keyword">module</span> test();</span><br><span class="line">	<span class="keyword">reg</span> <span class="keyword">signed</span> [<span class="number">7</span>:<span class="number">0</span>] a,b,c;</span><br><span class="line">	<span class="keyword">reg</span> clk,rst_n;</span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>]d;</span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">	<span class="built_in">$dumpfile</span>(<span class="string">&quot;out.vcd&quot;</span>);</span><br><span class="line">    <span class="built_in">$dumpvars</span>(<span class="number">0</span>, testbench);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">main_mod dut(</span><br><span class="line">	<span class="variable">.clk</span>(clk),</span><br><span class="line">	<span class="variable">.rst_n</span>(rst_n),</span><br><span class="line">	<span class="variable">.a</span>(a),</span><br><span class="line">	<span class="variable">.b</span>(b),</span><br><span class="line">	<span class="variable">.c</span>(c),</span><br><span class="line">	<span class="variable">.d</span>(d)</span><br><span class="line">);</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="keyword">repeat</span>(<span class="number">100</span>) <span class="variable">#(`clk_period/2)</span> clk = ~clk;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">        a = <span class="number">8&#x27;h11</span>;</span><br><span class="line">        b = <span class="number">8&#x27;h22</span>;</span><br><span class="line">        c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*2)</span> rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h16</span>; b = <span class="number">8&#x27;h07</span>; c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h09</span>; b = <span class="number">8&#x27;h22</span>; c = <span class="number">8&#x27;h33</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h11</span>; b = <span class="number">8&#x27;h11</span>; c = <span class="number">8&#x27;h55</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;hab</span>; b = <span class="number">8&#x27;h36</span>; c = <span class="number">8&#x27;h90</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> a = <span class="number">8&#x27;h09</span>; b = <span class="number">8&#x27;h27</span>; c = <span class="number">8&#x27;h30</span>;</span><br><span class="line">        <span class="variable">#(`clk_period*5)</span> <span class="built_in">$stop</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
-
+          <h3 id="启用括号包围"><a href="#启用括号包围" class="headerlink" title="启用括号包围"></a>启用括号包围</h3><p>在visual studio中，工具—&gt;选项—&gt;高级，可以启用括号包围，</p>
+<p><img src="C:\Users\91590\AppData\Roaming\Typora\typora-user-images\1651199369386.png" alt="1651199369386"></p>
 
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/24/note/#more" rel="contents">
+              <a class="btn" href="/2022/04/24/cpp-note/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -483,7 +483,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp-note-4/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp/cpp-note-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -501,7 +501,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/23/cpp-note-4/" class="post-title-link" itemprop="url">C++笔记（四）——自定义数据结构</a>
+          <a href="/2022/04/23/cpp/cpp-note-4/" class="post-title-link" itemprop="url">C++笔记（四）——自定义数据结构</a>
         </h2>
 
         <div class="post-meta-container">
@@ -543,7 +543,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;<span class="comment">/*...*/</span>&#125; accum, trans, *salesptr;</span><br><span class="line"><span class="comment">//以下两条语句等同于上一条语句，但更易读一些</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;<span class="comment">/*...*/</span>&#125;;</span><br><span class="line">Sales_data accum, trans, *salesptr;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/23/cpp-note-4/#more" rel="contents">
+              <a class="btn" href="/2022/04/23/cpp/cpp-note-4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -574,7 +574,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp-note-3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp/cpp-note-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -592,7 +592,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/23/cpp-note-3/" class="post-title-link" itemprop="url">C++笔记（三）——处理类型</a>
+          <a href="/2022/04/23/cpp/cpp-note-3/" class="post-title-link" itemprop="url">C++笔记（三）——处理类型</a>
         </h2>
 
         <div class="post-meta-container">
@@ -634,7 +634,7 @@
 <h2 id="字面值类型-literal-type"><a href="#字面值类型-literal-type" class="headerlink" title="字面值类型(literal type)"></a>字面值类型(literal type)</h2>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/23/cpp-note-3/#more" rel="contents">
+              <a class="btn" href="/2022/04/23/cpp/cpp-note-3/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -665,7 +665,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/cpp-note-2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/cpp/cpp-note-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -683,7 +683,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/20/cpp-note-2/" class="post-title-link" itemprop="url">C++笔记（二）——const限定符</a>
+          <a href="/2022/04/20/cpp/cpp-note-2/" class="post-title-link" itemprop="url">C++笔记（二）——const限定符</a>
         </h2>
 
         <div class="post-meta-container">
@@ -724,7 +724,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="type">int</span> j;</span><br><span class="line">	cout &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/20/cpp-note-2/#more" rel="contents">
+              <a class="btn" href="/2022/04/20/cpp/cpp-note-2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -755,7 +755,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/cpp-note-1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/cpp/cpp-note-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -773,7 +773,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/18/cpp-note-1/" class="post-title-link" itemprop="url">C++笔记（一）——变量和复合类型</a>
+          <a href="/2022/04/18/cpp/cpp-note-1/" class="post-title-link" itemprop="url">C++笔记（一）——变量和复合类型</a>
         </h2>
 
         <div class="post-meta-container">
@@ -814,7 +814,7 @@
 <p>ps: C++是一种静态类型（statically typed）语言，其含义是在编译阶段执行类型检查（type checking）。如果编译器发现数据类型不支持要执行的运算，则会报错且不会生成任何可执行的程序。程序越复杂，静态类型检查越有助于发现问题。这要求我们在使用某个变量之前必须声明其类型。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/18/cpp-note-1/#more" rel="contents">
+              <a class="btn" href="/2022/04/18/cpp/cpp-note-1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -845,7 +845,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/17/FPGA-4/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/17/FPGA/FPGA-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -863,7 +863,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/17/FPGA-4/" class="post-title-link" itemprop="url">学习FPGA（四）</a>
+          <a href="/2022/04/17/FPGA/FPGA-4/" class="post-title-link" itemprop="url">学习FPGA（四）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -907,7 +907,7 @@
 <h2 id="ISSP"><a href="#ISSP" class="headerlink" title="ISSP"></a>ISSP</h2>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/17/FPGA-4/#more" rel="contents">
+              <a class="btn" href="/2022/04/17/FPGA/FPGA-4/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -938,7 +938,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/FPGA-3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/15/FPGA/FPGA-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -956,7 +956,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/15/FPGA-3/" class="post-title-link" itemprop="url">学习FPGA（三）</a>
+          <a href="/2022/04/15/FPGA/FPGA-3/" class="post-title-link" itemprop="url">学习FPGA（三）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -994,7 +994,7 @@
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span>	[<span class="number">15</span>:<span class="number">0</span>] myrand;</span><br><span class="line"><span class="keyword">initial</span> myrand = &#123;<span class="built_in">$random</span>&#125;%<span class="number">65536</span>;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/15/FPGA-3/#more" rel="contents">
+              <a class="btn" href="/2022/04/15/FPGA/FPGA-3/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1025,7 +1025,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/FPGA-2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/14/FPGA/FPGA-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1043,7 +1043,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/04/14/FPGA-2/" class="post-title-link" itemprop="url">学习FPGA（二）</a>
+          <a href="/2022/04/14/FPGA/FPGA-2/" class="post-title-link" itemprop="url">学习FPGA（二）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1082,7 +1082,7 @@
 <h2 id="独热码（one-hot-code）"><a href="#独热码（one-hot-code）" class="headerlink" title="独热码（one-hot code）"></a>独热码（one-hot code）</h2><p>有多少个状态就有多少个比特，其中有且只有一个比特为1，其余为0<br>用独热码表示三个状态可以写为：001，010，100</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/04/14/FPGA-2/#more" rel="contents">
+              <a class="btn" href="/2022/04/14/FPGA/FPGA-2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
