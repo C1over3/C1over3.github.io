@@ -237,7 +237,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-30 14:18:18" itemprop="dateModified" datetime="2022-04-30T14:18:18+08:00">2022-04-30</time>
+      <time title="修改时间：2022-04-30 14:59:20" itemprop="dateModified" datetime="2022-04-30T14:59:20+08:00">2022-04-30</time>
     </span>
 
   
@@ -624,7 +624,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-29 10:30:39" itemprop="dateModified" datetime="2022-04-29T10:30:39+08:00">2022-04-29</time>
+      <time title="修改时间：2022-04-30 14:52:48" itemprop="dateModified" datetime="2022-04-30T14:52:48+08:00">2022-04-30</time>
     </span>
 
   
@@ -638,7 +638,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="启用括号包围"><a href="#启用括号包围" class="headerlink" title="启用括号包围"></a>启用括号包围</h3><p>在visual studio中，工具—&gt;选项—&gt;高级，可以启用括号包围，</p>
-<p><img src="C:\Users\91590\AppData\Roaming\Typora\typora-user-images\1651199369386.png" alt="1651199369386"></p>
+<img src="/2022/04/24/cpp-note/1651199369386.png" class width="1651199369386">
 
           <!--noindex-->
             <div class="post-button">
@@ -891,7 +891,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-23 20:37:31" itemprop="dateModified" datetime="2022-04-23T20:37:31+08:00">2022-04-23</time>
+      <time title="修改时间：2022-04-30 14:55:39" itemprop="dateModified" datetime="2022-04-30T14:55:39+08:00">2022-04-30</time>
     </span>
 
   
@@ -1071,7 +1071,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-26 16:09:33" itemprop="dateModified" datetime="2022-04-26T16:09:33+08:00">2022-04-26</time>
+      <time title="修改时间：2022-04-30 14:30:39" itemprop="dateModified" datetime="2022-04-30T14:30:39+08:00">2022-04-30</time>
     </span>
 
   
@@ -1093,7 +1093,8 @@
 <h2 id="TestBench"><a href="#TestBench" class="headerlink" title="TestBench"></a>TestBench</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1 ns/ 1 ps</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 20</span></span><br><span class="line"><span class="keyword">module</span> digital_display_vlg_tst();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">reg</span> Clk;</span><br><span class="line">	<span class="keyword">reg</span> En;</span><br><span class="line">	<span class="keyword">reg</span> Rst_n;</span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] disp_data;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">6</span>:<span class="number">0</span>]  seg;</span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>]  sel;</span><br><span class="line"></span><br><span class="line">	digital_display u1 (</span><br><span class="line">		<span class="variable">.Clk</span>(Clk),</span><br><span class="line">		<span class="variable">.En</span>(En),</span><br><span class="line">		<span class="variable">.Rst_n</span>(Rst_n),</span><br><span class="line">		<span class="variable">.disp_data</span>(disp_data),</span><br><span class="line">		<span class="variable">.seg</span>(seg),</span><br><span class="line">		<span class="variable">.sel</span>(sel)</span><br><span class="line">	);</span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		Clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">forever</span> <span class="variable">#(`clk_period/2)</span> Clk = ~Clk;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		Rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">		En = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		disp_data = <span class="number">32&#x27;h12345678</span>;</span><br><span class="line">		<span class="variable">#(`clk_period*20)</span>;</span><br><span class="line">		Rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="variable">#(`clk_period*20)</span>;</span><br><span class="line">		#<span class="number">20_000_000</span>;</span><br><span class="line">		disp_data = <span class="number">32&#x27;h87654321</span>;</span><br><span class="line">		#<span class="number">20_000_000</span>;</span><br><span class="line">		disp_data = <span class="number">32&#x27;h89abcdef</span>;</span><br><span class="line">		#<span class="number">20_000_000</span>;</span><br><span class="line">		<span class="built_in">$stop</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 
 <p>得到的仿真波形：</p>
-<p><img src="C:\Users\91590\AppData\Roaming\Typora\typora-user-images\1650940716028.png" alt="1650940716028"></p>
+<img src="/2022/04/17/FPGA/FPGA-4/1650940716028.png" class width="1650940716028">
+
 <h2 id="ISSP"><a href="#ISSP" class="headerlink" title="ISSP"></a>ISSP</h2>
           <!--noindex-->
             <div class="post-button">
