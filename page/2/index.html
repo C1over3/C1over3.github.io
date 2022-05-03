@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,371 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp/cpp-note-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/23/cpp/cpp-note-3/" class="post-title-link" itemprop="url">C++笔记（三）——处理类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-23 12:12:45" itemprop="dateCreated datePublished" datetime="2022-04-23T12:12:45+08:00">2022-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-25 22:10:11" itemprop="dateModified" datetime="2022-04-25T22:10:11+08:00">2022-04-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="常量表达式和constexpr"><a href="#常量表达式和constexpr" class="headerlink" title="常量表达式和constexpr"></a>常量表达式和constexpr</h1><h2 id="常量表达式-const-expression"><a href="#常量表达式-const-expression" class="headerlink" title="常量表达式(const expression)"></a>常量表达式(const expression)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> max_files = <span class="number">20</span>;			<span class="comment">//max_files是常量表达式</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> limit = max_filse + <span class="number">1</span>;	<span class="comment">//limit是常量表达式</span></span><br><span class="line"><span class="type">int</span> staff_size = <span class="number">27</span>;				<span class="comment">//staff_size不是常量表达式</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> sz = <span class="built_in">get_size</span>();			<span class="comment">//sz不是常量表达式，其具体值在程序运行时才能获得，而不是编译时获得</span></span><br></pre></td></tr></table></figure>
+
+<p>在复杂系统中，无法分辨一个初始值到底是不是常量表达式。这种情况下，对象的定义和使用根本就是两回事儿。</p>
+<h2 id="constexpr变量"><a href="#constexpr变量" class="headerlink" title="constexpr变量"></a>constexpr变量</h2><p>C++11新标准规定，允许将变量声明为constexpr类型以便由编译器来验证变量的值是否是一个常量表达式。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> mf = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> limit = mf + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="type">int</span> sz = <span class="built_in">size</span>();		<span class="comment">//只有当size是一个constexpr函数时，这才是一条正确语句</span></span><br></pre></td></tr></table></figure>
+
+<p>同时C++11新标准也允许定义一种constexpr函数，这种函数必须简单到在编译时就可以计算其结果，这样就能用constexpr函数去初始化constexpr变量。</p>
+<p>在声明constexpr时，用到的类型只能是字面值类型</p>
+<h2 id="字面值类型-literal-type"><a href="#字面值类型-literal-type" class="headerlink" title="字面值类型(literal type)"></a>字面值类型(literal type)</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/23/cpp/cpp-note-3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/20/cpp/cpp-note-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/20/cpp/cpp-note-2/" class="post-title-link" itemprop="url">C++笔记（二）——const限定符</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-20 17:47:51" itemprop="dateCreated datePublished" datetime="2022-04-20T17:47:51+08:00">2022-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-30 14:55:39" itemprop="dateModified" datetime="2022-04-30T14:55:39+08:00">2022-04-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="const限定符"><a href="#const限定符" class="headerlink" title="const限定符"></a>const限定符</h1><h2 id="const对象"><a href="#const对象" class="headerlink" title="const对象"></a>const对象</h2><p>const对象一旦创建后其值就不可改变，因此必须初始化；</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> i = <span class="built_in">get_size</span>();	<span class="comment">//正确：运行时初始化，get_size()为有返回值的函数</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> j = <span class="number">42</span>;			<span class="comment">//正确：编译时初始化</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> k;				<span class="comment">//错误：k是一个未经初始化的常量</span></span><br></pre></td></tr></table></figure>
+<p>默认状态下，const对象仅在文件内有效，因为编译器将在编译过程中会把用到该变量的地方都替换成对应的值，每个用了const对象的文件都必须含有对它的定义而非声明；<br>如：<br>在test1中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> i = <span class="number">1</span>;	<span class="comment">//定义全局常量i，初始化为1</span></span><br><span class="line"><span class="type">int</span> j = <span class="number">2</span>;			<span class="comment">//定义全局变量j，初始化为2</span></span><br></pre></td></tr></table></figure>
+<p>test2中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="type">int</span> i;</span><br><span class="line">	cout &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>test3中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">extern</span> <span class="type">int</span> j;</span><br><span class="line">	cout &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/20/cpp/cpp-note-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/18/cpp/cpp-note-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/18/cpp/cpp-note-1/" class="post-title-link" itemprop="url">C++笔记（一）——变量和复合类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-18 12:07:01" itemprop="dateCreated datePublished" datetime="2022-04-18T12:07:01+08:00">2022-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-23 20:37:05" itemprop="dateModified" datetime="2022-04-23T20:37:05+08:00">2022-04-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="不同初始化方式的区别"><a href="#不同初始化方式的区别" class="headerlink" title="不同初始化方式的区别"></a>不同初始化方式的区别</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">long</span> <span class="type">double</span> ld = <span class="number">3.1415926536</span>;</span><br><span class="line">	<span class="type">int</span> a&#123; ld &#125;, b = &#123; ld &#125;;  <span class="comment">//错误：会提示error C2397: 从“long double”转换到“int”需要收缩转换</span></span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">c</span><span class="params">(ld)</span>, d </span>= ld;<span class="comment">//能够完成编译，且确实丢失了部分值，c和d输出均为3</span></span><br><span class="line">	cout &lt;&lt; a &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; c &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; d &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于局部变量来说，初始化很重要；在编写某个类的时候，尽量申明当该类的某个对象未被显式初始化时，生成一个合适的默认值。</p>
+<h2 id="声明和定义"><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h2><p>C++支持分离式编译(separate compilation)</p>
+<p>声明(declaration)：使得某个名字为程序所知，即这个变量已经在别处定义了，我现在拿来用。（声明一个其他地方定义过的全局变量）</p>
+<p>定义(definition)：创建与名字关联的实体。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="type">int</span> i;	<span class="comment">//声明i而非定义i，但如果显式初始化后则会抵消了extern的作用</span></span><br><span class="line"><span class="type">int</span> j;	<span class="comment">//定义j</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">double</span> pi = <span class="number">3.1416</span>;	<span class="comment">//定义pi，且初始化为3.1416</span></span><br></pre></td></tr></table></figure>
+<p>在函数内部，如果试图初始化一个由extern关键字标记的变量，将引发错误。</p>
+<p>ps: C++是一种静态类型（statically typed）语言，其含义是在编译阶段执行类型检查（type checking）。如果编译器发现数据类型不支持要执行的运算，则会报错且不会生成任何可执行的程序。程序越复杂，静态类型检查越有助于发现问题。这要求我们在使用某个变量之前必须声明其类型。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/18/cpp/cpp-note-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/17/FPGA/FPGA-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/17/FPGA/FPGA-4/" class="post-title-link" itemprop="url">学习FPGA（四）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-17 10:57:24" itemprop="dateCreated datePublished" datetime="2022-04-17T10:57:24+08:00">2022-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-30 14:30:39" itemprop="dateModified" datetime="2022-04-30T14:30:39+08:00">2022-04-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="实现FPGA驱动数码管动态显示"><a href="#实现FPGA驱动数码管动态显示" class="headerlink" title="实现FPGA驱动数码管动态显示"></a>实现FPGA驱动数码管动态显示</h1><p>知识点：</p>
+<ol>
+<li>数码管动态扫描实现。</li>
+<li>In system sources and probes editor (ISSP)调试工具的使用。</li>
+</ol>
+<h2 id="工程代码"><a href="#工程代码" class="headerlink" title="工程代码"></a>工程代码</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现FPGA驱动数码管动态显示</span></span><br><span class="line"><span class="keyword">module</span> digital_display(Clk, Rst_n, En, disp_data, sel, seg);</span><br><span class="line">	<span class="keyword">input</span> Clk;					<span class="comment">//50M，一个周期为20ns</span></span><br><span class="line">	<span class="keyword">input</span> Rst_n;</span><br><span class="line">	<span class="keyword">input</span> En;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] disp_data;	<span class="comment">//输入要求显示的内容</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] sel;			<span class="comment">//数码管位选（当前要显示的数码管）</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">6</span>:<span class="number">0</span>] seg;			<span class="comment">//数码管段选（当前要显示的内容）</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//divider module</span></span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">14</span>:<span class="number">0</span>] divider_cnt;	<span class="comment">//产生1ms的时钟，每0.5ms时钟信号需要翻转一次，0.5ms/20ns=25_000=16&#x27;b0110_0001_1010_1000，故需要15位计数器</span></span><br><span class="line">	<span class="keyword">reg</span> Clk_1K;</span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n) </span><br><span class="line">			divider_cnt &lt;= <span class="number">15&#x27;d0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(~En) </span><br><span class="line">			divider_cnt &lt;= <span class="number">15&#x27;d0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(divider_cnt== <span class="number">15&#x27;d24_999</span>) </span><br><span class="line">			divider_cnt &lt;= <span class="number">15&#x27;d0</span>;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			divider_cnt &lt;= divider_cnt + <span class="number">1&#x27;b1</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n) </span><br><span class="line">			Clk_1K &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(~En) </span><br><span class="line">			Clk_1K &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(divider_cnt== <span class="number">15&#x27;d24_999</span>) </span><br><span class="line">			Clk_1K &lt;= ~Clk_1K;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			Clk_1K &lt;= Clk_1K;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="comment">//shift8 module</span></span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">7</span>:<span class="number">0</span>] sel_r;</span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk_1K <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span>	<span class="comment">//注意，分频器的输出信号作为D触发器的时钟信号，在大型设计中是不被允许的，此处设计为数码管驱动模块，影响不大，允许存在这样的毛刺</span></span><br><span class="line">		<span class="keyword">if</span>(~Rst_n)</span><br><span class="line">			sel_r &lt;= <span class="number">8&#x27;b0000_0001</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(sel_r == <span class="number">8&#x27;b1000_0000</span>)</span><br><span class="line">			sel_r &lt;= <span class="number">8&#x27;b0000_0001</span>;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			sel_r &lt;= &#123;sel_r[<span class="number">6</span>:<span class="number">0</span>],<span class="number">1&#x27;b0</span>&#125;;	<span class="comment">//此句也可改为	sel_r &lt;= sel_r &lt;&lt; 1;</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//MUX8 (combitional)</span></span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] data_tmp;</span><br><span class="line">	<span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">case</span>(sel_r)</span><br><span class="line">			<span class="number">8&#x27;b0000_0001</span>: data_tmp = disp_data[<span class="number">3</span>:<span class="number">0</span>];</span><br><span class="line">			<span class="number">8&#x27;b0000_0010</span>: data_tmp = disp_data[<span class="number">7</span>:<span class="number">4</span>];</span><br><span class="line">			<span class="number">8&#x27;b0000_0100</span>: data_tmp = disp_data[<span class="number">11</span>:<span class="number">8</span>];</span><br><span class="line">			<span class="number">8&#x27;b0000_1000</span>: data_tmp = disp_data[<span class="number">15</span>:<span class="number">12</span>];</span><br><span class="line">			</span><br><span class="line">			<span class="number">8&#x27;b0001_0000</span>: data_tmp = disp_data[<span class="number">19</span>:<span class="number">16</span>];</span><br><span class="line">			<span class="number">8&#x27;b0010_0000</span>: data_tmp = disp_data[<span class="number">23</span>:<span class="number">20</span>];</span><br><span class="line">			<span class="number">8&#x27;b0100_0000</span>: data_tmp = disp_data[<span class="number">27</span>:<span class="number">24</span>];</span><br><span class="line">			<span class="number">8&#x27;b1000_0000</span>: data_tmp = disp_data[<span class="number">31</span>:<span class="number">28</span>];</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">default</span>: data_tmp = <span class="number">4&#x27;b0000</span>;</span><br><span class="line">		<span class="keyword">endcase</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//MUX2 (combitional)</span></span><br><span class="line">	<span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(~En)</span><br><span class="line">			sel = <span class="number">8&#x27;b0000_0000</span>;</span><br><span class="line">		<span class="keyword">else</span> </span><br><span class="line">			sel = sel_r;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//LUT (combitional)</span></span><br><span class="line">	<span class="comment">//注意：数码管灯段在输入为0时亮起，输入为1时熄灭；</span></span><br><span class="line">	<span class="comment">//h段为最高位，a段为最低位；</span></span><br><span class="line">	<span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">case</span>(data_tmp)</span><br><span class="line">			<span class="number">4&#x27;b0000</span>: seg = <span class="number">7&#x27;b100_0000</span>;	<span class="comment">//0</span></span><br><span class="line">			<span class="number">4&#x27;b0001</span>: seg = <span class="number">7&#x27;b111_1001</span>;	<span class="comment">//1</span></span><br><span class="line">			<span class="number">4&#x27;b0010</span>: seg = <span class="number">7&#x27;b010_0100</span>;	<span class="comment">//2</span></span><br><span class="line">			<span class="number">4&#x27;b0011</span>: seg = <span class="number">7&#x27;b011_0000</span>;	<span class="comment">//3</span></span><br><span class="line">			</span><br><span class="line">			<span class="number">4&#x27;b0100</span>: seg = <span class="number">7&#x27;b001_1001</span>;	<span class="comment">//4</span></span><br><span class="line">			<span class="number">4&#x27;b0101</span>: seg = <span class="number">7&#x27;b001_0010</span>;	<span class="comment">//5</span></span><br><span class="line">			<span class="number">4&#x27;b0110</span>: seg = <span class="number">7&#x27;b000_0010</span>;	<span class="comment">//6</span></span><br><span class="line">			<span class="number">4&#x27;b0111</span>: seg = <span class="number">7&#x27;b111_1000</span>;	<span class="comment">//7</span></span><br><span class="line">			</span><br><span class="line">			<span class="number">4&#x27;b1000</span>: seg = <span class="number">7&#x27;b000_0000</span>;	<span class="comment">//8</span></span><br><span class="line">			<span class="number">4&#x27;b1001</span>: seg = <span class="number">7&#x27;b001_0000</span>;	<span class="comment">//9</span></span><br><span class="line">			<span class="number">4&#x27;b1010</span>: seg = <span class="number">7&#x27;b000_1000</span>;	<span class="comment">//a</span></span><br><span class="line">			<span class="number">4&#x27;b1011</span>: seg = <span class="number">7&#x27;b000_0011</span>;	<span class="comment">//b</span></span><br><span class="line">			</span><br><span class="line">			<span class="number">4&#x27;b1100</span>: seg = <span class="number">7&#x27;b100_0110</span>;	<span class="comment">//c</span></span><br><span class="line">			<span class="number">4&#x27;b1101</span>: seg = <span class="number">7&#x27;b010_0001</span>;	<span class="comment">//d</span></span><br><span class="line">			<span class="number">4&#x27;b1110</span>: seg = <span class="number">7&#x27;b000_0110</span>;	<span class="comment">//e</span></span><br><span class="line">			<span class="number">4&#x27;b1111</span>: seg = <span class="number">7&#x27;b000_1110</span>;	<span class="comment">//f</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">default</span>: seg = <span class="number">7&#x27;b111_1111</span>;	<span class="comment">//全灭</span></span><br><span class="line">		<span class="keyword">endcase</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span> </span><br></pre></td></tr></table></figure>
+<h2 id="TestBench"><a href="#TestBench" class="headerlink" title="TestBench"></a>TestBench</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1 ns/ 1 ps</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> clk_period 20</span></span><br><span class="line"><span class="keyword">module</span> digital_display_vlg_tst();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">reg</span> Clk;</span><br><span class="line">	<span class="keyword">reg</span> En;</span><br><span class="line">	<span class="keyword">reg</span> Rst_n;</span><br><span class="line">	<span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] disp_data;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">6</span>:<span class="number">0</span>]  seg;</span><br><span class="line">	<span class="keyword">wire</span> [<span class="number">7</span>:<span class="number">0</span>]  sel;</span><br><span class="line"></span><br><span class="line">	digital_display u1 (</span><br><span class="line">		<span class="variable">.Clk</span>(Clk),</span><br><span class="line">		<span class="variable">.En</span>(En),</span><br><span class="line">		<span class="variable">.Rst_n</span>(Rst_n),</span><br><span class="line">		<span class="variable">.disp_data</span>(disp_data),</span><br><span class="line">		<span class="variable">.seg</span>(seg),</span><br><span class="line">		<span class="variable">.sel</span>(sel)</span><br><span class="line">	);</span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		Clk = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">forever</span> <span class="variable">#(`clk_period/2)</span> Clk = ~Clk;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">		Rst_n = <span class="number">1&#x27;b0</span>;</span><br><span class="line">		En = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		disp_data = <span class="number">32&#x27;h12345678</span>;</span><br><span class="line">		<span class="variable">#(`clk_period*20)</span>;</span><br><span class="line">		Rst_n = <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="variable">#(`clk_period*20)</span>;</span><br><span class="line">		#<span class="number">20_000_000</span>;</span><br><span class="line">		disp_data = <span class="number">32&#x27;h87654321</span>;</span><br><span class="line">		#<span class="number">20_000_000</span>;</span><br><span class="line">		disp_data = <span class="number">32&#x27;h89abcdef</span>;</span><br><span class="line">		#<span class="number">20_000_000</span>;</span><br><span class="line">		<span class="built_in">$stop</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>得到的仿真波形：</p>
+<img src="/2022/04/17/FPGA/FPGA-4/1650940716028.png" class width="1650940716028">
+
+<h2 id="ISSP"><a href="#ISSP" class="headerlink" title="ISSP"></a>ISSP</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/17/FPGA/FPGA-4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -412,7 +777,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-22 19:37:40" itemprop="dateModified" datetime="2022-04-22T19:37:40+08:00">2022-04-22</time>
+      <time title="修改时间：2022-05-01 17:14:10" itemprop="dateModified" datetime="2022-05-01T17:14:10+08:00">2022-05-01</time>
     </span>
 
   
@@ -426,15 +791,17 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>刚好今天尝试使用hexo框架搭建了个人博客，索性记录一下自己学习FPGA的过程，方便日后查看和复习。</p>
-<h2 id="BCD计数器设计与验证"><a href="#BCD计数器设计与验证" class="headerlink" title="BCD计数器设计与验证"></a>BCD计数器设计与验证</h2><p>目的是通过将三个BCD计数器级联来实现1000的计数<br>单个BCD计数器的Verilog代码如下：</p>
+<h2 id="BCD计数器设计与验证"><a href="#BCD计数器设计与验证" class="headerlink" title="BCD计数器设计与验证"></a>BCD计数器设计与验证</h2><p>目的是通过将三个BCD计数器级联来实现1000的计数单个BCD计数器的Verilog代码如下：</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> bcd_counter(Clk, Cin, Rst_n, Cout, Q);</span><br><span class="line">	<span class="keyword">input</span> Clk;<span class="comment">//时间基准信号</span></span><br><span class="line">	<span class="keyword">input</span> Cin;<span class="comment">//计数器进位输入</span></span><br><span class="line">	<span class="keyword">input</span> Rst_n;<span class="comment">//计数器复位输入</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> Cout;<span class="comment">//计数器进位输出</span></span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">3</span>:<span class="number">0</span>] Q;<span class="comment">//计数器计数输出</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//产生输出进位信号</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>) Cout = <span class="number">1&#x27;b1</span>;	<span class="comment">//此处的进位设置并不合理，级联后会发生错误</span></span><br><span class="line">		<span class="keyword">else</span> Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//执行计数过程</span></span><br><span class="line">	<span class="keyword">always</span>@(<span class="keyword">posedge</span> Clk <span class="keyword">or</span> <span class="keyword">negedge</span> Rst_n) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Q &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Cin==<span class="number">1&#x27;b1</span>) <span class="keyword">begin</span></span><br><span class="line">			<span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span>)Q &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">			<span class="keyword">else</span> Q &lt;= Q + <span class="number">1&#x27;b1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> Q &lt;= Q;</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 
-<p>使用modelsim分析时，先从sim中把子模块的输入输出信号全部添加到波形窗口中然后在波形窗口中选中所有信号（Ctrl+a），再按下快捷键Ctrl+g，完成按模块分组</p>
+<p>使用modelsim分析时，先从sim中把子模块的输入输出信号全部添加到波形窗口中然后在波形窗口中选中所有信号（Ctrl+a）</p>
+<img src="/2022/04/13/FPGA/FPGA-1/1651396297097.png" class width="1651396297097">
+
+<p>再按下快捷键Ctrl+g，完成按模块分组</p>
+<img src="/2022/04/13/FPGA/FPGA-1/1651396327618.png" class width="1651396327618">
+
 <p>将”&#x2F;&#x2F;产生输出进位信号”部分修改为：</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(*) <span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span>(Rst_n==<span class="number">1&#x27;b0</span>) Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>) Cout = <span class="number">1&#x27;b1</span>;</span><br><span class="line">	<span class="keyword">else</span> Cout = <span class="number">1&#x27;b0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>此即行为级建模实现的组合逻辑，但仿真的结果出现了奇怪的毛刺，这是rtl级仿真不该出现的</p>
-<p>于是再将其改为：</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> Cout = (Q==<span class="number">4&#x27;d9</span> &amp;&amp; Cin==<span class="number">1&#x27;b1</span>);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/04/13/FPGA/FPGA-1/#more" rel="contents">
