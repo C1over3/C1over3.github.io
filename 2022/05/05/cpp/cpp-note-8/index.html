@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="数组数组是一种类似于vector的数据结构，但其大小是固定的，不能随意增加。 定义和初始化内置数组对于数组a[d]，a是数组名，d是数组维度，**数组的最后一个元素是a[d-1]**。编译的时候维度应该是已知的，故d必须是一个常量表达式。 列表初始化时，如果数组维度大于所给的初始值数量，剩下的元素被初始化为默认值；列表初始化时，允许忽略数组维度，编译器会根据初始值推测维度： 123456const">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++笔记（八）——数组">
+<meta property="og:url" content="http://example.com/2022/05/05/cpp/cpp-note-8/index.html">
+<meta property="og:site_name" content="Clover&#39;s blog">
+<meta property="og:description" content="数组数组是一种类似于vector的数据结构，但其大小是固定的，不能随意增加。 定义和初始化内置数组对于数组a[d]，a是数组名，d是数组维度，**数组的最后一个元素是a[d-1]**。编译的时候维度应该是已知的，故d必须是一个常量表达式。 列表初始化时，如果数组维度大于所给的初始值数量，剩下的元素被初始化为默认值；列表初始化时，允许忽略数组维度，编译器会根据初始值推测维度： 123456const">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-05T05:45:55.000Z">
+<meta property="article:modified_time" content="2022-05-06T13:43:02.959Z">
+<meta property="article:author" content="Clover">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/05/05/cpp/cpp-note-8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/05/cpp/cpp-note-8/","path":"2022/05/05/cpp/cpp-note-8/","title":"C++笔记（八）——数组"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C++笔记（八）——数组 | Clover's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Clover's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">迷途的旅人，这里并没有你所寻找的东西</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E5%86%85%E7%BD%AE%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.</span> <span class="nav-text">定义和初始化内置数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88"><span class="nav-number">1.2.</span> <span class="nav-text">数组和指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E6%97%A7%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.3.</span> <span class="nav-text">与旧代码的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.4.</span> <span class="nav-text">多维数组</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Clover"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Clover</p>
+  <div class="site-description" itemprop="description">似乎还未到境界...</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/05/cpp/cpp-note-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C++笔记（八）——数组 | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++笔记（八）——数组
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-05 13:45:55" itemprop="dateCreated datePublished" datetime="2022-05-05T13:45:55+08:00">2022-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-06 21:43:02" itemprop="dateModified" datetime="2022-05-06T21:43:02+08:00">2022-05-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组是一种类似于vector的数据结构，但其大小是固定的，不能随意增加。</p>
+<h3 id="定义和初始化内置数组"><a href="#定义和初始化内置数组" class="headerlink" title="定义和初始化内置数组"></a>定义和初始化内置数组</h3><p>对于数组a[d]，a是数组名，d是数组维度，**数组的最后一个元素是a[d-1]**。编译的时候维度应该是已知的，故d必须是一个常量表达式。</p>
+<p>列表初始化时，如果数组维度大于所给的初始值数量，剩下的元素被初始化为默认值；列表初始化时，允许忽略数组维度，编译器会根据初始值推测维度：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">unsigned</span> sz = <span class="number">3</span>;</span><br><span class="line"><span class="type">int</span> al[sz] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="type">int</span> a2[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;				<span class="comment">//维度是3</span></span><br><span class="line"><span class="type">int</span> a3[<span class="number">5</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;				<span class="comment">//维度是5，等价于int a3[] = &#123;0, 1, 2, 0, 0&#125;;</span></span><br><span class="line">string a4[<span class="number">3</span>] = &#123;<span class="string">&quot;hi&quot;</span>, <span class="string">&quot;bye&quot;</span>, <span class="string">&quot;&quot;</span>&#125;;	<span class="comment">//等价于 string a4[] = &#123;&quot;hi&quot;, &quot;bye&quot;, &quot;&quot;&#125;;</span></span><br><span class="line"><span class="type">int</span> a5[<span class="number">2</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;				<span class="comment">//错误：初始值过多</span></span><br></pre></td></tr></table></figure>
+
+<p>对于字符数组，可以用字符串字面值对其进行初始化，但需要注意字符串结尾有一个空字符：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> a1[] = &#123;<span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;+&#x27;</span>&#125;;		<span class="comment">//维度为3，不含空字符</span></span><br><span class="line"><span class="type">char</span> a1[] = &#123;<span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;\0&#x27;</span>&#125;;	<span class="comment">//维度为4，含有显式空字符</span></span><br><span class="line"><span class="type">char</span> a1[] = <span class="string">&quot;C++&quot;</span>;					<span class="comment">//维度为4，含有隐式空字符</span></span><br></pre></td></tr></table></figure>
+
+<p>不允许拷贝和赋值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="type">int</span> a2[] = a;						<span class="comment">//错误：不能用一个数组初始化另一个数组</span></span><br><span class="line"><span class="type">int</span> a3[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">a3 = a;								<span class="comment">//错误：不能把一个数组直接赋值给另一个数组</span></span><br></pre></td></tr></table></figure>
+
+<p>指针和引用（先由内向外，再从右到左）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ptrs[<span class="number">10</span>];						<span class="comment">//ptrs是含有10个整型指针的数组</span></span><br><span class="line"><span class="type">int</span> &amp;refs[<span class="number">10</span>];						<span class="comment">//错误：引用不是对象，不存在引用的数组</span></span><br><span class="line"><span class="built_in">int</span> (*Parray)[<span class="number">10</span>] = &amp;arr;			<span class="comment">//Parray指向一个含有10个整数的数组</span></span><br><span class="line"><span class="built_in">int</span> (&amp;arrRef)[<span class="number">10</span>] = arr;			<span class="comment">//arrRef引用一个含有10个整数的数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组和指针"><a href="#数组和指针" class="headerlink" title="数组和指针"></a>数组和指针</h3><p>数组的特效：在很多用到数组名字的地方，编译器都会自动地将其替换为一个指向数组首元素的指针：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string s[] = &#123;<span class="string">&quot;one&quot;</span>, <span class="string">&quot;two&quot;</span>, <span class="string">&quot;three&quot;</span>&#125;;</span><br><span class="line">string *p = s;						<span class="comment">//等价于string *p = &amp;s[0];</span></span><br><span class="line"><span class="keyword">auto</span> s1 = s;						<span class="comment">//s1是一个指针，指向s的第一个元素，等价于 auto c = &amp;s[0];</span></span><br></pre></td></tr></table></figure>
+
+<p>但decltype关键字有所不同：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//s2是一个含有3个string的数组</span></span><br><span class="line"><span class="keyword">decltype</span>(s) s2 = &#123;<span class="string">&quot;one&quot;</span>, <span class="string">&quot;two&quot;</span>, <span class="string">&quot;three&quot;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>指向数组的指针支持迭代器所支持的所有运算：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span> *p = arr;						<span class="comment">//p指向arr的第一个元素，即arr[0]</span></span><br><span class="line">++p;								<span class="comment">//p指向arr[1]</span></span><br></pre></td></tr></table></figure>
+
+<p>C++中可以设法获取数组尾元素后的那个并不存在的元素的地址：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *e = &amp;arr[<span class="number">10</span>];					<span class="comment">//e指向arr尾元素的下一个位置</span></span><br></pre></td></tr></table></figure>
+
+<p>这时，我们可以对数组进行遍历操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> *b = arr; b != e; ++b)</span><br><span class="line">    cout &lt;&lt; *b &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<p>C++11新标准中引入了begin和end函数来获取指向数组第一个元素的指针和指向数组尾元素下一位置的指针（<strong>注意，这两个函数的返回值都是指针</strong>）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a1[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span> *beg = <span class="built_in">begin</span>(a1);</span><br><span class="line"><span class="type">int</span> *last = <span class="built_in">end</span>(a2);				<span class="comment">//指向a1尾元素的下一位置</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><u>特别注意，尾后指针与尾后迭代器类似，不能执行解引用和递增操作。</u></strong></p>
+<p>与迭代器相同，两个指针相减得到它们之间的距离，其结果类型为ptrdiff_t，可以为负值：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> n = <span class="built_in">end</span>(a1) - <span class="built_in">begin</span>(a1);		<span class="comment">//n的值是10，也就是a1中元素的数量</span></span><br></pre></td></tr></table></figure>
+
+<p>只要指针指向的是数组中的元素，我们就可以对其进行下标运算：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p = &amp;a1[<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> j = p[<span class="number">1</span>];						<span class="comment">//结果为j = a1[3]，等价于 int j = *(p + 1);</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，标准库类型的下标运算必须是无符号类型，但内置的下标运算可以处理负值，比如此处可以令<code>j = p[-1];</code>，结果即是j &#x3D; a1[1] 。</p>
+<hr>
+<p><em>练习3.39</em></p>
+<details class="note info no-icon"><summary><p>code</p>
+</summary>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//比较两个string</span></span><br><span class="line">	string s1, s2;</span><br><span class="line">	cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">	<span class="keyword">if</span> (s1 == s2)</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;equal&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (s1 &gt; s2)</span><br><span class="line">		cout &lt;&lt; s1 &lt;&lt; <span class="string">&quot; &gt; &quot;</span> &lt;&lt; s2 &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		cout &lt;&lt; s1 &lt;&lt; <span class="string">&quot; &lt; &quot;</span> &lt;&lt; s2 &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//比较两个C风格字符串，利用for循环遍历</span></span><br><span class="line">	<span class="type">char</span> ca1[] = &#123; <span class="string">&quot;A string example&quot;</span> &#125;;</span><br><span class="line">	<span class="type">char</span> ca2[] = &#123; <span class="string">&quot;A string example&quot;</span> &#125;;</span><br><span class="line">	<span class="type">unsigned</span> len1 = <span class="built_in">sizeof</span>(ca1);</span><br><span class="line">	<span class="type">unsigned</span> len2 = <span class="built_in">sizeof</span>(ca2);</span><br><span class="line">	<span class="keyword">if</span> (len1 == len2) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != len1; ++i) &#123;</span><br><span class="line">			<span class="keyword">if</span> (ca1[i] &gt; ca1[i]) &#123;</span><br><span class="line">				cout &lt;&lt; ca1 &lt;&lt; <span class="string">&quot; &gt; &quot;</span> &lt;&lt; ca2 &lt;&lt; endl;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (ca1[i] &lt; ca1[i]) &#123;</span><br><span class="line">				cout &lt;&lt; ca1 &lt;&lt; <span class="string">&quot; &lt; &quot;</span> &lt;&lt; ca2 &lt;&lt; endl;</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; ca1 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; ca2 &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (len1 &gt; len2)</span><br><span class="line">		cout &lt;&lt; ca1 &lt;&lt; <span class="string">&quot; &gt; &quot;</span> &lt;&lt; ca2 &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		cout &lt;&lt; ca1 &lt;&lt; <span class="string">&quot; &lt; &quot;</span> &lt;&lt; ca2 &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//比较两个C风格字符串，调用strcmp()函数</span></span><br><span class="line">	<span class="type">char</span> ca3[] = &#123; <span class="string">&quot;A string example&quot;</span> &#125;;</span><br><span class="line">	<span class="type">char</span> ca4[] = &#123; <span class="string">&quot;A string example&quot;</span> &#125;;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strcmp</span>(ca3, ca4) == <span class="number">0</span>)</span><br><span class="line">		cout &lt;&lt; ca3 &lt;&lt; <span class="string">&quot; = &quot;</span> &lt;&lt; ca4 &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(ca3, ca4) &gt; <span class="number">0</span>)</span><br><span class="line">		cout &lt;&lt; ca3 &lt;&lt; <span class="string">&quot; &gt; &quot;</span> &lt;&lt; ca4 &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		cout &lt;&lt; ca3 &lt;&lt; <span class="string">&quot; &lt; &quot;</span> &lt;&lt; ca4 &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<p><em>练习3.40</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> a[<span class="number">100</span>] = &#123; <span class="string">&quot;How are &quot;</span> &#125;, b[<span class="number">100</span>] = &#123; <span class="string">&quot;you ?&quot;</span> &#125;;</span><br><span class="line">	<span class="type">char</span> c[<span class="number">100</span>] = &#123;&#125;;</span><br><span class="line">	<span class="built_in">strcpy_s</span>(c, a);		<span class="comment">//等价于strcpy函数</span></span><br><span class="line">	<span class="built_in">strcat_s</span>(c, b);		<span class="comment">//等价于strcat函数</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : c)</span><br><span class="line">		cout &lt;&lt; i;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于strcpy和strcat函数没有内部检查，微软担心可能造成栈溢出，在新版本的VS中改写了这些函数，并在名字后面加上_s来作为区分。</p>
+<hr>
+<h3 id="与旧代码的接口"><a href="#与旧代码的接口" class="headerlink" title="与旧代码的接口"></a>与旧代码的接口</h3><p>允许用C风格字符串（即已空字符结束的字符数组）来为string对象赋值，反之不可；</p>
+<p>允许在string对象的加法运算中使用C风格字符串作为其中一个运算对象（不能两个都是）；</p>
+<p>可以通过c_str()函数来为C风格字符串赋值（其返回值是一个指向const C风格字符串的指针），如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">s</span><span class="params">(<span class="string">&quot;Hello world&quot;</span>)</span></span>;</span><br><span class="line"><span class="type">char</span> *str = s;					<span class="comment">//错误：不能用string对象初始化char*</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *str = s.<span class="built_in">c_str</span>();	<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，如果后续操作改变了s的值，s.c_str()可能会发生变化<strong>（指针存放的地址发生改变）</strong>，而str不会跟着变化<strong>（指针存放的地址未改变，但原本的对象不再存放在该地址，str成了野指针）</strong>，这样之前返回的数组就失去了效用。</p>
+<p>允许使用数组来初始化vector，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> int_arr[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ivec1</span><span class="params">(begin(int_arr), end(int_arr))</span></span>;	<span class="comment">//指明拷贝区域的地址范围</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ivec2</span><span class="params">(int_arr + <span class="number">1</span>, int_arr + <span class="number">4</span>)</span></span>;		<span class="comment">//ivec2只包含int_arr中下标为1，2，3的三个元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><p>严格来说，C++语言中没有多维数组，通常所说的多位数组其实是数组的数组。</p>
+<hr>
+<p><em>练习3.43</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> ia[<span class="number">3</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,</span><br><span class="line">		&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;,</span><br><span class="line">		&#123;<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">    <span class="comment">//利用范围for循环(不使用auto)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> (&amp;d1)[<span class="number">4</span>] : ia) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span>&amp; d2 : d1)</span><br><span class="line">			cout &lt;&lt; d2 &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//使用auto</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; d1 : ia) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; d2 : d1)</span><br><span class="line">			cout &lt;&lt; d2 &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">    <span class="comment">//利用下标运算符</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != <span class="number">3</span>; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j != <span class="number">4</span>; ++j) &#123;</span><br><span class="line">			cout &lt;&lt; ia[i][j] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">    <span class="comment">//利用指针（不使用auto）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span>(*p1)[<span class="number">4</span>] = ia; p1 != ia + <span class="number">3</span>; ++p1) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span>* p2 = *p1; p2 != *p1 + <span class="number">4</span>; ++(p2)) &#123;</span><br><span class="line">			cout &lt;&lt; *p2 &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//使用auto</span></span><br><span class="line">    <span class="comment">//这里的p1是int (*p1)[4]类型，其所指对象为一个含有4个元素的整型数组（该数组是数组的数组的首元素）</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> p1 = ia; p1 != ia + <span class="number">3</span>; ++p1) &#123;	</span><br><span class="line">        <span class="comment">//这里的p2是 int *p2类型，其所指对象为一个整数（该整数是整型数组的首元素）</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> p2 = *p1; p2 != *p1 + <span class="number">4</span>; ++(p2)) &#123;</span><br><span class="line">			cout &lt;&lt; *p2 &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>练习3.44</em></p>
+<p>利用类型别名</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ia[<span class="number">3</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;,</span><br><span class="line">    &#123;<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">using</span> int_arr1 = <span class="type">int</span>[<span class="number">4</span>];	<span class="comment">//C++11新标准</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> int_arr2[<span class="number">4</span>];	<span class="comment">//注意与上一条语句的区别，其中int_arr1和int_arr2类型相同</span></span><br><span class="line"><span class="keyword">for</span> (int_arr2 &amp;d1 : ia) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span>&amp; d2 : d1)</span><br><span class="line">        cout &lt;&lt; d2 &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != <span class="number">3</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j != <span class="number">4</span>; ++j) &#123;</span><br><span class="line">        cout &lt;&lt; ia[i][j] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; endl;</span><br><span class="line"><span class="keyword">for</span> (int_arr1 * p1 = ia; p1 != ia + <span class="number">3</span>; ++p1) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span>* p2 = *p1; p2 != *p1 + <span class="number">4</span>; ++(p2)) &#123;</span><br><span class="line">        cout &lt;&lt; *p2 &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/03/FPGA/FPGA-note/" rel="prev" title="学习FPGA过程中遇到的一些问题">
+                  <i class="fa fa-chevron-left"></i> 学习FPGA过程中遇到的一些问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/06/cpp/cpp-note-9/" rel="next" title="C++笔记（九）——表达式">
+                  C++笔记（九）——表达式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Clover</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>
