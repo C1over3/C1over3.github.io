@@ -24,13 +24,13 @@
 
     <meta name="description" content="类类的基本思想是数据抽象(data abstraction)和封装(encapsulation)，数据抽象是一种依赖于接口(interface)和实现(implementation)分离的编程（以及设计）技术；封装隐藏了类的实现细节，实现了类的接口和实现的分离。 类的用户只能使用接口而无法访问实现部分。 定义抽象数据类型(abstract data type)设计Sales_data类123456">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++笔记（十三）——类">
+<meta property="og:title" content="C++笔记（十三）——类（一）">
 <meta property="og:url" content="http://example.com/2022/05/09/cpp/cpp-note-13/index.html">
 <meta property="og:site_name" content="Clover&#39;s blog">
 <meta property="og:description" content="类类的基本思想是数据抽象(data abstraction)和封装(encapsulation)，数据抽象是一种依赖于接口(interface)和实现(implementation)分离的编程（以及设计）技术；封装隐藏了类的实现细节，实现了类的接口和实现的分离。 类的用户只能使用接口而无法访问实现部分。 定义抽象数据类型(abstract data type)设计Sales_data类123456">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-09T09:50:39.000Z">
-<meta property="article:modified_time" content="2022-05-11T02:50:42.544Z">
+<meta property="article:modified_time" content="2022-05-13T17:21:54.602Z">
 <meta property="article:author" content="Clover">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -40,10 +40,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/09/cpp/cpp-note-13/","path":"2022/05/09/cpp/cpp-note-13/","title":"C++笔记（十三）——类"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/09/cpp/cpp-note-13/","path":"2022/05/09/cpp/cpp-note-13/","title":"C++笔记（十三）——类（一）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>C++笔记（十三）——类 | Clover's blog</title>
+<title>C++笔记（十三）——类（一） | Clover's blog</title>
   
 
 
@@ -146,7 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-abstract-data-type"><span class="nav-number">1.1.</span> <span class="nav-text">定义抽象数据类型(abstract data type)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1Sales-data%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">设计Sales_data类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">定义成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this%E6%8C%87%E9%92%88"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">this指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">const成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">类作用域和成员函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-constructor"><span class="nav-number">1.1.2.</span> <span class="nav-text">构造函数(constructor)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E3%80%81%E8%B5%8B%E5%80%BC%E5%92%8C%E6%9E%90%E6%9E%84"><span class="nav-number">1.1.3.</span> <span class="nav-text">拷贝、赋值和析构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%B0%81%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">访问控制与封装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8B%E5%85%83-friend"><span class="nav-number">1.2.1.</span> <span class="nav-text">友元(friend)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%85%B6%E4%BB%96%E7%89%B9%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">类的其他特性</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-abstract-data-type"><span class="nav-number">1.1.</span> <span class="nav-text">定义抽象数据类型(abstract data type)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1Sales-data%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">设计Sales_data类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">定义成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this%E6%8C%87%E9%92%88"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">this指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#const%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">const成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">类作用域和成员函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-constructor"><span class="nav-number">1.1.2.</span> <span class="nav-text">构造函数(constructor)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E3%80%81%E8%B5%8B%E5%80%BC%E5%92%8C%E6%9E%90%E6%9E%84"><span class="nav-number">1.1.3.</span> <span class="nav-text">拷贝、赋值和析构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%B8%8E%E5%B0%81%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">访问控制与封装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8B%E5%85%83-friend"><span class="nav-number">1.2.1.</span> <span class="nav-text">友元(friend)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%85%B6%E4%BB%96%E7%89%B9%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">类的其他特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98-mutable-data-member"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">可变数据成员(mutable data member)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E-this%E7%9A%84%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">返回*this的成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E4%BD%BF%E7%94%A8%E7%A7%81%E6%9C%89%E5%8A%9F%E8%83%BD%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">对于公共代码使用私有功能函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">类类型</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -219,12 +219,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="C++笔记（十三）——类 | Clover's blog">
+      <meta itemprop="name" content="C++笔记（十三）——类（一） | Clover's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          C++笔记（十三）——类
+          C++笔记（十三）——类（一）
         </h1>
 
         <div class="post-meta-container">
@@ -242,7 +242,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-11 10:50:42" itemprop="dateModified" datetime="2022-05-11T10:50:42+08:00">2022-05-11</time>
+      <time title="修改时间：2022-05-14 01:21:54" itemprop="dateModified" datetime="2022-05-14T01:21:54+08:00">2022-05-14</time>
     </span>
 
   
@@ -259,8 +259,8 @@
 <p>类的用户只能使用接口而无法访问实现部分。</p>
 <h2 id="定义抽象数据类型-abstract-data-type"><a href="#定义抽象数据类型-abstract-data-type" class="headerlink" title="定义抽象数据类型(abstract data type)"></a>定义抽象数据类型(abstract data type)</h2><h3 id="设计Sales-data类"><a href="#设计Sales-data类" class="headerlink" title="设计Sales_data类"></a>设计Sales_data类</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line">	string BookNo;</span><br><span class="line">	<span class="type">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">	<span class="type">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">string <span class="title">isbn</span><span class="params">()</span> <span class="type">const</span> </span>&#123;<span class="keyword">return</span> <span class="keyword">this</span>-&gt;BookNo;&#125;</span><br><span class="line">	<span class="function">Sales_data&amp; <span class="title">combine</span><span class="params">(<span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">double</span> <span class="title">avg_price</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//Sales_data的非成员接口函数</span></span><br><span class="line"><span class="function">Sales_data <span class="title">add</span><span class="params">(<span class="type">const</span> Sales_data&amp;, <span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line"><span class="function">ostream&amp; <span class="title">print</span><span class="params">(ostream&amp;, <span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line"><span class="function">istream&amp; <span class="title">read</span><span class="params">(istream&amp;, Sales_data&amp;)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<h4 id="定义成员函数"><a href="#定义成员函数" class="headerlink" title="定义成员函数"></a>定义成员函数</h4><p>所有成员都必须在类内声明，但成员函数体可以定义在类内或类外</p>
-<p>在类内定义的成员函数是隐式的inline函数</p>
+<h4 id="定义成员函数"><a href="#定义成员函数" class="headerlink" title="定义成员函数"></a>定义成员函数</h4><p>所有成员都必须在类内声明，但成员函数体可以定义在类内或类外；</p>
+<p>在类内定义的成员函数是隐式的inline函数；</p>
 <p>在类外定义的成员函数，其定义和声明必须相匹配，且<strong>必须包含它所属的类名</strong>：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">Sales_data::avg_price</span><span class="params">()</span> <span class="type">const</span></span>&#123;		<span class="comment">//包含类名</span></span><br><span class="line">    <span class="keyword">if</span>(units_sold)</span><br><span class="line">        <span class="keyword">return</span> revenue/units_sold;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -298,30 +298,69 @@
 <li>如果用户定义有参构造函数，C++不再提供默认构造函数，但会提供默认拷贝构造函数；</li>
 <li>如果用户定义拷贝构造函数，C++不再提供其他构造函数；</li>
 <li>类中包含一个其他类类型成员，且这个成员的类型没有默认构造函数时，编译器无法初始化该成员</li>
+<li>若一个构造函数为所<strong>有参数都提供了默认实参</strong>，则它实际上也定义了默认构造函数；</li>
 </ul>
 <h3 id="拷贝、赋值和析构"><a href="#拷贝、赋值和析构" class="headerlink" title="拷贝、赋值和析构"></a>拷贝、赋值和析构</h3><p>未主动定义时，编译器将替我们合成：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">total = trans;</span><br><span class="line"><span class="comment">//默认赋值操作等价于：</span></span><br><span class="line">total.bookNo = trans.bookNo;</span><br><span class="line">total.units_sold = trans.units_sold;</span><br><span class="line">total.revenue = trans.revenue;</span><br></pre></td></tr></table></figure>
 
 <p>当类需要分配类对象之外的资源（如动态内存）时，合成的版本常常会失效</p>
 <h2 id="访问控制与封装"><a href="#访问控制与封装" class="headerlink" title="访问控制与封装"></a>访问控制与封装</h2><p>访问说明符(access specifiers)<code>public</code>和<code>private</code>在类的定义中出现的位置和次数都没有限制</p>
-<h3 id="友元-friend"><a href="#友元-friend" class="headerlink" title="友元(friend)"></a>友元(friend)</h3><ul>
-<li>类可以通过友元声明来允许其他类或者函数访问它的<code>protected</code>和<code>private</code>成员；</li>
-<li>友元<strong>声明</strong>只能出现在类定义的内部，位置不限；</li>
-<li>友元既不是类的成员也不受它所在区域访问控制级别的约束（即不受<code>public</code>、<code>protected</code>、<code>private</code>的约束）；</li>
-<li>友元通常在类的头部&#x2F;尾部集中声明；</li>
-<li>友元声明仅仅指定了访问的权限，有必要在类外声明一次这些接口函数（尽管有的编译器不需要）；</li>
+<h3 id="友元-friend"><a href="#友元-friend" class="headerlink" title="友元(friend)"></a>友元(friend)</h3><p>类可以通过友元声明来允许其他类或者函数访问它的<code>protected</code>和<code>private</code>成员：</p>
+<ul>
+<li><p>友元<strong>声明</strong>只能出现在类定义的内部，位置不限；</p>
+</li>
+<li><p>友元既不是类的成员也不受它所在区域访问控制级别的约束（即不受<code>public</code>、<code>protected</code>、<code>private</code>的约束）；</p>
+</li>
+<li><p>友元通常在类的头部&#x2F;尾部集中声明；</p>
+</li>
+<li><p>友元声明仅仅指定了访问的权限，有必要在类外声明一次这些接口函数（尽管有的编译器不需要）；</p>
+</li>
+<li><p>友元函数能定义在类内，这样的函数是<strong>隐式内联</strong>的；</p>
+</li>
+<li><p><strong>可以把其他的类（已经定义过的）定义成友元</strong>，友元类可以访问此类的所有成员；</p>
+</li>
+<li><p>可以把<strong>某个成员函数</strong>声明为友元，需要指明函数所在的类；</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span>&#123;</span><br><span class="line">    <span class="comment">//Window_mgr::clear必须在Screen类之前被声明</span></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="type">void</span> <span class="title">Window_mgr::clear</span><span class="params">(ScreenIndex)</span></span>;	<span class="comment">//指明clear在Window_mgr类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>想要把一组重载函数声明为友元，必须对<strong>每一个进行分别声明</strong>；</p>
+</li>
+<li><p><strong>友元关系不存在传递性</strong>；</p>
+</li>
 </ul>
 <h2 id="类的其他特性"><a href="#类的其他特性" class="headerlink" title="类的其他特性"></a>类的其他特性</h2><p>可以自定义类型别名，必须先定义后使用，同样存在访问限制：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Screen.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">typedef</span> string::size_type pos;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">	<span class="built_in">Screen</span>() = <span class="keyword">default</span>;</span><br><span class="line">	<span class="built_in">Screen</span>(pos ht, pos wd, <span class="type">char</span> c) :<span class="built_in">height</span>(ht), <span class="built_in">width</span>(wd), <span class="built_in">contents</span>(ht* wd, c) &#123;&#125;</span><br><span class="line">	<span class="comment">//成员函数</span></span><br><span class="line">	<span class="function"><span class="type">char</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> contents[cursor]; &#125;		<span class="comment">//隐式内联</span></span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">char</span> <span class="title">get</span><span class="params">(pos ht, pos wd)</span> <span class="type">const</span></span>;				<span class="comment">//显示内联</span></span><br><span class="line">	<span class="function">Screen&amp; <span class="title">move</span><span class="params">(pos r, pos c)</span></span>;							<span class="comment">//能在之后设置为内联</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	pos cursor = <span class="number">0</span>;</span><br><span class="line">	pos height = <span class="number">0</span>, width = <span class="number">0</span>;</span><br><span class="line">	string contens;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Screen.cpp</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Screen&amp; <span class="title">Screen::move</span><span class="params">(pos r, pos c)</span> </span>&#123;				<span class="comment">//在定义处设置为内联</span></span><br><span class="line">	pos row = r * width;</span><br><span class="line">	cursor = row + c;</span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">char</span> <span class="title">Screen::get</span><span class="params">(pos r, pos c)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">	pos row = r * width;</span><br><span class="line">	<span class="keyword">return</span> contents[row + c];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Screen.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">typedef</span> string::size_type pos;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">	<span class="built_in">Screen</span>() = <span class="keyword">default</span>;</span><br><span class="line">	<span class="built_in">Screen</span>(pos ht, pos wd, <span class="type">char</span> c) :<span class="built_in">height</span>(ht), <span class="built_in">width</span>(wd), <span class="built_in">contents</span>(ht* wd, c) &#123;&#125;</span><br><span class="line">	<span class="comment">//成员函数</span></span><br><span class="line">	<span class="function"><span class="type">char</span> <span class="title">get</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> contents[cursor]; &#125;		<span class="comment">//隐式内联</span></span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">char</span> <span class="title">get</span><span class="params">(pos ht, pos wd)</span> <span class="type">const</span></span>;				<span class="comment">//显示内联，并且重载get函数</span></span><br><span class="line">	<span class="function">Screen&amp; <span class="title">move</span><span class="params">(pos r, pos c)</span></span>;							<span class="comment">//能在之后设置为内联</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	pos cursor = <span class="number">0</span>;</span><br><span class="line">	pos height = <span class="number">0</span>, width = <span class="number">0</span>;</span><br><span class="line">	string contens;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//定义内联函数</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Screen&amp; <span class="title">Screen::move</span><span class="params">(pos r, pos c)</span> </span>&#123;				<span class="comment">//在定义处设置为内联</span></span><br><span class="line">	pos row = r * width;</span><br><span class="line">	cursor = row + c;</span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//Screen.cpp</span></span><br><span class="line"><span class="function"><span class="type">char</span> <span class="title">Screen::get</span><span class="params">(pos r, pos c)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">	pos row = r * width;</span><br><span class="line">	<span class="keyword">return</span> contents[row + c];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p> <code>inline</code> 函数在链接的时候仅仅在<strong>单个 cpp 文件</strong>中“可见”，并不是全局“可见”，其实是因为<code> inline</code>函数没有被编译成汇编码，无法用于链接，故inline成员函数应该与类定义在同一个头文件中（内联说明只是向编译器发出一个请求，编译器可以选择忽略这个请求）</p>
+<h4 id="可变数据成员-mutable-data-member"><a href="#可变数据成员-mutable-data-member" class="headerlink" title="可变数据成员(mutable data member)"></a>可变数据成员(mutable data member)</h4><p>在数据成员的定义前加上<code>mutable</code>关键字，即使是const成员函数也可以改变它的值</p>
+<h3 id="返回-this的成员函数"><a href="#返回-this的成员函数" class="headerlink" title="返回*this的成员函数"></a>返回*this的成员函数</h3><ul>
+<li><p>如果函数返回类型是该类的引用，且返回值是*this，这意味着函数返回的是对象本身而非对象的副本</p>
+</li>
+<li><p>const成员函数以引用的形式返回*this时，应该返回一个指向常量的引用（<strong>解引用指向常量的指针将得到一个常量，即使它实际指向的不是常量</strong>）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span>* pci = &amp;i;		<span class="comment">//指向常量的指针，实际指向了普通整数i</span></span><br><span class="line"><span class="type">int</span>&amp; ir = *pci;				<span class="comment">//错误：不能用非常量初始化常量引用</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过重载，得到const和非const两个版本的成员函数</p>
+</li>
+</ul>
+<h4 id="对于公共代码使用私有功能函数"><a href="#对于公共代码使用私有功能函数" class="headerlink" title="对于公共代码使用私有功能函数"></a>对于公共代码使用私有功能函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Screen</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">Screen&amp; <span class="title">display</span><span class="params">(ostream&amp; os)</span> </span>&#123; <span class="built_in">do_display</span>(os); <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">	<span class="function"><span class="type">const</span> Screen&amp; <span class="title">display</span><span class="params">(ostream&amp; os)</span> <span class="type">const</span> </span>&#123; <span class="built_in">do_display</span>(os); <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">do_display</span><span class="params">(ostream&amp; os)</span> <span class="type">const</span> </span>&#123; os &lt;&lt; contents; &#125;		<span class="comment">//内联私有功能函数</span></span><br><span class="line">	string contents;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p>非常量display中，this指向一个非常量对象，故可以返回一个普通引用；常量display中，this指向一个常量对象，解引用后为常量。</p>
+<h3 id="类类型"><a href="#类类型" class="headerlink" title="类类型"></a>类类型</h3><p>类在声明之后，定义之前是一个不完全类型，使用情景有限：</p>
+<ol>
+<li>可以定义指向不完全类型的指针或引用；</li>
+<li>可以<strong>声明</strong>（但不能定义）以不完全类型为参数或返回类型的函数；</li>
+</ol>
+<blockquote>
+<p>一个疑问，对于</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">X</span>&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> parameter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">X <span class="title">display</span><span class="params">(ostream &amp;os)</span></span>&#123;os &lt;&lt; <span class="keyword">this</span>-&gt;parameter; <span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
+<p>函数display在类X内部，其返回类型是否是不完全类型呢？如果是，为什么此时的display可以定义呢？</p>
+<p>一个猜想不一定对，该函数隐式地定义了一个this指针，一切操作都是通过指针完成的；</p>
+</blockquote>
+<p>只有当类全部完成后才算被定义，所以：</p>
+<ul>
+<li>类的成员类型不能是该类自己；</li>
+<li>类的名字出现后，就被认为是声明过了，因此类的成员类型可以是指向它自身类型的引用或指针；</li>
+</ul>
 
     </div>
 

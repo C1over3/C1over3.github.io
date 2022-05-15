@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="类的作用域一个类就是一个作用域，在类外，成员的名字都被隐藏起来了 名字查找与类的定义名字查找(name lookup)步骤：  先在名字所在块寻找声明，只考虑在名字使用之前出现的； 若没有，查找外层作用域； 若最终也没有，则报错；  类的定义步骤：  编译成员声明； 直到类全部可见后才编译函数体；  例如： 12345678typedef double Money;string bal;class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++笔记（十四）——类（二）">
+<meta property="og:url" content="http://example.com/2022/05/11/cpp/cpp-note-14/index.html">
+<meta property="og:site_name" content="Clover&#39;s blog">
+<meta property="og:description" content="类的作用域一个类就是一个作用域，在类外，成员的名字都被隐藏起来了 名字查找与类的定义名字查找(name lookup)步骤：  先在名字所在块寻找声明，只考虑在名字使用之前出现的； 若没有，查找外层作用域； 若最终也没有，则报错；  类的定义步骤：  编译成员声明； 直到类全部可见后才编译函数体；  例如： 12345678typedef double Money;string bal;class">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-11T13:08:50.000Z">
+<meta property="article:modified_time" content="2022-05-14T03:51:15.318Z">
+<meta property="article:author" content="Clover">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/05/11/cpp/cpp-note-14/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/11/cpp/cpp-note-14/","path":"2022/05/11/cpp/cpp-note-14/","title":"C++笔记（十四）——类（二）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C++笔记（十四）——类（二） | Clover's blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Clover's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">迷途的旅人，这里并没有你所寻找的东西</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">1.</span> <span class="nav-text">类的作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E5%AD%97%E6%9F%A5%E6%89%BE%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">名字查找与类的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-constructor"><span class="nav-number">2.</span> <span class="nav-text">构造函数(constructor)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A7%94%E6%89%98%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-delegating-constructor"><span class="nav-number">2.1.</span> <span class="nav-text">委托构造函数(delegating constructor)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">默认构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E5%9C%B0%E7%B1%BB%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.3.</span> <span class="nav-text">隐式地类类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E7%B1%BB-aggregate-class"><span class="nav-number">2.4.</span> <span class="nav-text">聚合类(aggregate class)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E5%80%BC%E5%B8%B8%E9%87%8F%E7%B1%BB"><span class="nav-number">2.5.</span> <span class="nav-text">字面值常量类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#constexpr%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.5.1.</span> <span class="nav-text">constexpr构造函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="nav-number">3.</span> <span class="nav-text">类的静态成员</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Clover"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Clover</p>
+  <div class="site-description" itemprop="description">似乎还未到境界...</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/11/cpp/cpp-note-14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C++笔记（十四）——类（二） | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++笔记（十四）——类（二）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-11 21:08:50" itemprop="dateCreated datePublished" datetime="2022-05-11T21:08:50+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-14 11:51:15" itemprop="dateModified" datetime="2022-05-14T11:51:15+08:00">2022-05-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="类的作用域"><a href="#类的作用域" class="headerlink" title="类的作用域"></a>类的作用域</h2><p>一个类就是一个作用域，在类外，成员的名字都被隐藏起来了</p>
+<h3 id="名字查找与类的定义"><a href="#名字查找与类的定义" class="headerlink" title="名字查找与类的定义"></a>名字查找与类的定义</h3><p>名字查找(name lookup)步骤：</p>
+<ol>
+<li>先在名字所在块寻找声明，只考虑在名字使用之前出现的；</li>
+<li>若没有，查找外层作用域；</li>
+<li>若最终也没有，则报错；</li>
+</ol>
+<p>类的定义步骤：</p>
+<ol>
+<li>编译成员声明；</li>
+<li>直到类全部可见后才编译函数体；</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">double</span> Money;</span><br><span class="line">string bal;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Accout</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Money <span class="title">balance</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> bal;&#125;<span class="comment">//先在类Accout内寻找Money声明，没找到；于是匹配到typedef语句</span></span><br><span class="line"><span class="keyword">private</span>:						<span class="comment">//类完全可见后才编译函数体，return 返回名为bal的成员而非string对象</span></span><br><span class="line">    Money bal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><em>练习7.35</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> string Type;</span><br><span class="line"><span class="function">Type <span class="title">initVal</span><span class="params">()</span></span>;				<span class="comment">//这里的Type等价于string</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Exercise</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">typedef</span> <span class="type">double</span> Type;</span><br><span class="line">	<span class="function">Type <span class="title">setVal</span><span class="params">(Type)</span></span>;		<span class="comment">//这里的Type等价于double</span></span><br><span class="line">	<span class="function">Type <span class="title">initVal</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> val;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Type <span class="title">Exercise::setVal</span><span class="params">(Type parm)</span> </span>&#123;	<span class="comment">//第一个Type等价于string，第二个等价于double</span></span><br><span class="line">	val = parm + <span class="built_in">initVal</span>();	<span class="comment">//这里的initVal()应该是类内的initVal()，因为setVal前声明了作用域</span></span><br><span class="line">	<span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Exercise::Type <span class="title">Exercise::setVal</span><span class="params">(Type parm)</span> </span>&#123;</span><br><span class="line">	val = parm + <span class="built_in">initVal</span>();</span><br><span class="line">	<span class="keyword">return</span> val;				<span class="comment">//val是一个int，不能转换为string，可以转换为double</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，题目中的<code>initval()</code>函数未定义，需要添加定义</p>
+<h2 id="构造函数-constructor"><a href="#构造函数-constructor" class="headerlink" title="构造函数(constructor)"></a>构造函数(constructor)</h2><p>构造函数用于初始化类对象的数据成员，其名字和类名相同，除了没有返回类型，其他与普通函数相同（也可以重载）；</p>
+<p>默认情况下，C++编译器至少给一个类添加了3个函数：</p>
+<ol>
+<li>默认构造函数（无参，函数体空）；</li>
+<li>默认析构函数（无参，函数体空）；</li>
+<li>默认拷贝构造函数，对属性进行值拷贝；</li>
+</ol>
+<p>注意事项：</p>
+<ul>
+<li>如果用户定义有参构造函数，C++不再提供默认构造函数，但会提供默认拷贝构造函数；</li>
+<li>如果用户定义拷贝构造函数，C++不再提供其他构造函数；</li>
+<li>类中包含一个其他类类型成员，且这个成员的类型没有默认构造函数时，编译器无法初始化该成员</li>
+<li>若一个构造函数为所<strong>有参数都提供了默认实参</strong>，则它实际上也定义了默认构造函数；</li>
+</ul>
+<hr>
+<p><em>练习7.39</em></p>
+<p>当两者都使用默认实参时，实际上两者的<strong>所有参数都有了默认实参</strong>，即定义了两个默认构造函数，而编译器无法判断哪个默认构造函数更好，出现了<strong>二义性错误</strong>。</p>
+<hr>
+<h3 id="委托构造函数-delegating-constructor"><a href="#委托构造函数-delegating-constructor" class="headerlink" title="委托构造函数(delegating constructor)"></a>委托构造函数(delegating constructor)</h3><p>C++11新标准中，委托构造函数可以使用它所属类的其他构造函数执行它自己的初始化过程：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Sales_data</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//非委托构造函数</span></span><br><span class="line">	<span class="built_in">Sales_data</span>(<span class="type">const</span> string&amp; s, <span class="type">unsigned</span> n, <span class="type">double</span> p):<span class="built_in">bookNo</span>(s), <span class="built_in">units_sold</span>(n),<span class="built_in">revenue</span>(p*n)&#123;&#125;</span><br><span class="line">    <span class="comment">//委托构造函数</span></span><br><span class="line">    <span class="built_in">Sales_data</span>(): <span class="built_in">Sales_data</span>(<span class="string">&quot;&quot;</span>, <span class="number">0</span>, <span class="number">0</span>)&#123;&#125;</span><br><span class="line">	<span class="built_in">Sales_data</span>(<span class="type">const</span> string&amp; s): <span class="built_in">Sales_data</span>(s, <span class="number">0</span>, <span class="number">0</span>)&#123;&#125;		<span class="comment">//利用第一个构造函数执行初始化</span></span><br><span class="line">    <span class="built_in">Sales_data</span>(istream&amp; is): <span class="built_in">Salse_data</span>()&#123; <span class="built_in">read</span>(is, *<span class="keyword">this</span>); &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<p> 当构造函数委托给另一个构造函数时，<strong>受委托的构造函数的初始值列表及其函数体先被执行</strong>，接着才会执行到委托函数的函数体</p>
+<hr>
+<h3 id="默认构造函数"><a href="#默认构造函数" class="headerlink" title="默认构造函数"></a>默认构造函数</h3><p><em>练习7.43</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NoDefault</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">NoDefault</span>(<span class="type">int</span> i) : <span class="built_in">para</span>(i), s1&#123;<span class="built_in">static_cast</span>&lt;<span class="type">char</span>&gt;(i)&#125; &#123;&#125;</span><br><span class="line">	<span class="function">NoDefault <span class="title">display</span><span class="params">()</span> </span>&#123; cout &lt;&lt; <span class="keyword">this</span>-&gt;para &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; s1 &lt;&lt; endl; <span class="keyword">return</span> *<span class="keyword">this</span>;&#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">int</span> para;</span><br><span class="line">	string s1;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">C</span>():<span class="built_in">object</span>(<span class="number">5</span>) &#123; &#125;		<span class="comment">//因为NoDefault类没有默认构造函数，所以必须调用接受int的构造函数</span></span><br><span class="line">	<span class="function">C <span class="title">display</span><span class="params">()</span> </span>&#123; <span class="keyword">this</span>-&gt;object.<span class="built_in">display</span>(); <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	NoDefault object;		<span class="comment">//注意object应该是一个对象，后面不能加()</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="隐式地类类型转换"><a href="#隐式地类类型转换" class="headerlink" title="隐式地类类型转换"></a>隐式地类类型转换</h3><p>通过一个实参调用的构造函数定义了一条从构造函数的参数类型向类类型隐式转换的规则（<strong>但是只允许一步隐式类型转换</strong>）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string null_book = <span class="string">&quot;9-999-99999-9&quot;</span>;</span><br><span class="line">item.<span class="built_in">combine</span>(null_book);	<span class="comment">//编译器会先调用Sales_data(null_book)生成一个临时的Sales_data对象，然后将它传递给combine</span></span><br><span class="line">Sales_data item1 = null_book;	<span class="comment">//正确：发生了隐式类型转换</span></span><br><span class="line">item.<span class="built_in">combine</span>(<span class="string">&quot;9-999-99999-9&quot;</span>);	<span class="comment">//错误：编译器值允许一步类型转换，不能把&quot;9-999-99999-9&quot;转换成string再转换成Sales_data</span></span><br><span class="line">item.<span class="built_in">combine</span>(<span class="built_in">string</span>(<span class="string">&quot;9-999-99999-9&quot;</span>));	<span class="comment">//正确：进行了一次显式转换和一次隐式转换</span></span><br></pre></td></tr></table></figure>
+
+<p>可以用<code>explicit</code>关键字（<strong>只能在类内声明，类外定义时不应重复</strong>）抑制构造函数的隐式转换：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Sales_data</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="built_in">Sales_data</span>(<span class="type">const</span> string&amp; s, <span class="type">unsigned</span> n, <span class="type">double</span> p):<span class="built_in">bookNo</span>(s), <span class="built_in">units_sold</span>(n),<span class="built_in">revenue</span>(p*n)&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">explicit</span> <span class="title">Sales_data</span><span class="params">(<span class="type">const</span> string&amp; s)</span>:bookNo(s)&#123;</span>&#125;	<span class="comment">//如此就不能用于隐式创建Sales_data对象</span></span><br><span class="line">	<span class="function"><span class="keyword">explicit</span> <span class="title">Sales_data</span><span class="params">(istream&amp; is)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">explicit</span> <span class="title">Sales_data::Sales_data</span><span class="params">(istream&amp; is)</span></span>&#123; 			<span class="comment">//错误：不应该出现explicit</span></span><br><span class="line">    <span class="built_in">read</span>(is, *<span class="keyword">this</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="聚合类-aggregate-class"><a href="#聚合类-aggregate-class" class="headerlink" title="聚合类(aggregate class)"></a>聚合类(aggregate class)</h3><p>满足以下条件的类称为聚合类：</p>
+<ul>
+<li>所有成员都是public；</li>
+<li>没有定义任何构造函数；</li>
+<li>没有类内初值；</li>
+<li>没有基类或virtual函数;</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Data</span>&#123;</span><br><span class="line">    <span class="type">int</span> ival;</span><br><span class="line">    string s;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以列表初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Data val1 = &#123;<span class="number">0</span>, <span class="string">&quot;Anna&quot;</span>&#125;;		<span class="comment">//顺序必须一致</span></span><br><span class="line">Data val2= &#123;<span class="string">&quot;Anna&quot;</span>, <span class="number">0</span>&#125;;			<span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字面值常量类"><a href="#字面值常量类" class="headerlink" title="字面值常量类"></a>字面值常量类</h3><ul>
+<li>数据成员必须都是字面值类型（算术类型、引用、指针都属于字面值类型）；</li>
+<li>类必须至少含有一个constexpr构造函数；</li>
+<li>如果一个数据成员含有类内初始值，其必须是常量表达式；</li>
+<li>若成员属于某种类类型，则初始值必须使用成员自己的constexpr构造函数；</li>
+<li>类必须使用析构函数的默认定义；</li>
+</ul>
+<h4 id="constexpr构造函数"><a href="#constexpr构造函数" class="headerlink" title="constexpr构造函数"></a>constexpr构造函数</h4><p>尽管构造函数不能是const的，但字面值常量类的构造函数可以是constexpr的，并且一个字面值常量类至少提供一个constexpr构造函数；</p>
+<hr>
+<p><em>练习7.54</em></p>
+<p>不应该，因为constexpr函数的函数体中）必须有且只有一条return 语句（constexpr构造函数除外）。</p>
+<p><em>练习7.55</em></p>
+<p>不是，因为string不是字面值类型。</p>
+<hr>
+<h2 id="类的静态成员"><a href="#类的静态成员" class="headerlink" title="类的静态成员"></a>类的静态成员</h2><p>使用关键字<code>static</code>可以声明静态成员，静态成员存在于任何对象之外（<strong>只存在一个静态成员对象且由所有类对象共享</strong>），静态成员函数也不与任何对象绑定在一起（<strong>没有this指针</strong>，因此在静态成员函数里调用的非静态成员函数也不能使用this指针）。</p>
+<p>对于类Account：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Account</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">calculate</span><span class="params">()</span> </span>&#123; amount += amount * interestRate; &#125;</span><br><span class="line">	<span class="function"><span class="type">static</span> <span class="type">double</span> <span class="title">rate</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> interestRate; &#125;	<span class="comment">//内联静态成员函数定义</span></span><br><span class="line">	<span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">rate</span><span class="params">(<span class="type">double</span>)</span></span>;						<span class="comment">//静态成员函数声明</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	string owner;</span><br><span class="line">	<span class="type">double</span> amount;</span><br><span class="line">	<span class="type">static</span> <span class="type">double</span> interestRate;						<span class="comment">//静态成员</span></span><br><span class="line">	<span class="function"><span class="type">static</span> <span class="type">double</span> <span class="title">initRate</span><span class="params">()</span></span>;						<span class="comment">//私有静态成员函数声明</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可以使用作用域运算符直接访问静态成员：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> r;</span><br><span class="line">r = Account::<span class="built_in">rate</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可以使用类的对象、引用或指针来访问静态成员：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Account ac1;</span><br><span class="line">Account *ac2 = &amp;ac1;</span><br><span class="line">r = ac1.<span class="built_in">rate</span>();</span><br><span class="line">r = ac2-&gt;<span class="built_in">rate</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>成员函数不用作用域运算符就能直接使用静态成员；</li>
+<li>可以在类外定义静态函数，<strong>此时不应重复<code>static</code>关键字</strong>；</li>
+<li>静态成员不属于类的任何一个对象，它们不是在创建类的对象时被定义，因此<strong>必须在类外</strong>定义和初始化静态成员；</li>
+<li>类似于全局变量和函数的静态变量，被定义后一直存在于程序的整个生命周期中；</li>
+<li>可以为静态成员提供const整数类型的类内初始值，但要求该静态成员必须是constexpr类型；</li>
+<li><strong>静态成员可以是其所属的类类型</strong>（非静态只能是引用或指针）；</li>
+<li><strong>静态成员可以作为类内函数的默认实参</strong>（非静态不可，在定义类对象之前，无法真正提供一个对象以获取成员的值）；</li>
+</ul>
+<hr>
+<p><em>练习7.58</em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//example.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">static</span> <span class="type">double</span> rate = <span class="number">6.5</span>;			<span class="comment">//错误：静态成员必须在类外初始化</span></span><br><span class="line">    <span class="type">static</span> <span class="type">const</span> <span class="type">int</span> vecSize = <span class="number">20</span>;		<span class="comment">//正确：此处vecSize应用场景仅限可以替换它的值的情况，此时不需要区分const和constexpr</span></span><br><span class="line">    <span class="function"><span class="type">static</span> vector&lt;<span class="type">double</span>&gt; <span class="title">vec</span><span class="params">(vecSize)</span></span>;	<span class="comment">//错误：会被识别为定义了一个返回类型为vector&lt;double&gt;的静态成员函数</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//example.C</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;example.h&quot;</span></span></span><br><span class="line"><span class="type">double</span> Example::rate;					<span class="comment">//错误：此处应该初始化</span></span><br><span class="line">vector&lt;<span class="type">double</span>&gt; Example::vec;			<span class="comment">//据题意应改为vector&lt;double&gt; Example::vec(vecSize);</span></span><br><span class="line"><span class="comment">//最好再加一句对vecSize的定义</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/10/FPGA/FPGA-6-I2C/" rel="prev" title="学习FPGA（六）——I2C协议">
+                  <i class="fa fa-chevron-left"></i> 学习FPGA（六）——I2C协议
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/12/cpp/cpp-game-1/" rel="next" title="C++游戏开发（一）">
+                  C++游戏开发（一） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Clover</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>
