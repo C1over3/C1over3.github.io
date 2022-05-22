@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,97 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/23/cpp/cpp-note-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Clover">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Clover's blog">
+      <meta itemprop="description" content="似乎还未到境界...">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Clover's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/23/cpp/cpp-note-4/" class="post-title-link" itemprop="url">C++笔记（四）——自定义数据结构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-23 20:58:08" itemprop="dateCreated datePublished" datetime="2022-04-23T20:58:08+08:00">2022-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-10 17:46:08" itemprop="dateModified" datetime="2022-05-10T17:46:08+08:00">2022-05-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="自定义数据结构"><a href="#自定义数据结构" class="headerlink" title="自定义数据结构"></a>自定义数据结构</h1><p>数据结构是把一组相关的数据元素组织起来然后使用它们的策略和方法，如Sales_item类，把书本的ISBN编号、售出量和销售收入等数据组织在了一起，并且提供如isbn函数、&gt;&gt;、&lt;&lt;、+、+&#x3D;等运算在内的一系列操作，Sales_item类就是一个数据结构。</p>
+<p>C++允许用户以类的形式自定义数据类型。</p>
+<h2 id="定义Sales-data类型"><a href="#定义Sales-data类型" class="headerlink" title="定义Sales_data类型"></a>定义Sales_data类型</h2><p>在第七章之前，都使用struct（结构体）来自定义数据类型：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line">    std::string bookNo;</span><br><span class="line">    <span class="type">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">    <span class="type">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line">&#125;;									<span class="comment">//注意：类体右侧的表示结束的花括号后必须写一个分号，因为类体后面可以紧跟变量名以示对该类型对象的定义</span></span><br></pre></td></tr></table></figure>
+
+<p>{}中的三条语句定义了struct的数据成员(data member)，C++11新标准规定，可以为数据成员提供一个类内初始值(in-class initializer)，没有初始值的成员将被默认初始化。</p>
+<p><strong>千万牢记，定义数据类型的{}之后一定要有分号，而定义函数的{}之后则不需要分号。</strong></p>
+<p>定义该类型的对象：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;<span class="comment">/*...*/</span>&#125; accum, trans, *salesptr;</span><br><span class="line"><span class="comment">//以下两条语句等同于上一条语句，但更易读一些</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;<span class="comment">/*...*/</span>&#125;;</span><br><span class="line">Sales_data accum, trans, *salesptr;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/23/cpp/cpp-note-4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
