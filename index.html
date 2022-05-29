@@ -2,10 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -14,15 +13,16 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
-  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+  </script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="似乎还未到境界...">
+  <meta name="description" content="似乎还未到境界...">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Clover&#39;s blog">
 <meta property="og:url" content="http://example.com/index.html">
@@ -32,46 +32,72 @@
 <meta property="article:author" content="Clover">
 <meta name="twitter:card" content="summary">
 
-
 <link rel="canonical" href="http://example.com/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Clover's blog</title>
+  <title>Clover's blog</title>
   
 
 
 
 
 
+
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Clover's blog</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">迷途的旅人，这里并没有你所寻找的东西</p>
   </div>
@@ -85,8 +111,34 @@
 
 
 
+
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -97,22 +149,23 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
+    <div class="popup search-popup">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close" role="button">
+  <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
   </div>
 </div>
 
@@ -120,128 +173,61 @@
   </div>
 
 </div>
-        
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Clover"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Clover</p>
-  <div class="site-description" itemprop="description">似乎还未到境界...</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">30</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
     </header>
 
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
+  <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
+          <div class="content index posts-expand">
+            
+      
   
   
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/17/leetcode/leetcode-1-V2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/17/leetcode/leetcode-1-V2/" class="post-title-link" itemprop="url">leetcode（一）</a>
+          
+            <a href="/2022/05/17/leetcode/leetcode-1-V2/" class="post-title-link" itemprop="url">leetcode（一）</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-17 22:20:48" itemprop="dateCreated datePublished" datetime="2022-05-17T22:20:48+08:00">2022-05-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-20 20:47:38" itemprop="dateModified" datetime="2022-05-20T20:47:38+08:00">2022-05-20</time>
-    </span>
+              <time title="创建时间：2022-05-17 22:20:48" itemprop="dateCreated datePublished" datetime="2022-05-17T22:20:48+08:00">2022-05-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-20 20:47:38" itemprop="dateModified" datetime="2022-05-20T20:47:38+08:00">2022-05-20</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -250,6 +236,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h3 id="2-两数相加"><a href="#2-两数相加" class="headerlink" title="2.两数相加"></a>2.两数相加</h3><div class="tabs" id="tab-v2"><ul class="nav-tabs"><li class="tab"><a href="#tab-v2-1">初见</a></li><li class="tab"><a href="#tab-v2-2">优化</a></li><li class="tab"><a href="#tab-v2-3">折叠表格</a></li></ul><div class="tab-content"><div class="tab-pane" id="tab-v2-1"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* sum;	<span class="comment">//sum是指向头结点的指针，sum-&gt;next是头指针，故函数的返回值应为sum-&gt;next</span></span><br><span class="line">        ListNode* p, * s;</span><br><span class="line">        p = <span class="keyword">new</span> ListNode;</span><br><span class="line">        sum = p;</span><br><span class="line">        <span class="type">int</span> Ci = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//循环至l1或l2其中一个为空（即到达尾段）</span></span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            s = <span class="keyword">new</span> ListNode;		<span class="comment">//先为s分配一块新的内存区域</span></span><br><span class="line">            s-&gt;val = (l1-&gt;val + l2-&gt;val + Ci) % <span class="number">10</span>;  <span class="comment">//计算两者之和（加上进位）</span></span><br><span class="line">            Ci = (l1-&gt;val + l2-&gt;val + Ci) / <span class="number">10</span>;      <span class="comment">//计算进位</span></span><br><span class="line">            p-&gt;next = s;			<span class="comment">//将新的s连接至sum的尾端</span></span><br><span class="line"></span><br><span class="line">            p = s;					<span class="comment">//p存储此时的s</span></span><br><span class="line">            l1 = l1-&gt;next;			<span class="comment">//将l1，l2移动到下一个位置</span></span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//l2和l1一样长时</span></span><br><span class="line">        <span class="keyword">if</span>(l1 == <span class="literal">nullptr</span> &amp;&amp; l2 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(Ci)&#123;		<span class="comment">//产生进位时，sum需要再延长一个结点</span></span><br><span class="line">                s = <span class="keyword">new</span> ListNode;</span><br><span class="line">                s-&gt;val = Ci;</span><br><span class="line">                p-&gt;next = s;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//l1比l2更长时</span></span><br><span class="line">        <span class="keyword">if</span>(l1 != <span class="literal">nullptr</span> &amp;&amp; l2 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(l1 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                s = <span class="keyword">new</span> ListNode;</span><br><span class="line">                s-&gt;val = (l1-&gt;val + Ci) % <span class="number">10</span>;  <span class="comment">//录入数据</span></span><br><span class="line">                Ci = (l1-&gt;val + Ci) / <span class="number">10</span>;      <span class="comment">//进位</span></span><br><span class="line">                p-&gt;next = s;</span><br><span class="line"></span><br><span class="line">                p = s;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Ci)&#123;				<span class="comment">//产生进位时，sum需要再延长一个结点</span></span><br><span class="line">                s = <span class="keyword">new</span> ListNode;</span><br><span class="line">                s-&gt;val = Ci;</span><br><span class="line">                p-&gt;next = s;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//l2比l1更长时</span></span><br><span class="line">        <span class="keyword">if</span>(l1 == <span class="literal">nullptr</span> &amp;&amp; l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                s = <span class="keyword">new</span> ListNode;</span><br><span class="line">                s-&gt;val = (l2-&gt;val + Ci) % <span class="number">10</span>;</span><br><span class="line">                Ci = (l2-&gt;val + Ci) / <span class="number">10</span>;		<span class="comment">//计算进位</span></span><br><span class="line">                p-&gt;next = s;</span><br><span class="line"></span><br><span class="line">                p = s;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Ci)&#123;				<span class="comment">//产生进位时，sum需要再延长一个结点</span></span><br><span class="line">                s = <span class="keyword">new</span> ListNode;</span><br><span class="line">                s-&gt;val = Ci;</span><br><span class="line">                p-&gt;next = s;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="tab-v2-2"><p>参考了孙哥的题解后，优化代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* dummyHead = <span class="keyword">new</span> ListNode;</span><br><span class="line">        ListNode* pre = dummyHead;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="literal">nullptr</span> || l2 != <span class="literal">nullptr</span> || t != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(l1 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                t += l1-&gt;val;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(l2 != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                t += l2-&gt;val;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pre-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(t%<span class="number">10</span>);</span><br><span class="line">            pre = pre-&gt;next;</span><br><span class="line">            t /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="tab-v2-3"></div></div></div>
 
@@ -258,11 +246,9 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> maxStr = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> map[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(!s.<span class="built_in">empty</span>() &amp;&amp; s.<span class="built_in">begin</span>() + end != s.<span class="built_in">end</span>())&#123;	<span class="comment">//确保不会溢出</span></span><br><span class="line">            <span class="keyword">while</span>(map[<span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(s[end])] == <span class="number">1</span>)&#123;		<span class="comment">//强制类型转换将字符转为ASCII码</span></span><br><span class="line">                map[<span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(s[start])] = <span class="number">0</span>;</span><br><span class="line">                ++start;	<span class="comment">//移动子字符串直到子字符串中不含有与待输入的字符相同的字符为止</span></span><br><span class="line">            &#125;</span><br><span class="line">            map[<span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(s[end])] = <span class="number">1</span>;	<span class="comment">//将待输入的字符输入到子字符串中</span></span><br><span class="line">            ++end;			<span class="comment">//移动到下一个待输入字符</span></span><br><span class="line">            <span class="comment">//end = start时，子字符串实际上包含一个字符（即s[start]），故此时的end - start就是子字符串的长度</span></span><br><span class="line">            maxStr = maxStr &gt; (end - start) ? maxStr : (end - start);	</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="tab-v3-4"></div></div></div>
 
 <h3 id="4-寻找两个正序数组的中位数（待复习）"><a href="#4-寻找两个正序数组的中位数（待复习）" class="headerlink" title="4. 寻找两个正序数组的中位数（待复习）"></a>4. 寻找两个正序数组的中位数（待复习）</h3><p>没做出，放个题解方便复习：</p>
-<details class="note info no-icon"><summary><p>code</p>
-</summary>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.<span class="built_in">size</span>() &gt; nums2.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">findMedianSortedArrays</span>(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> m = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = nums2.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = m;</span><br><span class="line">        <span class="comment">// median1：前一部分的最大值</span></span><br><span class="line">        <span class="comment">// median2：后一部分的最小值</span></span><br><span class="line">        <span class="type">int</span> median1 = <span class="number">0</span>, median2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="comment">// 前一部分包含 nums1[0 .. i-1] 和 nums2[0 .. j-1]</span></span><br><span class="line">            <span class="comment">// 后一部分包含 nums1[i .. m-1] 和 nums2[j .. n-1]</span></span><br><span class="line">            <span class="type">int</span> i = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> j = (m + n + <span class="number">1</span>) / <span class="number">2</span> - i;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// nums_im1, nums_i, nums_jm1, nums_j 分别表示 nums1[i-1], nums1[i], nums2[j-1], nums2[j]</span></span><br><span class="line">            <span class="type">int</span> nums_im1 = (i == <span class="number">0</span> ? INT_MIN : nums1[i - <span class="number">1</span>]);</span><br><span class="line">            <span class="type">int</span> nums_i = (i == m ? INT_MAX : nums1[i]);</span><br><span class="line">            <span class="type">int</span> nums_jm1 = (j == <span class="number">0</span> ? INT_MIN : nums2[j - <span class="number">1</span>]);</span><br><span class="line">            <span class="type">int</span> nums_j = (j == n ? INT_MAX : nums2[j]);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums_im1 &lt;= nums_j) &#123;</span><br><span class="line">                median1 = <span class="built_in">max</span>(nums_im1, nums_jm1);</span><br><span class="line">                median2 = <span class="built_in">min</span>(nums_i, nums_j);</span><br><span class="line">                left = i + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (m + n) % <span class="number">2</span> == <span class="number">0</span> ? (median1 + median2) / <span class="number">2.0</span> : median1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-</details>
+<div class="note info no-icon code">
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.<span class="built_in">size</span>() &gt; nums2.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">findMedianSortedArrays</span>(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> m = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = nums2.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = m;</span><br><span class="line">        <span class="comment">// median1：前一部分的最大值</span></span><br><span class="line">        <span class="comment">// median2：后一部分的最小值</span></span><br><span class="line">        <span class="type">int</span> median1 = <span class="number">0</span>, median2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="comment">// 前一部分包含 nums1[0 .. i-1] 和 nums2[0 .. j-1]</span></span><br><span class="line">            <span class="comment">// 后一部分包含 nums1[i .. m-1] 和 nums2[j .. n-1]</span></span><br><span class="line">            <span class="type">int</span> i = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> j = (m + n + <span class="number">1</span>) / <span class="number">2</span> - i;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// nums_im1, nums_i, nums_jm1, nums_j 分别表示 nums1[i-1], nums1[i], nums2[j-1], nums2[j]</span></span><br><span class="line">            <span class="type">int</span> nums_im1 = (i == <span class="number">0</span> ? INT_MIN : nums1[i - <span class="number">1</span>]);</span><br><span class="line">            <span class="type">int</span> nums_i = (i == m ? INT_MAX : nums1[i]);</span><br><span class="line">            <span class="type">int</span> nums_jm1 = (j == <span class="number">0</span> ? INT_MIN : nums2[j - <span class="number">1</span>]);</span><br><span class="line">            <span class="type">int</span> nums_j = (j == n ? INT_MAX : nums2[j]);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums_im1 &lt;= nums_j) &#123;</span><br><span class="line">                median1 = <span class="built_in">max</span>(nums_im1, nums_jm1);</span><br><span class="line">                median2 = <span class="built_in">min</span>(nums_i, nums_j);</span><br><span class="line">                left = i + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (m + n) % <span class="number">2</span> == <span class="number">0</span> ? (median1 + median2) / <span class="number">2.0</span> : median1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          </div>
 
 <h3 id="5-最长回文子串"><a href="#5-最长回文子串" class="headerlink" title="5. 最长回文子串"></a>5. 最长回文子串</h3><div class="tabs" id="tab-v5"><ul class="nav-tabs"><li class="tab"><a href="#tab-v5-1">初见</a></li><li class="tab"><a href="#tab-v5-2">折叠表格</a></li></ul><div class="tab-content"><div class="tab-pane" id="tab-v5-1"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">         string result;</span><br><span class="line">        <span class="type">int</span> lengthOfResult = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> length = s.<span class="built_in">length</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != length; ++i) &#123;</span><br><span class="line">            <span class="type">int</span> j = i;</span><br><span class="line">            <span class="keyword">if</span> (j + <span class="number">1</span> &lt; length &amp;&amp; s[j] == s[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> k = j + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; k &lt; length &amp;&amp; s[j] == s[k]) &#123;</span><br><span class="line">                    --j;</span><br><span class="line">                    ++k;</span><br><span class="line">                &#125;</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">                k -= <span class="number">1</span>;</span><br><span class="line">                result = (lengthOfResult &gt; k - j + <span class="number">1</span>) ? result : s.<span class="built_in">substr</span>(j, k - j + <span class="number">1</span>);</span><br><span class="line">                lengthOfResult = (lengthOfResult &gt; k - j + <span class="number">1</span>) ? lengthOfResult : k - j + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j = i;</span><br><span class="line">            <span class="keyword">if</span> (j + <span class="number">2</span> &lt; length &amp;&amp; s[j] == s[j + <span class="number">2</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> k = j + <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; k &lt; length &amp;&amp; s[j] == s[k]) &#123;</span><br><span class="line">                    --j;</span><br><span class="line">                    ++k;</span><br><span class="line">                &#125;</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">                k -= <span class="number">1</span>;</span><br><span class="line">                result = (lengthOfResult &gt; k - j + <span class="number">1</span>) ? result : s.<span class="built_in">substr</span>(j, k - j + <span class="number">1</span>);</span><br><span class="line">                lengthOfResult = (lengthOfResult &gt; k - j + <span class="number">1</span>) ? lengthOfResult : k - j + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(result.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            result += s[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="tab-v5-2"></div></div></div>
 
@@ -281,60 +267,53 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/14/cpp/cpp-note-15/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/14/cpp/cpp-note-15/" class="post-title-link" itemprop="url">C++笔记（十五）——IO库</a>
+          
+            <a href="/2022/05/14/cpp/cpp-note-15/" class="post-title-link" itemprop="url">C++笔记（十五）——IO库</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-14 11:30:48 / 修改时间：19:22:30" itemprop="dateCreated datePublished" datetime="2022-05-14T11:30:48+08:00">2022-05-14</time>
-    </span>
+              <time title="创建时间：2022-05-14 11:30:48" itemprop="dateCreated datePublished" datetime="2022-05-14T11:30:48+08:00">2022-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-29 11:42:44" itemprop="dateModified" datetime="2022-05-29T11:42:44+08:00">2022-05-29</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -343,7 +322,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="IO库"><a href="#IO库" class="headerlink" title="IO库"></a>IO库</h1>
+
+      
+          <h1 id="IO库"><a href="#IO库" class="headerlink" title="IO库"></a>IO库</h1><h2 id="IO类"><a href="#IO类" class="headerlink" title="IO类"></a>IO类</h2><ul>
+<li><p>IO对象无拷贝或赋值；</p>
+</li>
+<li><p>IO类的条件状态(condition state)；</p>
+<p>badbit：指出流已经崩溃，最右边三位是100；</p>
+<p>failbit：指出一个IO操作失败了，最右边三位是010；</p>
+<p>eofbit：指出流达到了文件结束，最右边三位是001；</p>
+<p>goodbit：指出流未处于错误状态，此值保证为0；</p>
+</li>
+</ul>
+<h2 id="文件输入输出"><a href="#文件输入输出" class="headerlink" title="文件输入输出"></a>文件输入输出</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/14/cpp/cpp-note-15/#more" rel="contents">
@@ -358,60 +349,47 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/12/cpp/cpp-game-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/12/cpp/cpp-game-1/" class="post-title-link" itemprop="url">C++游戏开发（一）</a>
+          
+            <a href="/2022/05/12/cpp/cpp-game-1/" class="post-title-link" itemprop="url">C++游戏开发（一）</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-      <time title="创建时间：2022-05-12 18:29:24 / 修改时间：19:44:15" itemprop="dateCreated datePublished" datetime="2022-05-12T18:29:24+08:00">2022-05-12</time>
-    </span>
+              <time title="创建时间：2022-05-12 18:29:24 / 修改时间：19:44:15" itemprop="dateCreated datePublished" datetime="2022-05-12T18:29:24+08:00">2022-05-12</time>
+            </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -420,6 +398,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h2 id="图形库"><a href="#图形库" class="headerlink" title="图形库"></a>图形库</h2><h4 id="1、easyx"><a href="#1、easyx" class="headerlink" title="1、easyx"></a>1、easyx</h4><p>上手简单，游戏效果较差；</p>
 <h4 id="2、SDL"><a href="#2、SDL" class="headerlink" title="2、SDL"></a>2、SDL</h4><p>专业游戏库，使用不方便；</p>
 <h4 id="3、SFML库"><a href="#3、SFML库" class="headerlink" title="3、SFML库"></a>3、SFML库</h4><p>专业跨平台2D库，使用方便，功能强大；</p>
@@ -439,66 +419,53 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/11/cpp/cpp-note-14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/11/cpp/cpp-note-14/" class="post-title-link" itemprop="url">C++笔记（十四）——类（二）</a>
+          
+            <a href="/2022/05/11/cpp/cpp-note-14/" class="post-title-link" itemprop="url">C++笔记（十四）——类（二）</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-11 21:08:50" itemprop="dateCreated datePublished" datetime="2022-05-11T21:08:50+08:00">2022-05-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-14 11:51:15" itemprop="dateModified" datetime="2022-05-14T11:51:15+08:00">2022-05-14</time>
-    </span>
+              <time title="创建时间：2022-05-11 21:08:50" itemprop="dateCreated datePublished" datetime="2022-05-11T21:08:50+08:00">2022-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-14 11:51:15" itemprop="dateModified" datetime="2022-05-14T11:51:15+08:00">2022-05-14</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -507,6 +474,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h2 id="类的作用域"><a href="#类的作用域" class="headerlink" title="类的作用域"></a>类的作用域</h2><p>一个类就是一个作用域，在类外，成员的名字都被隐藏起来了</p>
 <h3 id="名字查找与类的定义"><a href="#名字查找与类的定义" class="headerlink" title="名字查找与类的定义"></a>名字查找与类的定义</h3><p>名字查找(name lookup)步骤：</p>
 <ol>
@@ -537,60 +506,47 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/10/FPGA/FPGA-6-I2C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/10/FPGA/FPGA-6-I2C/" class="post-title-link" itemprop="url">学习FPGA（六）——I2C协议</a>
+          
+            <a href="/2022/05/10/FPGA/FPGA-6-I2C/" class="post-title-link" itemprop="url">学习FPGA（六）——I2C协议</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-      <time title="创建时间：2022-05-10 14:03:58 / 修改时间：15:46:17" itemprop="dateCreated datePublished" datetime="2022-05-10T14:03:58+08:00">2022-05-10</time>
-    </span>
+              <time title="创建时间：2022-05-10 14:03:58 / 修改时间：15:46:17" itemprop="dateCreated datePublished" datetime="2022-05-10T14:03:58+08:00">2022-05-10</time>
+            </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -599,6 +555,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="I2C协议"><a href="#I2C协议" class="headerlink" title="I2C协议"></a>I2C协议</h1><img src="/2022/05/10/FPGA/FPGA-6-I2C/1652164312734.png" class width="1652164312734">
 
 <p>主控芯片向总线上发出指令，<strong>芯片自己判断是否发给自己（通过地址判断）</strong>，<strong>读操作、写操作</strong></p>
@@ -617,66 +575,53 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/09/cpp/cpp-note-13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/09/cpp/cpp-note-13/" class="post-title-link" itemprop="url">C++笔记（十三）——类（一）</a>
+          
+            <a href="/2022/05/09/cpp/cpp-note-13/" class="post-title-link" itemprop="url">C++笔记（十三）——类（一）</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-09 17:50:39" itemprop="dateCreated datePublished" datetime="2022-05-09T17:50:39+08:00">2022-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-14 01:21:54" itemprop="dateModified" datetime="2022-05-14T01:21:54+08:00">2022-05-14</time>
-    </span>
+              <time title="创建时间：2022-05-09 17:50:39" itemprop="dateCreated datePublished" datetime="2022-05-09T17:50:39+08:00">2022-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-14 01:21:54" itemprop="dateModified" datetime="2022-05-14T01:21:54+08:00">2022-05-14</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -685,6 +630,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>类的基本思想是<strong>数据抽象</strong>(data abstraction)和<strong>封装</strong>(encapsulation)，数据抽象是一种依赖于<strong>接口</strong>(interface)和<strong>实现</strong>(implementation)分离的编程（以及设计）技术；封装隐藏了类的实现细节，实现了类的接口和实现的分离。</p>
 <p>类的用户只能使用接口而无法访问实现部分。</p>
 <h2 id="定义抽象数据类型-abstract-data-type"><a href="#定义抽象数据类型-abstract-data-type" class="headerlink" title="定义抽象数据类型(abstract data type)"></a>定义抽象数据类型(abstract data type)</h2><h3 id="设计Sales-data类"><a href="#设计Sales-data类" class="headerlink" title="设计Sales_data类"></a>设计Sales_data类</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Sales_data</span>&#123;</span><br><span class="line">	string BookNo;</span><br><span class="line">	<span class="type">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">	<span class="type">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">string <span class="title">isbn</span><span class="params">()</span> <span class="type">const</span> </span>&#123;<span class="keyword">return</span> <span class="keyword">this</span>-&gt;BookNo;&#125;</span><br><span class="line">	<span class="function">Sales_data&amp; <span class="title">combine</span><span class="params">(<span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">double</span> <span class="title">avg_price</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//Sales_data的非成员接口函数</span></span><br><span class="line"><span class="function">Sales_data <span class="title">add</span><span class="params">(<span class="type">const</span> Sales_data&amp;, <span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line"><span class="function">ostream&amp; <span class="title">print</span><span class="params">(ostream&amp;, <span class="type">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line"><span class="function">istream&amp; <span class="title">read</span><span class="params">(istream&amp;, Sales_data&amp;)</span></span>;</span><br></pre></td></tr></table></figure>
@@ -706,60 +653,47 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/09/cpp/cpp-note-12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/09/cpp/cpp-note-12/" class="post-title-link" itemprop="url">C++笔记（十二）——函数（二）</a>
+          
+            <a href="/2022/05/09/cpp/cpp-note-12/" class="post-title-link" itemprop="url">C++笔记（十二）——函数（二）</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-      <time title="创建时间：2022-05-09 12:16:01 / 修改时间：17:49:56" itemprop="dateCreated datePublished" datetime="2022-05-09T12:16:01+08:00">2022-05-09</time>
-    </span>
+              <time title="创建时间：2022-05-09 12:16:01 / 修改时间：17:49:56" itemprop="dateCreated datePublished" datetime="2022-05-09T12:16:01+08:00">2022-05-09</time>
+            </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -768,6 +702,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h2 id="重载函数"><a href="#重载函数" class="headerlink" title="重载函数"></a>重载函数</h2><p>如果同一作用域内的几个函数名字相同但形参列表不同（<strong>形参数量或类型有所不同</strong>），称之为重载(overloaded)函数：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *cp)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> <span class="type">int</span> *beg, <span class="type">const</span> <span class="type">int</span> *end)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> <span class="type">int</span> ia[], <span class="type">size_t</span> size)</span></span>;</span><br></pre></td></tr></table></figure>
 
@@ -796,66 +732,53 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/08/cpp/cpp-note-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/08/cpp/cpp-note-11/" class="post-title-link" itemprop="url">C++笔记（十一）——函数（一）</a>
+          
+            <a href="/2022/05/08/cpp/cpp-note-11/" class="post-title-link" itemprop="url">C++笔记（十一）——函数（一）</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-08 15:47:54" itemprop="dateCreated datePublished" datetime="2022-05-08T15:47:54+08:00">2022-05-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-09 12:16:46" itemprop="dateModified" datetime="2022-05-09T12:16:46+08:00">2022-05-09</time>
-    </span>
+              <time title="创建时间：2022-05-08 15:47:54" itemprop="dateCreated datePublished" datetime="2022-05-08T15:47:54+08:00">2022-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-09 12:16:46" itemprop="dateModified" datetime="2022-05-09T12:16:46+08:00">2022-05-09</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -864,6 +787,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="函数-function"><a href="#函数-function" class="headerlink" title="函数(function)"></a>函数(function)</h1><p>C++中允许重载函数，也就是几个不同的函数可以使用同一个名字，程序员需要清楚地知道编译器如何从函数的若干重载形式中选取一个与调用匹配的版本。</p>
 <h2 id="函数基础"><a href="#函数基础" class="headerlink" title="函数基础"></a>函数基础</h2><p>一个典型的函数定义包括一下部分：返回类型、函数名字、由0个或多个形参(parameter)组成的列表以及函数体：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fact</span><span class="params">(<span class="type">int</span> val)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(val &gt; <span class="number">1</span>)</span><br><span class="line">        ret *= val--;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -888,66 +813,53 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/07/cpp/cpp-note-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/07/cpp/cpp-note-10/" class="post-title-link" itemprop="url">C++笔记（十）——语句</a>
+          
+            <a href="/2022/05/07/cpp/cpp-note-10/" class="post-title-link" itemprop="url">C++笔记（十）——语句</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-07 13:52:13" itemprop="dateCreated datePublished" datetime="2022-05-07T13:52:13+08:00">2022-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-08 15:46:15" itemprop="dateModified" datetime="2022-05-08T15:46:15+08:00">2022-05-08</time>
-    </span>
+              <time title="创建时间：2022-05-07 13:52:13" itemprop="dateCreated datePublished" datetime="2022-05-07T13:52:13+08:00">2022-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-08 15:46:15" itemprop="dateModified" datetime="2022-05-08T15:46:15+08:00">2022-05-08</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -956,6 +868,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>和绝大多是语言一样，C++提供条件执行语句、重复执行相同代码的循环语句和用于中断当前控制流的跳转语句。</p>
 <h2 id="简单语句"><a href="#简单语句" class="headerlink" title="简单语句"></a>简单语句</h2><p>在一个语法上需要而逻辑上不需要语句的地方会用到空语句<code> ;</code></p>
 <p>在一个语法上只需要一条语句而逻辑上需要多条语句的地方会用到块<code>&#123; /*many statements*/ &#125;</code>，一个块就是一个作用域，<u>块的后面不需要分号</u>。</p>
@@ -976,66 +890,53 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/06/cpp/cpp-note-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Clover">
+      <meta itemprop="description" content="似乎还未到境界...">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Clover's blog">
-      <meta itemprop="description" content="似乎还未到境界...">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Clover's blog">
-      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/06/cpp/cpp-note-9/" class="post-title-link" itemprop="url">C++笔记（九）——表达式</a>
+          
+            <a href="/2022/05/06/cpp/cpp-note-9/" class="post-title-link" itemprop="url">C++笔记（九）——表达式</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-06 21:43:32" itemprop="dateCreated datePublished" datetime="2022-05-06T21:43:32+08:00">2022-05-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-09 14:35:56" itemprop="dateModified" datetime="2022-05-09T14:35:56+08:00">2022-05-09</time>
-    </span>
+              <time title="创建时间：2022-05-06 21:43:32" itemprop="dateCreated datePublished" datetime="2022-05-06T21:43:32+08:00">2022-05-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-09 14:35:56" itemprop="dateModified" datetime="2022-05-09T14:35:56+08:00">2022-05-09</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -1044,6 +945,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><p>C++提供了一套丰富的运算符，并定义了这些运算符作用域内置类型的运算对象时所执行的操作。同时，当运算对象是类类型时，C++也允许用户自定义上述运算符的含义。</p>
 <h2 id="左值和右值"><a href="#左值和右值" class="headerlink" title="左值和右值"></a>左值和右值</h2><p>当一个对象被用作右值的时候，用的是对象的<strong>值（内容）</strong>；当对象被用作左值的时候，用的是对象的<strong>身份（在内存中的位置）</strong>。</p>
 <p>对于关键字<code>decltype()</code>，如果()中是表达式（不是变量），且表达式的结果是一个左值，比如<code>*p</code>（*是解引用运算符，p是一个指针，它们组合起来构成一个表达式，表达式的结果是p所指对象i），decltype将得到一个引用类型。</p>
@@ -1065,29 +968,118 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
+  
+  
+  
 
 
-
-
+  
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Clover"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Clover</p>
+  <div class="site-description" itemprop="description">似乎还未到境界...</div>
 </div>
-  </main>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
 
-  <footer class="footer">
-    <div class="footer-inner">
 
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
 
 <div class="copyright">
+  
   &copy; 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
@@ -1095,30 +1087,63 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Clover</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
-    </div>
-  </footer>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
 
   
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
-  <script src="/js/third-party/pace.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
-
-
-
+  
 
 </body>
 </html>
