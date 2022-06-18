@@ -2641,7 +2641,7 @@ mark.search-keyword {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #e92d70;
+  background: #3ca27f;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2661,13 +2661,13 @@ mark.search-keyword {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
-}
+/* .post {
+margin-top: 60px;
+margin-bottom: 60px;
+padding: 25px;
+-webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+-moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+} */
 .post-body p {
   text-indent: 2em;
 }
