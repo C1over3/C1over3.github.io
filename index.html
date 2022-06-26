@@ -336,7 +336,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-19 18:01:36" itemprop="dateModified" datetime="2022-06-19T18:01:36+08:00">2022-06-19</time>
+      <time title="修改时间：2022-06-26 17:58:02" itemprop="dateModified" datetime="2022-06-26T17:58:02+08:00">2022-06-26</time>
     </span>
 
   
@@ -349,7 +349,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="IO库"><a href="#IO库" class="headerlink" title="IO库"></a>IO库</h1><h2 id="IO类"><a href="#IO类" class="headerlink" title="IO类"></a>IO类</h2><ul>
+          <h1 id="IO库"><a href="#IO库" class="headerlink" title="IO库"></a>IO库</h1><h2 id="IO类"><a href="#IO类" class="headerlink" title="IO类"></a>IO类</h2><p>头文件iostream定义了三个类型来支持<strong>基本的读写流</strong></p>
+<ul>
 <li><p>IO对象无拷贝或赋值；</p>
 </li>
 <li><p>IO类的条件状态(condition state)；</p>
@@ -370,17 +371,15 @@
 <p><u>每个流同时最多关联到一个流</u>，但多个流可以同时关联到同一个ostream ;</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实际上，标准库中已经将cin和cout关联在一起了</span></span><br><span class="line">cin.<span class="built_in">tie</span>();		<span class="comment">//不带参数，返回值为指向与该对象(cin)关联的输出流的指针；若无关联对象，则返回值为空</span></span><br><span class="line">cin.<span class="built_in">tie</span>(&amp;cout);	<span class="comment">//接受一个指向ostream的指针，将该对象(cin)关联到此ostream</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="文件输入输出"><a href="#文件输入输出" class="headerlink" title="文件输入输出"></a>文件输入输出</h2><p>头文件fstream定义了三个类型来支持文件IO，它们都继承自相应的iostream类型：</p>
+<h2 id="文件输入输出"><a href="#文件输入输出" class="headerlink" title="文件输入输出"></a>文件输入输出</h2><p>头文件fstream定义了三个类型来支持<strong>文件</strong>IO，它们都继承自相应的iostream类型：</p>
 <ol>
 <li>ifstream：从给定文件中读取数据；</li>
 <li>ofstream：向给定文件中写入数据；</li>
 <li>fstream：可以读写给定文件；</li>
 </ol>
 <p>在C++11新标准中，文件名可以是string对象或C风格字符数组；旧版本标准库只允许C风格字符串数组；</p>
-<p><strong>注意</strong>：fstream对象可以直接定义为空文件流对象（默认初始化为空）；iostream对象定义时需要手动初始化</p>
+<p><strong>注意</strong>：fstream对象可以直接定义为空文件流对象（默认初始化为空）；iostream对象定义时需要手动初始化；可以向iostream &amp;对象传递fstream对象；</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifstream ifs;		<span class="comment">//正确，定义了一个空输入文件流</span></span><br><span class="line">istream is;			<span class="comment">//错误，不存在默认构造函数</span></span><br><span class="line"><span class="function">istream <span class="title">is</span><span class="params">(<span class="literal">NULL</span>)</span></span>;	<span class="comment">//正确，定义了一个空输入流</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="成员函数open和close"><a href="#成员函数open和close" class="headerlink" title="成员函数open和close"></a>成员函数open和close</h4>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/14/cpp/cpp-note-15/#more" rel="contents">
@@ -709,7 +708,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-14 01:21:54" itemprop="dateModified" datetime="2022-05-14T01:21:54+08:00">2022-05-14</time>
+      <time title="修改时间：2022-06-26 16:38:49" itemprop="dateModified" datetime="2022-06-26T16:38:49+08:00">2022-06-26</time>
     </span>
 
   
